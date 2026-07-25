@@ -12,7 +12,11 @@ import ResearchExtension from "./ResearchExtension";
 import AppliedMathematicsConnection from "./AppliedMathematicsConnection";
 import ApplySection from "./ApplySection";
 import NextLesson from "./NextLesson";
-
+import ReflectionSection from "./ReflectionSection";
+import VocabularySection from "./VocabularySection";
+import SummarySection from "./SummarySection";
+import WarmUpSection from "./WarmUpSection";
+import LessonNavigation from "./LessonNavigation";
 export default function LessonTemplate({ lesson }) {
   if (!lesson) {
     return (
@@ -37,10 +41,19 @@ export default function LessonTemplate({ lesson }) {
       <div className="mx-auto max-w-7xl">
         <LessonHero lesson={lesson} />
 
-        {lesson.objectives?.length > 0 && (
+     {lesson.warmUp && (
+  <WarmUpSection warmUp={lesson.warmUp} />
+)}
+
+          {lesson.objectives?.length > 0 && (
           <LearningObjectives objectives={lesson.objectives} />
         )}
 
+        {lesson.vocabulary?.length > 0 && (
+  <VocabularySection vocabulary={lesson.vocabulary} />
+)}
+
+      
         {lesson.whyItMatters && (
           <WhyItMatters text={lesson.whyItMatters} />
         )}
@@ -101,6 +114,16 @@ export default function LessonTemplate({ lesson }) {
         {lesson.nextLesson && (
           <NextLesson lesson={lesson.nextLesson.title} />
         )}
+        {lesson.summary && (
+  <SummarySection summary={lesson.summary} />
+)}
+{lesson.reflection && (
+  <ReflectionSection reflection={lesson.reflection} />
+)}
+<LessonNavigation
+  previousLesson={lesson.previousLesson}
+  nextLesson={lesson.nextLesson}
+/>
       </div>
     </main>
   );

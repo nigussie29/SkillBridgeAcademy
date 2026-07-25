@@ -36,25 +36,28 @@ export function adaptLessonForEngine(rawLesson) {
     vocabulary: normalizeArray(rawLesson.vocabulary),
 
     // Learn section
-    learn: rawLesson.conceptExplanation
-      ? {
-          title:
-            rawLesson.conceptExplanation.title ??
-            "Learn the Core Concept",
+  learn: rawLesson.conceptExplanation
+  ? {
+      title:
+        rawLesson.conceptExplanation.title ??
+        "Learn the Core Concept",
 
-          content:
-            rawLesson.conceptExplanation.summary ??
-            rawLesson.conceptExplanation.content ??
-            rawLesson.conceptExplanation.description ??
-            "",
+      content:
+        rawLesson.conceptExplanation.summary ??
+        rawLesson.conceptExplanation.content ??
+        rawLesson.conceptExplanation.description ??
+        "",
 
-          formula:
-            rawLesson.conceptExplanation.formula ??
-            null,
+      teachingNotes: normalizeArray(
+        rawLesson.conceptExplanation.teachingNotes
+      ),
 
-          examples: normalizeArray(rawLesson.workedExamples),
-        }
-      : null,
+      formula:
+        rawLesson.conceptExplanation.formula ?? null,
+
+      examples: normalizeArray(rawLesson.workedExamples),
+    }
+  : null,
 
     // Practice section
     practice: normalizeArray(rawLesson.guidedPractice),
@@ -124,22 +127,48 @@ export function adaptLessonForEngine(rawLesson) {
       : null,
 
     // Real-world application
-    apply: hasApplicationContent(rawLesson)
-      ? {
-          realWorldConnection:
-            rawLesson.realWorldConnection ?? null,
+    // Real-world application
+apply: hasApplicationContent(rawLesson)
+  ? {
+      realWorldConnection:
+        rawLesson.realWorldConnection ?? null,
 
-          technologyActivity:
-            rawLesson.technologyActivity ?? null,
+      technologyActivity:
+        rawLesson.technologyActivity ?? null,
 
-          pythonLab:
-            rawLesson.pythonLab ?? null,
-        }
-      : null,
+      pythonLab:
+        rawLesson.pythonLab ?? null,
+    }
+  : null,
 
+// Portfolio evidence
+portfolioEvidence: rawLesson.portfolioEvidence
+  ? {
+      title:
+        rawLesson.portfolioEvidence.title ??
+        "Portfolio Evidence",
+
+      artifact:
+        rawLesson.portfolioEvidence.artifact ??
+        rawLesson.portfolioEvidence.description ??
+        "",
+
+      include: normalizeArray(
+        rawLesson.portfolioEvidence.include
+      ),
+
+      requirements: normalizeArray(
+        rawLesson.portfolioEvidence.requirements
+      ),
+    }
+  : null,
+
+// Reflection and summary
+summary: normalizeArray(rawLesson.summary),
+reflection: normalizeArray(rawLesson.reflection),
     // Reflection and summary
-    summary: rawLesson.summary ?? null,
-    reflection: rawLesson.reflection ?? null,
+    summary: normalizeArray(rawLesson.summary),
+reflection: normalizeArray(rawLesson.reflection),
 
     // Lesson navigation
     previousLesson: normalizeLessonNavigation(

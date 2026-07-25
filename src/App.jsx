@@ -43,8 +43,10 @@ import LinearAlgebraLessonsTest from "./pages/library/college/LinearAlgebraLesso
 import MainNavbar from "./components/navigation/MainNavbar";
 import HighSchoolMathematics from "./pages/library/highschool/HighSchoolMathematics";
 import AlgebraOne from "./pages/library/highschool/AlgebraOne";
+import Algebra1CoursePage from "./pages/Algebra1CoursePage.jsx";
 import AlgebraOneModule from "./pages/library/highschool/AlgebraOneModule.jsx";
 import AlgebraOneLesson from "./pages/library/highschool/AlgebraOneLesson.jsx";
+
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -64,6 +66,10 @@ export default function App() {
           <Route path="/login" element={<Auth />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/lesson-engine" element={<LessonEnginePage />} />
+          <Route
+  path="/lesson-engine/:lessonSlug"
+  element={<LessonEnginePage />}
+/>
           <Route path="/portfolio" element={<Portfolio />} />
           <Route
   path="/schools/mathematics"
@@ -94,6 +100,12 @@ export default function App() {
   path="/courses/linear-algebra-foundations"
   element={<LinearAlgebraCoursePage />}
 />
+<Route
+  path="/courses/advanced-algebra-1"
+  element={<Algebra1CoursePage />}
+/>
+
+
           <Route 
           path="/projects/:id"
            element={<ProjectDetail />

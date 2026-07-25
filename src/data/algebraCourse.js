@@ -1,0 +1,18 @@
+export const algebraCourse = {
+  id: "algebra-1",
+  title: "Algebra I",
+  subtitle: "Think Like a Mathematician",
+  level: "Advanced",
+  duration: "36 Weeks",
+  modules: 12,
+  lessons: 90,
+  projects: 10,
+  capstones: 2,
+  portfolio: true,
+  certificate: true,
+  description: "...",
+  outcomes: [],
+  modulesList: [],
+  resources: [],
+  faq: [],
+};
