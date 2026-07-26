@@ -46,6 +46,8 @@ import AlgebraOne from "./pages/library/highschool/AlgebraOne";
 import Algebra1CoursePage from "./pages/Algebra1CoursePage.jsx";
 import AlgebraOneModule from "./pages/library/highschool/AlgebraOneModule.jsx";
 import AlgebraOneLesson from "./pages/library/highschool/AlgebraOneLesson.jsx";
+import ComputerScience from "./pages/library/ComputerScience.jsx";
+import DataAI from "./pages/library/DataAI.jsx";
 
 export default function App() {
   return (
@@ -74,6 +76,15 @@ export default function App() {
           <Route
   path="/schools/mathematics"
   element={<MathematicsSchool />}
+/>
+<Route
+  path="/library/computer-science"
+  element={<ComputerScience />}
+/>
+
+<Route
+  path="/library/data-ai"
+  element={<DataAI />}
 />
           
 <Route
@@ -191,7 +202,7 @@ element={<LibraryHome />}
   element={<LinearAlgebraLesson />}
 />
 <Route
-  path="/library/high-school"
+  path="/library/mathematics/high-school"
   element={<HighSchoolMathematics />}
 />
 <Route

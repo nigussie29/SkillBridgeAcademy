@@ -5,13 +5,12 @@ import { useAuth } from "../context/AuthContext.jsx";
 import { supabase } from "../lib/supabase";
 
 const links = [
-  { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
-  { to: '/courses', label: 'Courses' },
-  { to: '/projects', label: 'Projects' },   // <-- New
-  { to: '/resources', label: 'Resources' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/contact', label: 'Contact' }
+  { to: "/", label: "Home" },
+  { to: "/courses", label: "Courses" },
+  { to: "/library", label: "Library" },
+  { to: "/projects", label: "Projects" },
+  { to: "/resources", label: "Resources" },
+  { to: "/about", label: "About" },
 ];
 function getDashboardLink(role) {
   switch (role) {

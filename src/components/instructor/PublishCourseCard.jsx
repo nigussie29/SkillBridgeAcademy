@@ -1,3 +1,5 @@
+
+import { Link } from "react-router-dom";
 export default function PublishCourseCard({
   courseTitle = "Untitled Course",
   status = "Draft",
@@ -162,22 +164,22 @@ export default function PublishCourseCard({
         </p>
       </div>
 
-      <div className="mt-8 flex flex-wrap items-center gap-4">
-        <button
-          type="button"
-          onClick={handlePublish}
-          disabled={!isReady}
-          className="rounded-xl bg-green-600 px-6 py-3 font-bold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-slate-300"
-        >
-          Publish Course
-        </button>
+     <div className="mt-8 flex flex-wrap items-center gap-4">
+  <button
+    type="button"
+    onClick={handlePublish}
+    disabled={!isReady}
+    className="rounded-xl bg-green-600 px-6 py-3 font-bold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+  >
+    Publish Course
+  </button>
 
-        {!isReady && (
-          <p className="text-sm font-semibold text-slate-500">
-            {requirements.length - completedCount} requirement(s) remaining
-          </p>
-        )}
-      </div>
+  {!isReady && (
+    <p className="text-sm font-semibold text-slate-500">
+      {requirements.length - completedCount} requirement(s) remaining
+    </p>
+  )}
+</div>
     </section>
   );
 }

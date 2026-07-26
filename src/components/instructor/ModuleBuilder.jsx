@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCourses } from "../../services/courses";
+import { createModule } from "../../services/supabase/modules";
 
 const initialModule = {
+  courseId: "",
   title: "",
   description: "",
   problem: "",
@@ -28,6 +31,29 @@ const masteryOptions = [
 export default function ModuleBuilder() {
   const [moduleData, setModuleData] = useState(initialModule);
   const [saved, setSaved] = useState(false);
+  const [courses, setCourses] = useState([]);
+const [loadingCourses, setLoadingCourses] = useState(true);
+const [saving, setSaving] = useState(false);
+const [error, setError] = useState("");
+
+useEffect(() => {
+  async function loadCourses() {
+    try {
+      setLoadingCourses(true);
+
+      const data = await getCourses();
+
+      setCourses(data);
+    } catch (err) {
+      console.error("Could not load courses:", err);
+      setError(err.message);
+    } finally {
+      setLoadingCourses(false);
+    }
+  }
+
+  loadCourses();
+}, []);
 
   function updateField(field, value) {
     setModuleData((previous) => ({
@@ -48,12 +74,47 @@ export default function ModuleBuilder() {
     updateField("masteryStages", nextStages);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    setSaved(true);
+  async function handleSubmit(event) {
+  event.preventDefault();
 
-    console.log("SkillBridge module:", moduleData);
+  if (!moduleData.courseId) {
+    setError("Please select a course.");
+    return;
   }
+
+  try {
+    setSaving(true);
+    setSaved(false);
+    setError("");
+
+    const moduleRecord = {
+      course_id: moduleData.courseId,
+      title: moduleData.title,
+      description: moduleData.description,
+      problem: moduleData.problem,
+      outcomes: moduleData.outcomes,
+      prerequisites: moduleData.prerequisites,
+      duration: moduleData.duration,
+      mastery_stages: moduleData.masteryStages,
+      lesson_titles: moduleData.lessonTitles,
+      assessment_plan: moduleData.assessmentPlan,
+      research_connection: moduleData.researchConnection,
+      portfolio_evidence: moduleData.portfolioEvidence,
+      order_index: 1,
+    };
+
+    const savedModule = await createModule(moduleRecord);
+
+    console.log("Saved module:", savedModule);
+
+    setSaved(true);
+  } catch (err) {
+    console.error("Module save error:", err);
+    setError(err.message);
+  } finally {
+    setSaving(false);
+  }
+}
 
   function handleReset() {
     setModuleData(initialModule);
@@ -77,6 +138,30 @@ export default function ModuleBuilder() {
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-6">
         <Field label="Module title" htmlFor="module-title">
+          <Field label="Course" htmlFor="module-course">
+  <select
+    id="module-course"
+    value={moduleData.courseId}
+    onChange={(event) =>
+      updateField("courseId", event.target.value)
+    }
+    className="inputStyle"
+    required
+    disabled={loadingCourses}
+  >
+    <option value="">
+      {loadingCourses
+        ? "Loading courses..."
+        : "Select a course"}
+    </option>
+
+    {courses.map((course) => (
+      <option key={course.id} value={course.id}>
+        {course.title}
+      </option>
+    ))}
+  </select>
+</Field>
           <input
             id="module-title"
             type="text"
@@ -257,11 +342,12 @@ Module Project`}
 
         <div className="flex flex-wrap gap-4">
           <button
-            type="submit"
-            className="rounded-xl bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700"
-          >
-            Save Module
-          </button>
+  type="submit"
+  disabled={saving}
+  className="rounded-xl bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-400"
+>
+  {saving ? "Saving..." : "Save Module"}
+</button>
 
           <button
             type="button"
@@ -272,7 +358,17 @@ Module Project`}
           </button>
         </div>
       </form>
+{error && (
+  <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 p-5">
+    <p className="font-bold text-red-700">
+      Module could not be saved.
+    </p>
 
+    <p className="mt-1 text-sm text-red-600">
+      {error}
+    </p>
+  </div>
+)}
       {saved && (
         <div className="mt-8 rounded-2xl bg-green-50 p-6">
           <p className="font-bold text-green-700">

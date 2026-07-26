@@ -11,26 +11,75 @@ import AchievementsCard from "../components/dashboard/AchievementsCard";
 
 import { useAuth } from "../context/AuthContext";
 import { studentMastery } from "../data/mastery/studentMastery";
-import { linearAlgebraCourse } from "../data/courses/linearAlgebraCourse";
 import { getCourseProgress } from "../academy/mastery/ProgressTracker";
 
 export default function Dashboard() {
   const { profile } = useAuth();
 
-  const firstName = profile?.full_name?.split(" ")[0] || "Student";
+  const firstName =
+    profile?.full_name?.split(" ")[0] || "Student";
 
-  const todaysMission = {
-    subject: "Matrix Multiplication",
-    currentStage: "Practice",
-    nextStep: "Build a Python Matrix Calculator",
-    purpose: "This skill is used in neural networks and machine learning.",
-    estimatedTime: "42 minutes",
+  // --------------------------------------------------
+  // Current student course
+  // Temporary local data until enrollment is connected
+  // to Supabase.
+  // --------------------------------------------------
+
+  const algebraOneCourse = {
+    id: "algebra-one",
+    title: "Algebra I",
+    category: "High School Mathematics",
+    level: "High School",
+    progress: 0,
+
+    lessons: [
+      {
+        id: "variables-and-expressions",
+        title: "Variables and Expressions",
+        status: "completed",
+        path:
+          "/library/high-school/algebra-1/module/1/lesson/variables-and-expressions",
+      },
+
+      {
+        id: "order-of-operations",
+        title: "Order of Operations",
+        status: "current",
+        path:
+          "/library/high-school/algebra-1/module/1/lesson/order-of-operations",
+      },
+
+      {
+        id: "properties-of-real-numbers",
+        title: "Properties of Real Numbers",
+        status: "locked",
+        path:
+          "/library/high-school/algebra-1/module/1/lesson/properties-of-real-numbers",
+      },
+    ],
   };
 
+  // --------------------------------------------------
+  // Today's learning mission
+  // --------------------------------------------------
+
+ const todaysMission = {
+  subject: "Variables and Expressions",
+  currentStage: "Learn",
+  nextStep: "Complete Lesson 1",
+  purpose:
+    "Build the foundation of Algebra I by understanding variables, expressions, constants, coefficients, and terms.",
+  estimatedTime: "45 minutes",
+};
+  // --------------------------------------------------
+  // Career / portfolio / research demo data
+  // These can later come from Supabase.
+  // --------------------------------------------------
+
   const career = {
-    targetRole: "Machine Learning Engineer",
+    targetRole: "AI and Data Professional",
     readiness: 68,
-    nextSkill: "Linear Algebra for AI",
+    nextSkill: "Strengthen mathematical foundations",
   };
 
   const portfolio = {
@@ -51,38 +100,51 @@ export default function Dashboard() {
       id: 1,
       icon: "🏆",
       title: "Lesson Builder",
-      description: "Completed your first SkillBridge lesson.",
+      description:
+        "Completed your first SkillBridge lesson.",
       date: "Today",
     },
+
     {
       id: 2,
       icon: "🚀",
       title: "Platform Architect",
-      description: "Built the LessonTemplate and CourseTemplate engines.",
+      description:
+        "Built the LessonTemplate and CourseTemplate engines.",
       date: "Sprint 3",
     },
   ];
 
+  // --------------------------------------------------
+  // Course progress
+  // --------------------------------------------------
+
   const liveProgress = getCourseProgress(
-    linearAlgebraCourse.id,
-    linearAlgebraCourse.lessons?.length ?? 0
+    algebraOneCourse.id,
+    algebraOneCourse.lessons.length
   );
 
   const courseWithLiveProgress = {
-    ...linearAlgebraCourse,
+    ...algebraOneCourse,
     progress: liveProgress,
   };
 
   return (
     <DashboardLayout>
       <div className="space-y-8">
-        {/* 1. Welcome Command Center */}
-        <WelcomeCard name={firstName} mission={todaysMission} />
 
-        {/* 2. Continue Learning and Mastery */}
+        {/* 1. Student Welcome / Mission */}
+        <WelcomeCard
+          name={firstName}
+          mission={todaysMission}
+        />
+
+        {/* 2. Continue Learning + Mastery */}
         <section className="grid items-start gap-6 xl:grid-cols-12">
           <div className="xl:col-span-8">
-            <ContinueLearningCard course={courseWithLiveProgress} />
+            <ContinueLearningCard
+              course={courseWithLiveProgress}
+            />
           </div>
 
           <div className="xl:col-span-4">
@@ -95,28 +157,32 @@ export default function Dashboard() {
           <LearningJourneyCard />
         </section>
 
-        {/* 4. Luminery, Career, and Achievements */}
+        {/* 4. Luminery + Career + Achievements */}
         <section className="grid items-start gap-6 xl:grid-cols-12">
           <div className="xl:col-span-8">
             <LumineryCard
               learner={firstName}
-              greeting="Good Morning"
-              message="Excellent work yesterday. Your Build score is improving."
-              mission="Complete the Research Extension before moving to Eigenvalues."
-              recommendation="Your Build skill is excellent. Spend a little more time on Research to reach the next mastery level."
+              greeting="Welcome back"
+              message="You are building a strong Algebra I foundation. Your current focus is understanding how the structure of an expression determines the order in which operations are performed."
+              mission="Complete Lesson 2: Order of Operations."
+              recommendation="Predict each result before calculating. Explain why each operation comes next instead of relying only on memorized rules."
               confidence={91}
               tasks={[
                 {
-                  title: "Review Matrix Multiplication",
+                  title: "Review the Warm-Up",
+                  duration: "5 min",
+                },
+                {
+                  title: "Complete Guided Practice",
+                  duration: "15 min",
+                },
+                {
+                  title: "Complete Independent Practice",
+                  duration: "15 min",
+                },
+                {
+                  title: "Take the Mastery Assessment",
                   duration: "10 min",
-                },
-                {
-                  title: "Build Python Matrix Calculator",
-                  duration: "20 min",
-                },
-                {
-                  title: "Take the Mastery Quiz",
-                  duration: "12 min",
                 },
               ]}
             />
@@ -124,11 +190,14 @@ export default function Dashboard() {
 
           <aside className="space-y-6 xl:col-span-4">
             <CareerCard career={career} />
-            <AchievementsCard achievements={achievements} />
+
+            <AchievementsCard
+              achievements={achievements}
+            />
           </aside>
         </section>
 
-        {/* 5. Portfolio and Research */}
+        {/* 5. Portfolio + Research */}
         <section>
           <div className="mb-4">
             <p className="text-sm font-bold uppercase tracking-widest text-violet-600">
@@ -145,6 +214,7 @@ export default function Dashboard() {
             <ResearchCard research={research} />
           </div>
         </section>
+
       </div>
     </DashboardLayout>
   );

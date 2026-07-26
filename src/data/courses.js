@@ -120,12 +120,14 @@ export const courses = [
     students: 890,
     rating: 4.9,
     description: "Master the mathematics behind AI and data science.",
+     path: "/library/mathematics",
     skills: [
       "Linear Algebra",
       "Calculus",
       "Probability",
       "Statistics"
     ],
+   
     curriculum: [
       "Algebra Review",
       "Functions",
