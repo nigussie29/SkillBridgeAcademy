@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getLessonsByCourse } from "../services/supabase/lessons";
 import {
   FaClock,
   FaBookOpen,
@@ -18,6 +19,7 @@ export default function CourseDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [modules, setModules] = useState([]);
+  const [lessons, setLessons] = useState([]);
 
   useEffect(() => {
   async function loadCourse() {
@@ -32,6 +34,9 @@ export default function CourseDetail() {
       const moduleData = await getModulesByCourse(data.id);
 
       setModules(moduleData);
+      const lessonData = await getLessonsByCourse(data.id);
+
+setLessons(lessonData);
     } catch (err) {
       console.error("Course detail loading error:", err);
 
@@ -94,10 +99,7 @@ export default function CourseDetail() {
     course.weeks ||
     "Self-paced";
 
-  const lessonCount =
-    course.lessons ??
-    course.lesson_count ??
-    0;
+  const lessonCount = lessons.length;
 
   const students =
     course.students ?? 0;
@@ -190,12 +192,13 @@ export default function CourseDetail() {
   {modules.length > 0 ? (
     <div className="mt-6 space-y-5">
       {modules.map((module, moduleIndex) => {
-        const lessonTitles = module.lesson_titles
-          ? module.lesson_titles
-              .split("\n")
-              .map((lesson) => lesson.trim())
-              .filter(Boolean)
-          : [];
+        const moduleLessons = lessons
+          .filter((lesson) => lesson.module_id === module.id)
+          .sort(
+            (a, b) =>
+              (a.order_index ?? 0) -
+              (b.order_index ?? 0)
+          );
 
         return (
           <article
@@ -216,23 +219,28 @@ export default function CourseDetail() {
               </p>
             )}
 
-            {lessonTitles.length > 0 && (
+            {moduleLessons.length > 0 ? (
               <div className="mt-5 space-y-3">
-                {lessonTitles.map((lesson, lessonIndex) => (
-                  <div
-                    key={`${module.id}-${lessonIndex}`}
-                    className="flex items-center justify-between rounded-xl bg-slate-50 p-4"
-                  >
-                    <span className="font-semibold text-slate-800">
-                      Lesson {lessonIndex + 1}: {lesson}
-                    </span>
+                {moduleLessons.map((lesson, lessonIndex) => (
+                 <Link
+  key={lesson.id}
+  to={`/lessons/${lesson.id}`}
+  className="flex items-center justify-between rounded-xl bg-slate-50 p-4 transition hover:bg-blue-50"
+>
+  <span className="font-semibold text-slate-800">
+    Lesson {lessonIndex + 1}: {lesson.title}
+  </span>
 
-                    <span className="text-sm text-slate-500">
-                      Coming next
-                    </span>
-                  </div>
+  <span className="text-sm font-semibold text-blue-600">
+    Open Lesson →
+  </span>
+</Link>
                 ))}
               </div>
+            ) : (
+              <p className="mt-5 text-sm text-slate-500">
+                Lessons have not been added to this module yet.
+              </p>
             )}
           </article>
         );

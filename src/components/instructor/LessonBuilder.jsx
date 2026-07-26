@@ -1,36 +1,79 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCourses } from "../../services/courses";
+import { getModulesByCourse } from "../../services/supabase/modules";
+import { createLesson } from "../../services/supabase/lessons";
 
-const initialModule = {
+const initialLesson = {
+  courseId: "",
+  moduleId: "",
   title: "",
   description: "",
-  problem: "",
-  outcomes: "",
-  prerequisites: "",
-  duration: "",
-  masteryStages: [],
-  lessonTitles: "",
-  assessmentPlan: "",
-  researchConnection: "",
-  portfolioEvidence: "",
+  content: "",
+  videoUrl: "",
+  orderIndex: 1,
+  freePreview: false,
 };
 
-const masteryOptions = [
-  "Learn",
-  "Practice",
-  "Build",
-  "Master",
-  "Apply",
-  "Research",
-  "Create",
-  "Lead",
-];
+export default function LessonBuilder() {
+  const [lessonData, setLessonData] = useState(initialLesson);
 
-export default function ModuleBuilder() {
-  const [moduleData, setModuleData] = useState(initialModule);
+  const [courses, setCourses] = useState([]);
+  const [modules, setModules] = useState([]);
+
+  const [loadingCourses, setLoadingCourses] = useState(true);
+  const [loadingModules, setLoadingModules] = useState(false);
+  const [saving, setSaving] = useState(false);
+
   const [saved, setSaved] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function loadCourses() {
+      try {
+        setLoadingCourses(true);
+        setError("");
+
+        const data = await getCourses();
+
+        setCourses(data);
+      } catch (err) {
+        console.error("Course loading error:", err);
+        setError(err?.message || "Courses could not be loaded.");
+      } finally {
+        setLoadingCourses(false);
+      }
+    }
+
+    loadCourses();
+  }, []);
+
+  useEffect(() => {
+    async function loadModules() {
+      if (!lessonData.courseId) {
+        setModules([]);
+        return;
+      }
+
+      try {
+        setLoadingModules(true);
+        setError("");
+
+        const data = await getModulesByCourse(lessonData.courseId);
+
+        setModules(data);
+      } catch (err) {
+        console.error("Module loading error:", err);
+        setError(err?.message || "Modules could not be loaded.");
+      } finally {
+        setLoadingModules(false);
+      }
+    }
+
+    loadModules();
+  }, [lessonData.courseId]);
 
   function updateField(field, value) {
-    setModuleData((previous) => ({
+    setLessonData((previous) => ({
       ...previous,
       [field]: value,
     }));
@@ -38,229 +81,266 @@ export default function ModuleBuilder() {
     setSaved(false);
   }
 
-  function toggleMasteryStage(stage) {
-    const currentStages = moduleData.masteryStages;
+  function handleCourseChange(value) {
+    setLessonData((previous) => ({
+      ...previous,
+      courseId: value,
+      moduleId: "",
+    }));
 
-    const nextStages = currentStages.includes(stage)
-      ? currentStages.filter((item) => item !== stage)
-      : [...currentStages, stage];
-
-    updateField("masteryStages", nextStages);
+    setSaved(false);
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    setSaved(true);
 
-    console.log("SkillBridge module:", moduleData);
+    if (!lessonData.courseId) {
+      setError("Please select a course.");
+      return;
+    }
+
+    if (!lessonData.moduleId) {
+      setError("Please select a module.");
+      return;
+    }
+
+    try {
+      setSaving(true);
+      setSaved(false);
+      setError("");
+
+      const lessonRecord = {
+        course_id: lessonData.courseId,
+        module_id: lessonData.moduleId,
+        title: lessonData.title,
+        description: lessonData.description,
+        content: lessonData.content,
+        video_url: lessonData.videoUrl || null,
+        order_index: Number(lessonData.orderIndex) || 1,
+        free_preview: lessonData.freePreview,
+      };
+
+      const savedLesson = await createLesson(lessonRecord);
+
+      console.log("Saved lesson:", savedLesson);
+
+      setSaved(true);
+    } catch (err) {
+      console.error("Lesson save error:", err);
+      setError(err?.message || "Lesson could not be saved.");
+    } finally {
+      setSaving(false);
+    }
   }
 
   function handleReset() {
-    setModuleData(initialModule);
+    setLessonData(initialLesson);
+    setModules([]);
     setSaved(false);
+    setError("");
   }
 
   return (
     <section className="rounded-3xl bg-white p-8 shadow-sm">
       <p className="text-sm font-bold uppercase tracking-wide text-blue-600">
-        SkillBridge Module Builder
+        SkillBridge Lesson Builder
       </p>
 
       <h2 className="mt-2 text-3xl font-extrabold text-slate-900">
-        Design a coherent learning module
+        Create a structured learning lesson
       </h2>
 
       <p className="mt-3 max-w-3xl leading-7 text-slate-600">
-        Organize lessons, assessments, research, and portfolio evidence around
-        one meaningful learning goal.
+        Connect each lesson to a course and module, then define the learner
+        content, sequence, and preview settings.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-        <Field label="Module title" htmlFor="module-title">
+        <div className="grid gap-6 md:grid-cols-2">
+          <Field label="Course" htmlFor="lesson-course">
+            <select
+              id="lesson-course"
+              value={lessonData.courseId}
+              onChange={(event) =>
+                handleCourseChange(event.target.value)
+              }
+              className="inputStyle"
+              required
+              disabled={loadingCourses}
+            >
+              <option value="">
+                {loadingCourses
+                  ? "Loading courses..."
+                  : "Select a course"}
+              </option>
+
+              {courses.map((course) => (
+                <option key={course.id} value={course.id}>
+                  {course.title}
+                </option>
+              ))}
+            </select>
+          </Field>
+
+          <Field label="Module" htmlFor="lesson-module">
+            <select
+              id="lesson-module"
+              value={lessonData.moduleId}
+              onChange={(event) =>
+                updateField("moduleId", event.target.value)
+              }
+              className="inputStyle"
+              required
+              disabled={
+                !lessonData.courseId || loadingModules
+              }
+            >
+              <option value="">
+                {!lessonData.courseId
+                  ? "Select a course first"
+                  : loadingModules
+                  ? "Loading modules..."
+                  : "Select a module"}
+              </option>
+
+              {modules.map((module) => (
+                <option key={module.id} value={module.id}>
+                  {module.title}
+                </option>
+              ))}
+            </select>
+          </Field>
+        </div>
+
+        <Field label="Lesson title" htmlFor="lesson-title">
           <input
-            id="module-title"
+            id="lesson-title"
             type="text"
-            value={moduleData.title}
-            onChange={(event) => updateField("title", event.target.value)}
-            placeholder="Example: Matrix Operations and Transformations"
+            value={lessonData.title}
+            onChange={(event) =>
+              updateField("title", event.target.value)
+            }
+            placeholder="Example: Introduction to Variables"
             className="inputStyle"
             required
           />
         </Field>
 
-        <Field label="Module description" htmlFor="module-description">
+        <Field
+          label="Lesson description"
+          htmlFor="lesson-description"
+        >
           <textarea
-            id="module-description"
-            value={moduleData.description}
+            id="lesson-description"
+            value={lessonData.description}
             onChange={(event) =>
               updateField("description", event.target.value)
             }
-            rows={5}
-            placeholder="Describe the purpose, scope, and value of this module."
+            rows={4}
+            placeholder="What will learners understand or accomplish in this lesson?"
             className="inputStyle"
             required
           />
         </Field>
 
-        <Field label="Problem this module solves" htmlFor="module-problem">
+        <Field label="Lesson content" htmlFor="lesson-content">
           <textarea
-            id="module-problem"
-            value={moduleData.problem}
-            onChange={(event) => updateField("problem", event.target.value)}
-            rows={4}
-            placeholder="What learner or real-world problem does this module address?"
-            className="inputStyle"
-          />
-        </Field>
-
-        <Field label="Module outcomes" htmlFor="module-outcomes">
-          <textarea
-            id="module-outcomes"
-            value={moduleData.outcomes}
-            onChange={(event) => updateField("outcomes", event.target.value)}
-            rows={6}
-            placeholder={`Enter one measurable outcome per line.
+            id="lesson-content"
+            value={lessonData.content}
+            onChange={(event) =>
+              updateField("content", event.target.value)
+            }
+            rows={12}
+            placeholder={`Write the lesson content here.
 
 Example:
-Explain matrix operations
-Multiply matrices accurately
-Build a matrix calculator
-Apply transformations to an AI problem`}
+Welcome to Lesson 1.
+
+In this lesson, learners will:
+- Understand the core concept
+- Work through an example
+- Complete guided practice
+- Reflect on what they learned`}
             className="inputStyle"
             required
           />
         </Field>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <Field label="Prerequisites" htmlFor="module-prerequisites">
-            <textarea
-              id="module-prerequisites"
-              value={moduleData.prerequisites}
-              onChange={(event) =>
-                updateField("prerequisites", event.target.value)
-              }
-              rows={4}
-              placeholder="What should learners know before starting?"
-              className="inputStyle"
-            />
-          </Field>
-
-          <Field label="Estimated duration" htmlFor="module-duration">
+          <Field label="Video URL" htmlFor="lesson-video">
             <input
-              id="module-duration"
-              type="text"
-              value={moduleData.duration}
+              id="lesson-video"
+              type="url"
+              value={lessonData.videoUrl}
               onChange={(event) =>
-                updateField("duration", event.target.value)
+                updateField("videoUrl", event.target.value)
               }
-              placeholder="Example: 2 weeks or 6 hours"
+              placeholder="https://..."
               className="inputStyle"
+            />
+          </Field>
+
+          <Field
+            label="Lesson order"
+            htmlFor="lesson-order"
+          >
+            <input
+              id="lesson-order"
+              type="number"
+              min="1"
+              value={lessonData.orderIndex}
+              onChange={(event) =>
+                updateField("orderIndex", event.target.value)
+              }
+              className="inputStyle"
+              required
             />
           </Field>
         </div>
 
-        <div>
-          <p className="block font-bold text-slate-800">
-            Mastery Pyramid stages
-          </p>
+        <label className="flex items-center gap-3 rounded-2xl border border-slate-200 p-4">
+          <input
+            type="checkbox"
+            checked={lessonData.freePreview}
+            onChange={(event) =>
+              updateField(
+                "freePreview",
+                event.target.checked
+              )
+            }
+            className="h-5 w-5"
+          />
 
-          <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {masteryOptions.map((stage) => {
-              const selected = moduleData.masteryStages.includes(stage);
+          <div>
+            <p className="font-bold text-slate-800">
+              Allow free preview
+            </p>
 
-              return (
-                <button
-                  key={stage}
-                  type="button"
-                  onClick={() => toggleMasteryStage(stage)}
-                  className={`rounded-2xl border p-4 text-left font-bold transition ${
-                    selected
-                      ? "border-blue-600 bg-blue-50 text-blue-700"
-                      : "border-slate-200 text-slate-700 hover:border-blue-300"
-                  }`}
-                >
-                  {selected ? "✓" : "○"} {stage}
-                </button>
-              );
-            })}
+            <p className="text-sm text-slate-500">
+              Learners may preview this lesson without full enrollment.
+            </p>
           </div>
-        </div>
-
-        <Field label="Lesson titles" htmlFor="module-lessons">
-          <textarea
-            id="module-lessons"
-            value={moduleData.lessonTitles}
-            onChange={(event) =>
-              updateField("lessonTitles", event.target.value)
-            }
-            rows={6}
-            placeholder={`Enter one lesson per line.
-
-Example:
-Introduction to Matrices
-Matrix Addition and Subtraction
-Matrix Multiplication
-Linear Transformations
-Module Project`}
-            className="inputStyle"
-          />
-        </Field>
-
-        <Field label="Assessment plan" htmlFor="module-assessment">
-          <textarea
-            id="module-assessment"
-            value={moduleData.assessmentPlan}
-            onChange={(event) =>
-              updateField("assessmentPlan", event.target.value)
-            }
-            rows={5}
-            placeholder="How will learners demonstrate understanding and mastery throughout the module?"
-            className="inputStyle"
-          />
-        </Field>
-
-        <Field label="Research connection" htmlFor="module-research">
-          <textarea
-            id="module-research"
-            value={moduleData.researchConnection}
-            onChange={(event) =>
-              updateField("researchConnection", event.target.value)
-            }
-            rows={5}
-            placeholder="What question or investigation will extend learning beyond the module?"
-            className="inputStyle"
-          />
-        </Field>
-
-        <Field label="Portfolio evidence" htmlFor="module-portfolio">
-          <textarea
-            id="module-portfolio"
-            value={moduleData.portfolioEvidence}
-            onChange={(event) =>
-              updateField("portfolioEvidence", event.target.value)
-            }
-            rows={5}
-            placeholder="What artifact will learners add to their portfolio?"
-            className="inputStyle"
-          />
-        </Field>
+        </label>
 
         <div className="rounded-2xl bg-violet-50 p-5">
-          <p className="font-bold text-violet-700">🤖 Luminery Tip</p>
+          <p className="font-bold text-violet-700">
+            🤖 Luminery Tip
+          </p>
 
           <p className="mt-2 leading-7 text-slate-700">
-            A strong module has one clear purpose. Every lesson, assessment,
-            research task, and portfolio artifact should support the same
-            learning outcomes.
+            A strong lesson should have one clear learning purpose,
+            meaningful practice, and a direct connection to the module
+            outcomes.
           </p>
         </div>
 
         <div className="flex flex-wrap gap-4">
           <button
             type="submit"
-            className="rounded-xl bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700"
+            disabled={saving}
+            className="rounded-xl bg-blue-600 px-6 py-3 font-bold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-400"
           >
-            Save Module
+            {saving ? "Saving..." : "Save Lesson"}
           </button>
 
           <button
@@ -273,15 +353,27 @@ Module Project`}
         </div>
       </form>
 
+      {error && (
+        <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 p-5">
+          <p className="font-bold text-red-700">
+            Lesson could not be saved.
+          </p>
+
+          <p className="mt-1 text-sm text-red-600">
+            {error}
+          </p>
+        </div>
+      )}
+
       {saved && (
         <div className="mt-8 rounded-2xl bg-green-50 p-6">
           <p className="font-bold text-green-700">
-            Module design saved successfully.
+            Lesson saved successfully.
           </p>
 
           <p className="mt-2 text-slate-700">
-            Later, this module will connect to a course, lessons, assessments,
-            research activities, and portfolio artifacts in Supabase.
+            This lesson is now connected to its selected course and module
+            in Supabase.
           </p>
         </div>
       )}
@@ -291,16 +383,23 @@ Module Project`}
           margin-top: 0.75rem;
           width: 100%;
           border-radius: 1rem;
-          border: 1px solid rgb(26, 121, 236);
+          border: 1px solid rgb(203 213 225);
           padding: 1rem;
           color: rgb(15 23 42);
           outline: none;
           transition: 0.2s;
+          background: white;
         }
 
         .inputStyle:focus {
           border-color: rgb(59 130 246);
           box-shadow: 0 0 0 4px rgb(219 234 254);
+        }
+
+        .inputStyle:disabled {
+          background: rgb(248 250 252);
+          color: rgb(100 116 139);
+          cursor: not-allowed;
         }
       `}</style>
     </section>
@@ -310,7 +409,10 @@ Module Project`}
 function Field({ label, htmlFor, children }) {
   return (
     <div>
-      <label htmlFor={htmlFor} className="block font-bold text-slate-800">
+      <label
+        htmlFor={htmlFor}
+        className="block font-bold text-slate-800"
+      >
         {label}
       </label>
 
