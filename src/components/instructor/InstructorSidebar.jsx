@@ -22,6 +22,11 @@ const links = [
     path: "/instructor/lessons",
   },
   {
+
+  label: "Lesson Blueprint",
+  path: "/instructor/lesson-blueprint",
+},
+  {
     label: "Assessment Builder",
     path: "/instructor/assessments",
   },

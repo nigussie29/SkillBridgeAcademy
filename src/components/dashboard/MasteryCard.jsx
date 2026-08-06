@@ -1,9 +1,13 @@
-import MasteryEngine from "../mastery/MasteryPanel";
+import LearningInsightsPanel from "../mastery/MasteryPanel";
 
-export default function MasteryCard({ mastery }) {
+export default function MasteryCard({
+  learningState,
+}) {
   return (
     <section>
-      <MasteryEngine mastery={mastery} />
+      <LearningInsightsPanel
+        learningState={learningState}
+      />
     </section>
   );
 }

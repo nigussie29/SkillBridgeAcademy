@@ -77,7 +77,13 @@ export default function Navbar() {
     </p>
   </div>
 </div>
-              <button onClick={signOut} className="btn-secondary py-2">Logout</button>
+<button
+  type="button"
+  onClick={signOut}
+  className="btn-secondary ml-8 py-2"
+>
+  Logout
+</button>
             </>
           ) : (
             <Link to="/login" className="btn-primary py-2">Login</Link>
@@ -98,7 +104,7 @@ export default function Navbar() {
               </NavLink>
             ))}
             {profile?.role === 'admin' && <Link to="/admin">Admin</Link>}
-            {session ? (
+            {user ? (
               <>
                 <Link to="/dashboard" onClick={() => setOpen(false)}>Dashboard</Link>
                 <button onClick={signOut} className="text-left">Logout</button>

@@ -1,9 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import Portfolio from './pages/Portfolio.jsx';
-
+import PythonSchool from "./pages/library/python/PythonSchool.jsx";
+import PythonFoundationsCoursePage from "./pages/PythonFoundationsCoursePage.jsx";
+import PythonFoundations from "./pages/library/python/PythonFoundations.jsx";
+import PythonFoundationsModule from "./pages/library/python/PythonFoundationsModule.jsx";
+import PythonLesson from "./pages/library/python/PythonLesson.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
-
 import Mathematics from "./pages/library/Mathematics";
 import MathematicsSchool from "./pages/schools/Mathematics";
 
@@ -30,6 +33,7 @@ import CreateCoursePage from "./pages/CreateCoursePage.jsx";
 import CourseBuilderPage from "./pages/CourseBuilderPage.jsx";
 import ModuleBuilderPage from "./pages/ModuleBuilderPage.jsx";
 import LessonBuilderPage from "./pages/LessonBuilderPage.jsx";
+import LessonBlueprintPage from "./pages/LessonBlueprintPage.jsx";
 import AssessmentBuilderPage from "./pages/AssessmentBuilderPage.jsx";
 import ResearchBuilderPage from "./pages/ResearchBuilderPage.jsx";
 import PortfolioBuilderPage from "./pages/PortfolioBuilderPage.jsx";
@@ -48,6 +52,7 @@ import AlgebraOneModule from "./pages/library/highschool/AlgebraOneModule.jsx";
 import AlgebraOneLesson from "./pages/library/highschool/AlgebraOneLesson.jsx";
 import ComputerScience from "./pages/library/ComputerScience.jsx";
 import DataAI from "./pages/library/DataAI.jsx";
+import ProbabilityFoundations from "./pages/library/probability/ProbabilityFoundations.jsx";
 
 export default function App() {
   return (
@@ -72,9 +77,9 @@ export default function App() {
   path="/lesson-engine/:lessonSlug"
   element={<LessonEnginePage />}
 />
-          <Route path="/portfolio" element={<Portfolio />} />
+<Route path="/portfolio" element={<Portfolio />} />
           <Route
-  path="/schools/mathematics"
+path="/schools/mathematics"
   element={<MathematicsSchool />}
 />
 <Route
@@ -86,10 +91,26 @@ export default function App() {
   path="/library/data-ai"
   element={<DataAI />}
 />
-          
+         
 <Route
   path="/library/college/linear-algebra/module/:moduleNumber"
   element={<LinearAlgebraModule />}
+/>
+ <Route
+  path="/library/python"
+  element={<PythonSchool />}
+/>
+<Route
+  path="/library/python/python-foundations"
+  element={<PythonFoundations />}
+/>
+<Route
+  path="/library/python/python-foundations/module/:moduleNumber"
+  element={<PythonFoundationsModule />}
+/>
+<Route
+  path="/library/python/python-foundations/module/:moduleNumber/lesson/:lessonSlug"
+  element={<PythonLesson />}
 />
   <Route
   path="/dashboard"
@@ -110,6 +131,10 @@ export default function App() {
           <Route
   path="/courses/linear-algebra-foundations"
   element={<LinearAlgebraCoursePage />}
+/>
+<Route
+  path="/courses/python-foundations"
+  element={<PythonFoundationsCoursePage />}
 />
 <Route
   path="/courses/advanced-algebra-1"
@@ -156,7 +181,10 @@ export default function App() {
   path="/instructor/lessons"
   element={<LessonBuilderPage />}
 />
-
+<Route
+  path="/instructor/lesson-blueprint"
+  element={<LessonBlueprintPage />}
+/>
 <Route
   path="/instructor/assessments"
   element={<AssessmentBuilderPage />}
@@ -216,6 +244,11 @@ element={<LibraryHome />}
 <Route
   path="/library/high-school/algebra-1/module/:moduleNumber/lesson/:lessonSlug"
   element={<AlgebraOneLesson />}
+  
+/>
+<Route
+  path="/library/mathematics/probability-foundations"
+  element={<ProbabilityFoundations />}
 />
    </Routes>
       </main>

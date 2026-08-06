@@ -3,6 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import { FaCheckCircle, FaRegCircle } from "react-icons/fa";
 
 import { getLessonById } from "../services/supabase/lessons";
+import {
+  getLessonResponse,
+  savePracticeResponse,
+  saveMasteryResponse,
+} from "../services/supabase/lessonResponses";
 import { getCourseById } from "../services/courses";
 
 import { LessonEngine } from "../components/lessonEngine";
@@ -21,6 +26,14 @@ export default function LessonPage() {
   const { lessonSlug } = useParams();
 
   const [progressVersion, setProgressVersion] = useState(0);
+  const [practiceResponse, setPracticeResponse] = useState("");
+const [practiceSaving, setPracticeSaving] = useState(false);
+const [practiceSaved, setPracticeSaved] = useState(false);
+const [practiceError, setPracticeError] = useState("");
+const [masteryResponse, setMasteryResponse] = useState("");
+const [masterySaving, setMasterySaving] = useState(false);
+const [masterySaved, setMasterySaved] = useState(false);
+const [masteryError, setMasteryError] = useState("");
 
   // ---------------------------------------
   // Existing static lesson
@@ -81,22 +94,125 @@ export default function LessonPage() {
 
     loadSupabaseLesson();
   }, [lessonSlug, staticLesson]);
+  useEffect(() => {
+  async function loadSavedResponses() {
+    if (!supabaseLesson?.id) {
+      return;
+    }
 
-  // ---------------------------------------
-  // Loading
-  // ---------------------------------------
+    try {
+      setPracticeError("");
+      setMasteryError("");
 
-  if (loading) {
-    return (
-      <main className="min-h-screen bg-slate-50 px-6 py-20">
-        <div className="mx-auto max-w-4xl rounded-3xl bg-white p-10 text-center shadow-sm">
-          <p className="font-semibold text-slate-600">
-            Loading lesson...
-          </p>
-        </div>
-      </main>
-    );
+      const response = await getLessonResponse(
+        supabaseLesson.id
+      );
+
+      if (!response) {
+        return;
+      }
+
+      setPracticeResponse(
+        response.practice_response || ""
+      );
+
+      setMasteryResponse(
+        response.mastery_response || ""
+      );
+    } catch (err) {
+      console.error(
+        "Lesson response loading error:",
+        err
+      );
+
+      const message =
+        err?.message ||
+        "Saved lesson responses could not be loaded.";
+
+      setPracticeError(message);
+      setMasteryError(message);
+    }
   }
+
+  loadSavedResponses();
+}, [supabaseLesson?.id]);
+async function handleSavePractice() {
+  if (!supabaseLesson?.id) {
+    return;
+  }
+
+  const answer = practiceResponse.trim();
+
+  if (!answer) {
+    setPracticeError("Please enter your practice answer.");
+    return;
+  }
+
+  try {
+    setPracticeSaving(true);
+    setPracticeSaved(false);
+    setPracticeError("");
+
+    await savePracticeResponse(
+      supabaseLesson.id,
+      answer
+    );
+
+    setPracticeResponse(answer);
+    setPracticeSaved(true);
+  } catch (err) {
+    console.error(
+      "Practice response saving error:",
+      err
+    );
+
+    setPracticeError(
+      err?.message ||
+        "Practice response could not be saved."
+    );
+  } finally {
+    setPracticeSaving(false);
+  }
+}
+
+async function handleSaveMastery() {
+  if (!supabaseLesson?.id) {
+    return;
+  }
+
+  const answer = masteryResponse.trim();
+
+  if (!answer) {
+    setMasteryError("Please enter your mastery answer.");
+    return;
+  }
+
+  try {
+    setMasterySaving(true);
+    setMasterySaved(false);
+    setMasteryError("");
+
+    await saveMasteryResponse(
+      supabaseLesson.id,
+      answer
+    );
+
+    setMasteryResponse(answer);
+    setMasterySaved(true);
+  } catch (err) {
+    console.error(
+      "Mastery response saving error:",
+      err
+    );
+
+    setMasteryError(
+      err?.message ||
+        "Mastery response could not be saved."
+    );
+  } finally {
+    setMasterySaving(false);
+  }
+}
 
   // ---------------------------------------
   // Instructor-created Pyravanta lesson
@@ -272,12 +388,109 @@ export default function LessonPage() {
           <div className="mt-8 space-y-6">
             {availableStages.map((stage) => (
               <LearningStage
-                key={stage.number}
-                number={stage.number}
-                title={stage.title}
-                subtitle={stage.subtitle}
-                content={stage.content}
-              />
+  key={stage.number}
+  number={stage.number}
+  title={stage.title}
+  subtitle={stage.subtitle}
+  content={stage.content}
+>
+  {stage.number === 2 && (
+    <div className="mt-8 border-t border-slate-200 pt-6">
+      <h3 className="text-lg font-extrabold text-slate-900">
+        Your Practice Answer
+      </h3>
+
+      <p className="mt-2 text-sm text-slate-600">
+        Complete the practice activity above, then save your work.
+      </p>
+
+      <textarea
+        value={practiceResponse}
+        onChange={(event) => {
+          setPracticeResponse(event.target.value);
+          setPracticeSaved(false);
+          setPracticeError("");
+        }}
+        rows={8}
+        placeholder="Write your practice answer here..."
+        className="mt-4 w-full rounded-2xl border border-slate-300 p-4 text-slate-800 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+      />
+
+      <div className="mt-4 flex flex-wrap items-center gap-4">
+        <button
+          type="button"
+          onClick={handleSavePractice}
+          disabled={practiceSaving}
+          className="rounded-xl bg-blue-600 px-6 py-3 font-bold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-400"
+        >
+          {practiceSaving
+            ? "Saving..."
+            : "Save Practice"}
+        </button>
+
+        {practiceSaved && (
+          <p className="font-semibold text-emerald-600">
+            ✓ Practice saved
+          </p>
+        )}
+      </div>
+
+      {practiceError && (
+        <p className="mt-3 font-semibold text-red-600">
+          {practiceError}
+        </p>
+      )}
+    </div>
+  )}
+  {stage.number === 4 && (
+  <div className="mt-8 border-t border-slate-200 pt-6">
+    <h3 className="text-lg font-extrabold text-slate-900">
+      Your Mastery Answer
+    </h3>
+
+    <p className="mt-2 text-sm text-slate-600">
+      Complete the mastery challenge independently, then save your work.
+    </p>
+
+    <textarea
+      value={masteryResponse}
+      onChange={(event) => {
+        setMasteryResponse(event.target.value);
+        setMasterySaved(false);
+        setMasteryError("");
+      }}
+      rows={8}
+      placeholder="Show your solution and explain your reasoning..."
+      className="mt-4 w-full rounded-2xl border border-slate-300 p-4 text-slate-800 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+    />
+
+    <div className="mt-4 flex flex-wrap items-center gap-4">
+      <button
+        type="button"
+        onClick={handleSaveMastery}
+        disabled={masterySaving}
+        className="rounded-xl bg-blue-600 px-6 py-3 font-bold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-400"
+      >
+        {masterySaving
+          ? "Saving..."
+          : "Save Mastery"}
+      </button>
+
+      {masterySaved && (
+        <p className="font-semibold text-emerald-600">
+          ✓ Mastery saved
+        </p>
+      )}
+    </div>
+
+    {masteryError && (
+      <p className="mt-3 font-semibold text-red-600">
+        {masteryError}
+      </p>
+    )}
+  </div>
+)}
+</LearningStage>
             ))}
           </div>
 
@@ -525,6 +738,7 @@ function LearningStage({
   title,
   subtitle,
   content,
+  children,
 }) {
   return (
     <section
@@ -550,6 +764,7 @@ function LearningStage({
       <div className="mt-6 whitespace-pre-wrap leading-8 text-slate-700">
         {content}
       </div>
+      {children}
     </section>
   );
 }
