@@ -27,6 +27,9 @@ import ProjectDetail from "./pages/ProjectDetail.jsx";
 import LessonEnginePage from "./pages/LessonEnginePage.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import LinearAlgebraCoursePage from "./pages/LinearAlgebraCoursePage.jsx";
+import ProbabilityFoundations from "./pages/library/probability/ProbabilityFoundations.jsx";
+import ProbabilityModule from "./pages/library/probability/ProbabilityModule.jsx";
+import ProbabilityLesson from "./pages/library/probability/ProbabilityLesson.jsx";
 import MasteryPage from "./pages/MasteryPage.jsx";
 import InstructorPage from "./pages/InstructorPage.jsx";
 import CreateCoursePage from "./pages/CreateCoursePage.jsx";
@@ -52,7 +55,8 @@ import AlgebraOneModule from "./pages/library/highschool/AlgebraOneModule.jsx";
 import AlgebraOneLesson from "./pages/library/highschool/AlgebraOneLesson.jsx";
 import ComputerScience from "./pages/library/ComputerScience.jsx";
 import DataAI from "./pages/library/DataAI.jsx";
-import ProbabilityFoundations from "./pages/library/probability/ProbabilityFoundations.jsx";
+
+
 
 export default function App() {
   return (
@@ -249,6 +253,15 @@ element={<LibraryHome />}
 <Route
   path="/library/mathematics/probability-foundations"
   element={<ProbabilityFoundations />}
+  
+/>
+<Route
+  path="/library/mathematics/probability-foundations/module/:moduleNumber"
+  element={<ProbabilityModule />}
+/>
+<Route
+  path="/library/mathematics/probability-foundations/module/:moduleNumber/lesson/:lessonSlug"
+  element={<ProbabilityLesson />}
 />
    </Routes>
       </main>

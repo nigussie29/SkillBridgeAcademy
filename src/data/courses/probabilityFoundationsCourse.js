@@ -6,10 +6,10 @@ export const probabilityFoundationsCourse = {
 
   category: "School of Mathematics",
 
-  description:
-    "Build a strong, visual, and practical understanding of probability through experiments, simulations, mathematical reasoning, real-world applications, and introductory Python projects.",
+ description:
+  "Develop a rigorous, visual, and applied understanding of probability through formal reasoning, simulation, mathematical modeling, AP Statistics investigations, real-world applications, and introductory Python experiments.",
 
-  level: "Beginner to Intermediate",
+level: "AP Statistics / College Preparatory",
 
   duration: "10–12 weeks",
 
