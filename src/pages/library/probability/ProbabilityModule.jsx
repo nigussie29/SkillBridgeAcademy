@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
 
 import probabilityModule01 from "../../../data/probability/modules/module01.js";
+import probabilityModule02 from "../../../data/probability/modules/module02.js";
 
 import { getCompletedLessons } from "../../../services/lessonProgress.js";
 
@@ -10,8 +11,8 @@ const COURSE_ID = "probability-foundations";
 
 const modules = {
   1: probabilityModule01,
+  2: probabilityModule02,
 };
-
 export default function ProbabilityModule() {
   const navigate = useNavigate();
   const { moduleNumber } = useParams();
@@ -52,7 +53,8 @@ export default function ProbabilityModule() {
     numericModuleNumber
   );
 
-  const lessonCount = module.lessons.length;
+ const lessonCount =
+  module.lessonCount ?? module.lessons.length;
 
   const completedCount = module.lessons.filter(
     (lesson) =>

@@ -55,22 +55,24 @@ level: "AP Statistics / College Preparatory",
         "/library/mathematics/probability-foundations/module/1",
     },
 
-    {
-      id: 2,
-      title: "Counting Techniques",
+   {
+  id: 2,
+  title: "Counting Techniques",
 
-      description:
-        "Use organized lists, tree diagrams, the Fundamental Counting Principle, permutations, and combinations.",
+  description:
+    "Use organized lists, tree diagrams, the Fundamental Counting Principle, permutations, and combinations.",
 
-      level: "Foundation",
+  level: "Foundation",
 
-      duration: "10–12 hours",
+  duration: "10–12 hours",
 
-      lessonCount: 8,
+  lessonCount: 8,
 
-      status: "planned",
-    },
+  status: "available",
 
+  path:
+    "/library/mathematics/probability-foundations/module/2",
+},
     {
       id: 3,
       title: "Compound and Conditional Probability",
