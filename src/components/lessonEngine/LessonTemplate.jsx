@@ -37,7 +37,7 @@ export default function LessonTemplate({ lesson }) {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 px-6 py-10">
+   <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/50 to-indigo-50/70 px-6 py-10">
       <div className="mx-auto max-w-7xl">
         <LessonHero lesson={lesson} />
 

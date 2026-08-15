@@ -201,8 +201,8 @@ function handleToggleComplete() {
                   {whyThisLessonExists.purpose && (
                     <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50 p-5">
                       <p className="text-sm font-bold uppercase tracking-wide text-blue-700">
-                        Why Probability?
-                      </p>
+  Why This Matters
+</p>
 
                       <p className="mt-2 leading-8 text-blue-950">
                         {whyThisLessonExists.purpose}

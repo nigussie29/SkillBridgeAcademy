@@ -7,7 +7,45 @@ export function adaptLessonForEngine(rawLesson) {
     return null;
   }
 
-  return {
+  return {    // Identity preserved from the original lesson
+    id: rawLesson.id ?? null,
+    slug: rawLesson.slug ?? "",
+    courseId: rawLesson.courseId ?? "",
+    moduleNumber: rawLesson.moduleNumber ?? null,
+    lessonNumber: rawLesson.lessonNumber ?? null,
+
+    // Structured metadata used by LessonHero
+    metadata: {
+      subject:
+        rawLesson.courseTitle ??
+        rawLesson.subject ??
+        "SkillBridge Academy",
+
+      level: rawLesson.level ?? "",
+      duration: rawLesson.duration ?? "",
+      status: rawLesson.status ?? "draft",
+
+      moduleTitle: rawLesson.moduleTitle ?? "",
+      moduleNumber: rawLesson.moduleNumber ?? null,
+      lessonNumber: rawLesson.lessonNumber ?? null,
+    },
+
+    // Structured hero used by LessonHero
+    hero: {
+      eyebrow:
+        rawLesson.moduleNumber && rawLesson.lessonNumber
+          ? `MODULE ${rawLesson.moduleNumber} • LESSON ${rawLesson.lessonNumber}`
+          : "",
+
+      title:
+        rawLesson.title ?? "Untitled Lesson",
+
+      subtitle:
+        rawLesson.subtitle ?? "",
+
+      description:
+        rawLesson.bigIdea ?? "",
+    },
     // Lesson metadata
     subject:
       rawLesson.courseTitle ??
