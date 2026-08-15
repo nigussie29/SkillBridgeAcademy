@@ -29,7 +29,7 @@ const algebraOneModules = [
     level: "Foundation",
     estimatedTime: "10–12 hours",
     lessonCount: 8,
-    status: "Planned",
+    status: "Available",
     theme: "from-emerald-950 via-teal-900 to-slate-950",
     topics: [
       "One-step equations",

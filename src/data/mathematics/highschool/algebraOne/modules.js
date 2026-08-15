@@ -43,9 +43,9 @@ const algebraOneModules = [
       "Solve one-step, multi-step, and variable-on-both-sides equations while preserving equality and explaining each transformation.",
     level: "Foundation",
     estimatedTime: "10–12 hours",
-    status: "Planned",
+    status: "Available",
     lessonCount: 8,
-    color: "from-emerald-950 via-teal-900 to-slate-950",
+    color: "from-blue-950 via-indigo-950 to-slate-950",
     objectives: [
       "Understand equations as balanced mathematical statements.",
       "Solve one-step equations using inverse operations.",
