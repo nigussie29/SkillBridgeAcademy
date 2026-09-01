@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import VennDiagram from "./VennDiagram";
+import RepresentationTableGraph from "./RepresentationTableGraph.jsx";
 import {
   isLessonCompleted as isLinearAlgebraLessonCompleted,
   toggleLessonCompletion as toggleLinearAlgebraLessonCompletion,
@@ -77,9 +78,13 @@ function handleToggleComplete() {
 
     whyThisLessonExists,
 
-    problemFirst,
+   problemFirst,
 
-    learningObjectives = [],
+visualModels = [],
+representationModel = null,
+
+
+learningObjectives = [],
     prerequisiteKnowledge = [],
     vocabulary = [],
     formulas = [],
@@ -256,6 +261,30 @@ function handleToggleComplete() {
               )}
             </SectionCard>
           )}
+{/* Visual Models */}
+
+{visualModels.length > 0 && (
+  <SectionCard
+    eyebrow="See the mathematics"
+    title="Visual Understanding"
+  >
+    <div className="space-y-6">
+      {visualModels.map((visual, index) => (
+        <VisualModel
+          key={visual.id || index}
+          visual={visual}
+        />
+      ))}
+    </div>
+  </SectionCard>
+)}
+{/* Detailed Table + Graph Representation */}
+
+{representationModel && (
+  <RepresentationTableGraph
+    model={representationModel}
+  />
+)}
 
           {/* Learning Objectives */}
 
@@ -1129,6 +1158,8 @@ function LessonSidebar({
 
     lesson.problemFirst &&
       "Opening Investigation",
+      lesson.visualModels?.length > 0 &&
+  "Visual Understanding",
 
     lesson.learningObjectives?.length > 0 &&
       "Objectives",
@@ -1827,4 +1858,298 @@ function formatValue(value) {
   }
 
   return JSON.stringify(value, null, 2);
+}
+function VisualModel({ visual }) {
+  if (!visual) return null;
+
+  if (visual.type === "numberLine") {
+    const {
+      title,
+      description,
+      min = 0,
+      max = 10,
+      boundary = 5,
+      operator = "<=",
+      leftLabel,
+      rightLabel,
+      interpretation,
+    } = visual;
+
+    const range = max - min || 1;
+
+    const boundaryPosition = Math.min(
+      100,
+      Math.max(
+        0,
+        ((boundary - min) / range) * 100
+      )
+    );
+
+    const shadeLeft =
+      operator === "<" || operator === "<=";
+
+    const closedCircle =
+      operator === "<=" || operator === ">=";
+
+    return (
+      <article className="rounded-3xl border border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 p-6">
+        {title && (
+          <h3 className="text-xl font-black text-slate-950">
+            {title}
+          </h3>
+        )}
+
+        {description && (
+          <p className="mt-2 leading-7 text-slate-700">
+            {description}
+          </p>
+        )}
+
+        <div className="mt-8 rounded-2xl bg-white p-6 shadow-sm">
+          <div className="relative h-16">
+            {/* Main number line */}
+            <div className="absolute left-0 right-0 top-7 h-1 rounded-full bg-slate-300" />
+
+            {/* Solution shading */}
+            {shadeLeft ? (
+              <div
+                className="absolute left-0 top-7 h-1 rounded-full bg-blue-600"
+                style={{
+                  width: `${boundaryPosition}%`,
+                }}
+              />
+            ) : (
+              <div
+                className="absolute right-0 top-7 h-1 rounded-full bg-blue-600"
+                style={{
+                  width: `${100 - boundaryPosition}%`,
+                }}
+              />
+            )}
+
+            {/* Boundary point */}
+            <div
+              className={`absolute top-[18px] h-5 w-5 -translate-x-1/2 rounded-full border-4 border-blue-700 ${
+                closedCircle
+                  ? "bg-blue-700"
+                  : "bg-white"
+              }`}
+              style={{
+                left: `${boundaryPosition}%`,
+              }}
+            />
+
+            {/* Boundary value */}
+            <div
+              className="absolute top-11 -translate-x-1/2 text-sm font-black text-blue-800"
+              style={{
+                left: `${boundaryPosition}%`,
+              }}
+            >
+              {boundary}
+            </div>
+          </div>
+
+          <div className="mt-3 flex justify-between text-sm font-bold text-slate-500">
+            <span>{leftLabel ?? min}</span>
+            <span>{rightLabel ?? max}</span>
+          </div>
+
+          <div className="mt-5 text-center">
+            <span className="rounded-xl bg-blue-100 px-4 py-2 font-mono text-lg font-black text-blue-900">
+              x {operator} {boundary}
+            </span>
+          </div>
+        </div>
+
+        {interpretation && (
+          <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+            <p className="text-sm font-bold uppercase tracking-wide text-emerald-700">
+              Interpretation
+            </p>
+
+            <p className="mt-2 leading-7 text-emerald-950">
+              {interpretation}
+            </p>
+          </div>
+        )}
+      </article>
+    );
+  }
+   if (visual.type === "compoundNumberLine") {
+  const {
+    title,
+    description,
+    min = 0,
+    max = 12,
+    lowerBoundary = 3,
+    upperBoundary = 10,
+    lowerInclusive = false,
+    upperInclusive = false,
+    variable = "x",
+    interpretation,
+  } = visual;
+
+  const range = max - min || 1;
+
+  const lowerPosition = Math.min(
+    100,
+    Math.max(
+      0,
+      ((lowerBoundary - min) / range) * 100
+    )
+  );
+
+  const upperPosition = Math.min(
+    100,
+    Math.max(
+      0,
+      ((upperBoundary - min) / range) * 100
+    )
+  );
+
+  const solutionWidth =
+    upperPosition - lowerPosition;
+
+  return (
+    <article className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-6">
+      {title && (
+        <h3 className="text-xl font-black text-slate-950">
+          {title}
+        </h3>
+      )}
+
+      {description && (
+        <p className="mt-2 leading-7 text-slate-700">
+          {description}
+        </p>
+      )}
+
+      <div className="mt-8 rounded-2xl bg-white p-6 shadow-sm">
+        <div className="relative h-20">
+
+          {/* Main number line */}
+          <div className="absolute left-0 right-0 top-7 h-1 rounded-full bg-slate-300" />
+
+          {/* Solution between boundaries */}
+          <div
+            className="absolute top-7 h-1 bg-violet-600"
+            style={{
+              left: `${lowerPosition}%`,
+              width: `${solutionWidth}%`,
+            }}
+          />
+
+          {/* Lower boundary */}
+          <div
+            className={`absolute top-[18px] h-5 w-5 -translate-x-1/2 rounded-full border-4 border-violet-700 ${
+              lowerInclusive
+                ? "bg-violet-700"
+                : "bg-white"
+            }`}
+            style={{
+              left: `${lowerPosition}%`,
+            }}
+          />
+
+          {/* Upper boundary */}
+          <div
+            className={`absolute top-[18px] h-5 w-5 -translate-x-1/2 rounded-full border-4 border-violet-700 ${
+              upperInclusive
+                ? "bg-violet-700"
+                : "bg-white"
+            }`}
+            style={{
+              left: `${upperPosition}%`,
+            }}
+          />
+
+          {/* Lower number */}
+          <div
+            className="absolute top-12 -translate-x-1/2 text-sm font-black text-violet-800"
+            style={{
+              left: `${lowerPosition}%`,
+            }}
+          >
+            {lowerBoundary}
+          </div>
+
+          {/* Upper number */}
+          <div
+            className="absolute top-12 -translate-x-1/2 text-sm font-black text-violet-800"
+            style={{
+              left: `${upperPosition}%`,
+            }}
+          >
+            {upperBoundary}
+          </div>
+        </div>
+
+        <div className="mt-3 text-center">
+          <span className="rounded-xl bg-violet-100 px-5 py-2 font-mono text-xl font-black text-violet-950">
+            {lowerBoundary}
+            {lowerInclusive ? " ≤ " : " < "}
+            {variable}
+            {upperInclusive ? " ≤ " : " < "}
+            {upperBoundary}
+          </span>
+        </div>
+      </div>
+
+      {interpretation && (
+        <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+          <p className="text-sm font-bold uppercase tracking-wide text-emerald-700">
+            Interpretation
+          </p>
+
+          <p className="mt-2 leading-7 text-emerald-950">
+            {interpretation}
+          </p>
+        </div>
+      )}
+    </article>
+  );
+}
+  if (visual.type === "comparison") {
+    return (
+      <article className="rounded-3xl border border-slate-200 bg-slate-50 p-6">
+        {visual.title && (
+          <h3 className="text-xl font-black text-slate-950">
+            {visual.title}
+          </h3>
+        )}
+
+        {visual.description && (
+          <p className="mt-2 leading-7 text-slate-700">
+            {visual.description}
+          </p>
+        )}
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {visual.items?.map((item, index) => (
+            <div
+              key={index}
+              className="rounded-2xl border border-slate-200 bg-white p-5"
+            >
+              <p className="text-sm font-bold uppercase tracking-wide text-blue-700">
+                {item.label}
+              </p>
+
+              <p className="mt-3 text-2xl font-black text-slate-950">
+                {item.symbol}
+              </p>
+
+              {item.meaning && (
+                <p className="mt-2 leading-7 text-slate-600">
+                  {item.meaning}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      </article>
+    );
+  }
+
+  return null;
 }

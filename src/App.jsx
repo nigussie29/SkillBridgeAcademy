@@ -9,6 +9,10 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Mathematics from "./pages/library/Mathematics";
 import MathematicsSchool from "./pages/schools/Mathematics";
+import AlgebraTwo from "./pages/library/highschool/AlgebraTwo.jsx";
+import AlgebraTwoModule from "./pages/library/highschool/AlgebraTwoModule.jsx";
+import AlgebraTwoLesson from "./pages/library/highschool/AlgebraTwoLesson.jsx";
+
 
 import LinearAlgebraModule from "./pages/library/college/LinearAlgebraModule";
 import Home from "./pages/Home.jsx";
@@ -240,6 +244,32 @@ element={<LibraryHome />}
 <Route
   path="/library/high-school/algebra-1"
   element={<AlgebraOne />}
+/>
+<Route
+  path="/library/high-school/algebra-2"
+  element={<AlgebraTwo />}
+/>
+<Route
+  path="/library/high-school/algebra-2/module/:moduleNumber"
+  element={<AlgebraTwoModule />}
+/>
+<Route
+  path="/library/high-school/algebra-2/module/:moduleNumber/lesson/:lessonNumber"
+  element={<AlgebraTwoLesson />}
+/>
+<Route
+  path="/library/high-school/algebra-2"
+  element={<AlgebraTwo />}
+/>
+
+<Route
+  path="/library/high-school/algebra-2/module/:moduleNumber"
+  element={<AlgebraTwoModule />}
+/>
+
+<Route
+  path="/library/high-school/algebra-2/module/:moduleNumber/lesson/:lessonNumber"
+  element={<AlgebraTwoLesson />}
 />
 <Route
   path="/library/high-school/algebra-1/module/:moduleNumber"

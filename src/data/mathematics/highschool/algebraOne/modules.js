@@ -79,7 +79,7 @@ const algebraOneModules = [
       "Solve, graph, interpret, and apply one-variable, compound, and absolute-value inequalities.",
     level: "Foundation",
     estimatedTime: "8–10 hours",
-    status: "Planned",
+    status: "Available",
     lessonCount: 8,
     color: "from-violet-950 via-purple-900 to-slate-950",
     objectives: [

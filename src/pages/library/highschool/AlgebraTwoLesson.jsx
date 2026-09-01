@@ -105,8 +105,7 @@ export default function AlgebraTwoLesson() {
 
     whyThisLessonExists:
       rawLesson.whyThisLessonExists ??
-      rawLesson.conceptExplanation
-        ?.summary ??
+      rawLesson.conceptExplanation?.summary ??
       null,
 
     problemFirst:
@@ -118,26 +117,21 @@ export default function AlgebraTwoLesson() {
               "Opening Investigation",
 
             scenario:
-              rawLesson.warmUp
-                .scenario ??
-              rawLesson.warmUp
-                .problem ??
+              rawLesson.warmUp.scenario ??
+              rawLesson.warmUp.problem ??
               "",
 
             questions:
-              rawLesson.warmUp
-                .prompts ?? [],
+              rawLesson.warmUp.prompts ?? [],
 
             expectedInsight:
-              rawLesson.warmUp
-                .expectedOutcome ??
+              rawLesson.warmUp.expectedOutcome ??
               "",
           }
         : null),
 
     prerequisiteKnowledge:
-      rawLesson.prerequisiteKnowledge ??
-      [],
+      rawLesson.prerequisiteKnowledge ?? [],
 
     formulas:
       rawLesson.formulas ?? [],
@@ -147,33 +141,23 @@ export default function AlgebraTwoLesson() {
       (rawLesson.technologyActivity
         ? {
             title:
-              rawLesson
-                .technologyActivity
-                .title ??
+              rawLesson.technologyActivity.title ??
               "Technology Exploration",
 
             description:
-              rawLesson
-                .technologyActivity
-                .objective ??
+              rawLesson.technologyActivity.objective ??
               "",
 
             instructions:
-              rawLesson
-                .technologyActivity
-                .instructions ??
+              rawLesson.technologyActivity.instructions ??
               [],
 
             questions:
-              rawLesson
-                .technologyActivity
-                .reflectionQuestions ??
-              [],
+              rawLesson.technologyActivity
+                .reflectionQuestions ?? [],
 
             expectedDiscovery:
-              rawLesson
-                .technologyActivity
-                .extension ??
+              rawLesson.technologyActivity.extension ??
               "",
           }
         : null),
@@ -184,29 +168,19 @@ export default function AlgebraTwoLesson() {
         ? [
             {
               field:
-                rawLesson
-                  .realWorldConnection
-                  .title ??
+                rawLesson.realWorldConnection.title ??
                 "Real-World Application",
 
               application: [
-                rawLesson
-                  .realWorldConnection
-                  .scenario,
+                rawLesson.realWorldConnection.scenario,
 
-                rawLesson
-                  .realWorldConnection
-                  .model
+                rawLesson.realWorldConnection.model
                   ? `Model: ${rawLesson.realWorldConnection.model}`
                   : "",
 
-                rawLesson
-                  .realWorldConnection
-                  .connection,
+                rawLesson.realWorldConnection.connection,
 
-                rawLesson
-                  .realWorldConnection
-                  .answer
+                rawLesson.realWorldConnection.answer
                   ? `Answer: ${rawLesson.realWorldConnection.answer}`
                   : "",
               ]
@@ -220,12 +194,10 @@ export default function AlgebraTwoLesson() {
       rawLesson.aiConnection ?? null,
 
     discussionQuestions:
-      rawLesson.discussionQuestions ??
-      [],
+      rawLesson.discussionQuestions ?? [],
 
     researchExtension:
-      rawLesson.researchExtension ??
-      null,
+      rawLesson.researchExtension ?? null,
 
     portfolioArtifact:
       rawLesson.portfolioArtifact ??
@@ -233,53 +205,36 @@ export default function AlgebraTwoLesson() {
       rawLesson.portfolioEvidence
         ? {
             title:
-              rawLesson
-                .creatorChallenge
-                ?.title ??
-              rawLesson
-                .portfolioEvidence
-                ?.title ??
+              rawLesson.creatorChallenge?.title ??
+              rawLesson.portfolioEvidence?.title ??
               "Portfolio Artifact",
 
             description:
-              rawLesson
-                .creatorChallenge
-                ?.description ??
-              rawLesson
-                .portfolioEvidence
-                ?.artifact ??
+              rawLesson.creatorChallenge?.description ??
+              rawLesson.portfolioEvidence?.artifact ??
               "",
 
             requiredSections:
-              rawLesson
-                .creatorChallenge
-                ?.requirements ??
-              rawLesson
-                .portfolioEvidence
-                ?.requirements ??
+              rawLesson.creatorChallenge?.requirements ??
+              rawLesson.portfolioEvidence?.requirements ??
               [],
 
             requiredEvidence: [
               ...(
-                rawLesson
-                  .creatorChallenge
-                  ?.deliverables ??
-                []
+                rawLesson.creatorChallenge
+                  ?.deliverables ?? []
               ),
 
               ...(
-                rawLesson
-                  .portfolioEvidence
-                  ?.include ??
-                []
+                rawLesson.portfolioEvidence
+                  ?.include ?? []
               ),
             ],
           }
         : null),
 
     growthIndicators:
-      rawLesson.growthIndicators ??
-      [],
+      rawLesson.growthIndicators ?? [],
 
     previousLesson,
     nextLesson,

@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
+import { getCompletedLessons } from "../../../services/lessonProgress.js";
 
 
 const algebraOneModules = [
@@ -47,7 +48,7 @@ const algebraOneModules = [
     level: "Foundation",
     estimatedTime: "8–10 hours",
     lessonCount: 8,
-    status: "Planned",
+   status: "Available",
     theme: "from-violet-950 via-purple-900 to-slate-950",
     topics: [
       "One-variable inequalities",
@@ -65,7 +66,7 @@ const algebraOneModules = [
     level: "Intermediate",
     estimatedTime: "10–12 hours",
     lessonCount: 8,
-    status: "Planned",
+ status: "Available",
     theme: "from-amber-950 via-orange-900 to-slate-950",
     topics: [
       "Relations",
@@ -205,7 +206,25 @@ export default function AlgebraOne() {
       openModule(firstAvailableModule);
     }
   }
+  const totalModules = algebraOneModules.length;
 
+  const completedModules = algebraOneModules.filter((module) => {
+    if (module.status !== "Available") {
+      return false;
+    }
+
+    const completedLessons = getCompletedLessons(
+      "algebra-1",
+      module.moduleNumber
+    );
+
+    return completedLessons.length >= module.lessonCount;
+  }).length;
+
+  const courseProgress =
+    totalModules > 0
+      ? Math.round((completedModules / totalModules) * 100)
+      : 0;
   return (
     <main className="min-h-screen bg-slate-50 pb-20">
       <Breadcrumbs
@@ -220,7 +239,12 @@ export default function AlgebraOne() {
         ]}
       />
 
-      <CourseHero onBegin={beginCourse} />
+      <CourseHero
+        onBegin={beginCourse}
+        courseProgress={courseProgress}
+        completedModules={completedModules}
+        totalModules={totalModules}
+      />
 
       <div className="mx-auto max-w-7xl px-5 py-10">
         <CourseOverview />
@@ -265,7 +289,12 @@ export default function AlgebraOne() {
   );
 }
 
-function CourseHero({ onBegin }) {
+function CourseHero({
+  onBegin,
+  courseProgress,
+  completedModules,
+  totalModules,
+}) {
   return (
     <header className="bg-gradient-to-br from-blue-950 via-indigo-900 to-slate-950 text-white">
       <div className="mx-auto max-w-7xl px-5 py-14 md:py-20">
@@ -307,23 +336,27 @@ function CourseHero({ onBegin }) {
             </p>
 
             <div className="mt-4 flex items-end justify-between gap-4">
-              <p className="text-5xl font-black">0%</p>
+              <p className="text-5xl font-black">
+                {courseProgress}%
+              </p>
 
               <p className="text-sm font-semibold text-blue-100">
-                0/8 available lessons
+                {completedModules}/{totalModules} modules completed
               </p>
             </div>
 
             <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/20">
               <div
                 className="h-full rounded-full bg-white"
-                style={{ width: "0%" }}
+                style={{
+                  width: `${courseProgress}%`,
+                }}
               />
             </div>
 
             <p className="mt-4 leading-7 text-blue-100">
-              Your completed lessons and course percentage will appear
-              here as you progress.
+              Complete all lessons in a module to count that module toward
+              your Algebra I course progress.
             </p>
           </section>
         </div>
@@ -413,6 +446,23 @@ function CourseOverview() {
 function ModuleCard({ module, onOpen }) {
   const isAvailable = module.status === "Available";
 
+  const completedLessonCount = isAvailable
+    ? Math.min(
+        getCompletedLessons(
+          "algebra-1",
+          module.moduleNumber
+        ).length,
+        module.lessonCount
+      )
+    : 0;
+
+  const moduleProgress =
+    module.lessonCount > 0
+      ? Math.round(
+          (completedLessonCount / module.lessonCount) * 100
+        )
+      : 0;
+
   return (
     <article
       className={`overflow-hidden rounded-3xl border bg-white shadow-sm transition ${
@@ -475,15 +525,29 @@ function ModuleCard({ module, onOpen }) {
 
           <ModuleDetail
             label="Progress"
-            value="0%"
+            value={`${moduleProgress}%`}
           />
         </dl>
 
-        <div className="mt-6 h-2 overflow-hidden rounded-full bg-slate-200">
-          <div
-            className="h-full rounded-full bg-blue-600"
-            style={{ width: "0%" }}
-          />
+        <div className="mt-6">
+          <div className="mb-2 flex items-center justify-between text-xs font-bold text-slate-500">
+            <span>
+              {completedLessonCount}/{module.lessonCount} lessons completed
+            </span>
+
+            <span>
+              {moduleProgress}%
+            </span>
+          </div>
+
+          <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+            <div
+              className="h-full rounded-full bg-blue-600"
+              style={{
+                width: `${moduleProgress}%`,
+              }}
+            />
+          </div>
         </div>
 
         <button
