@@ -40,7 +40,7 @@ const courseCatalog = [
     description:
       "Extend algebraic reasoning through polynomial, rational, radical, exponential, logarithmic, and trigonometric functions.",
     gradeLevel: "Grades 10–11",
-    status: "Planned",
+    status: "Available",
     theme: "from-violet-950 via-purple-900 to-slate-950",
     topics: [
       "Polynomial functions",
