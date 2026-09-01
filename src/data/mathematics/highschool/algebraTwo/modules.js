@@ -73,7 +73,7 @@ const algebraTwoModules = [
     estimatedTime: "12–14 hours",
     lessonCount: 8,
 
-    status: "Planned",
+   status: "Available",
 
     theme:
       "from-violet-950 via-purple-900 to-slate-950",
