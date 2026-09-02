@@ -172,7 +172,7 @@ export default function RepresentationTableGraph({
         )}
       </div>
 
-      <div className="mt-8 grid gap-5 lg:grid-cols-2">
+      <div className="mt-8 grid gap-5 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]">
         {/* TABLE */}
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
           <div className="border-b border-slate-100 px-5 py-5">
@@ -279,7 +279,8 @@ export default function RepresentationTableGraph({
         </div>
 
         {/* GRAPH */}
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        {/* GRAPH */}
+<div className="self-start overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
           <div className="border-b border-slate-100 px-5 py-5">
             <p className="text-xs font-bold uppercase tracking-wider text-indigo-700">
               Graph
@@ -298,41 +299,51 @@ export default function RepresentationTableGraph({
           </div>
 
           <div className="p-4 sm:p-5">
-            <div className="w-full overflow-hidden">
+            <div className="w-full overflow-hidden rounded-xl bg-[#102A27] p-3">
               <svg
                 viewBox={`0 0 ${width} ${height}`}
                 role="img"
                 aria-label={`${equation ?? "Function"} graph`}
                 className="h-auto w-full"
               >
-                {/* horizontal grid */}
-                {[0, 1, 2, 3, 4].map(
-                  (step) => {
-                    const y =
-                      padding.top +
-                      (step / 4) *
-                        (height -
-                          padding.top -
-                          padding.bottom);
+                
+               
+{/* horizontal grid + y-axis values */}
+{[0, 1, 2, 3, 4].map((step) => {
+  const y =
+    padding.top +
+    (step / 4) *
+      (height -
+        padding.top -
+        padding.bottom);
 
-                    return (
-                      <line
-                        key={`grid-y-${step}`}
-                        x1={
-                          padding.left
-                        }
-                        y1={y}
-                        x2={
-                          width -
-                          padding.right
-                        }
-                        y2={y}
-                        stroke="#e2e8f0"
-                        strokeWidth="1"
-                      />
-                    );
-                  }
-                )}
+  const tickValue =
+    maxY - (step / 4) * yRange;
+
+  return (
+    <g key={`grid-y-${step}`}>
+      <line
+        x1={padding.left}
+        y1={y}
+        x2={width - padding.right}
+        y2={y}
+        stroke="#36534F"
+        strokeWidth="1"
+      />
+
+      <text
+        x={padding.left - 12}
+        y={y + 5}
+        textAnchor="end"
+        fontSize="14"
+        fontWeight="600"
+        fill="#D7E7E4"
+      >
+        {formatValue(tickValue)}
+      </text>
+    </g>
+  );
+})}
 
                 {/* x axis */}
                 <line
@@ -349,7 +360,7 @@ export default function RepresentationTableGraph({
                     height -
                     padding.bottom
                   }
-                  stroke="#94a3b8"
+                 stroke="#A7C7C2"
                   strokeWidth="1.5"
                 />
 
@@ -362,7 +373,7 @@ export default function RepresentationTableGraph({
                     height -
                     padding.bottom
                   }
-                  stroke="#94a3b8"
+                  stroke="#A7C7C2"
                   strokeWidth="1.5"
                 />
 
@@ -382,16 +393,16 @@ export default function RepresentationTableGraph({
                     height -
                     padding.bottom
                   } Z`}
-                  fill="#eef2ff"
-                  opacity="0.8"
+                  fill="#163B36"
+opacity="0.55"
                 />
 
                 {/* function line */}
                 <path
                   d={pathData}
                   fill="none"
-                  stroke="#4f46e5"
-                  strokeWidth="4"
+                  stroke="#5EEAD4"
+strokeWidth="5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -411,7 +422,7 @@ export default function RepresentationTableGraph({
                       }
                       textAnchor="middle"
                       fontSize="13"
-                      fill="#64748b"
+                      fill="#D7E7E4"
                     >
                       {formatValue(
                         point.x
@@ -450,10 +461,10 @@ export default function RepresentationTableGraph({
                             : "#ffffff"
                         }
                         stroke={
-                          highlighted
-                            ? "#a16207"
-                            : "#4f46e5"
-                        }
+  highlighted
+    ? "#a16207"
+    : "#5EEAD4"
+}
                         strokeWidth="3"
                       />
                     );
@@ -513,7 +524,7 @@ export default function RepresentationTableGraph({
                   y={height - 12}
                   textAnchor="middle"
                   fontSize="13"
-                  fill="#64748b"
+                  fill="#D7E7E4"
                 >
                   {xLabel}
                 </text>
@@ -524,7 +535,7 @@ export default function RepresentationTableGraph({
                   y={height / 2}
                   textAnchor="middle"
                   fontSize="13"
-                  fill="#64748b"
+                  fill="#D7E7E4"
                   transform={`rotate(-90 18 ${
                     height / 2
                   })`}
