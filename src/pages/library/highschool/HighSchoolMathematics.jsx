@@ -282,7 +282,7 @@ function CourseCard({ course, onOpen }) {
               : "cursor-not-allowed bg-slate-200 text-slate-500"
           }`}
         >
-          {isAvailable ? "Open Algebra I" : "Planned"}
+         {isAvailable ? `Open ${course.title}` : "Planned"}
         </button>
       </div>
     </article>
