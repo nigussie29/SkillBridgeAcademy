@@ -6,6 +6,7 @@ import {
   LineChart,
   Users,
 } from "lucide-react";
+import LearningJourneySection from "../features/home/LearningJourneySection.jsx";
 import SchoolsSection from "../features/home/SchoolsSection";
 import HomeHero from "../features/home/HomeHero.jsx";
 import LearningOS from "../features/home/LearningOS.jsx";
@@ -48,6 +49,7 @@ export default function Home() {
     <main>
       <HomeHero />
       <section className="section py-20">
+        
   <div className="mx-auto max-w-5xl text-center">
     <p className="text-sm font-bold uppercase tracking-[0.25em] text-blue-600">
       Our Vision
@@ -59,21 +61,23 @@ export default function Home() {
       Not Just Test Takers.
     </h2>
 
-    <p className="mx-auto mt-8 max-w-4xl text-lg leading-8 text-slate-600">
-      At <span className="font-semibold text-slate-900">SkillBridge Academy</span>,
-      we believe every learner has the potential to become a thinker, creator,
-      researcher, innovator, and leader. Through our
-      <span className="font-semibold text-blue-600"> Mastery Pyramid</span>Through our
-<span className="font-semibold text-blue-600">
-  {" "}seven-level Learning OS
-</span>,
-      students move beyond memorization to curiosity, creativity,
-      independent thinking, and real-world impact.
-    </p>
+   <p className="mx-auto mt-8 max-w-4xl text-lg leading-8 text-slate-600">
+  At{" "}
+  <span className="font-semibold text-slate-900">
+    SkillBridge Academy
+  </span>
+  , we believe every learner has the potential to become a thinker,
+  creator, researcher, innovator, and leader. Through our{" "}
+  <span className="font-semibold text-blue-600">
+    seven-level SkillBridge Learning OS
+  </span>
+  , students move beyond memorization toward curiosity, creativity,
+  independent thinking, real-world problem solving, and meaningful
+  creation.
+</p>
 
     <div className="mt-10 flex flex-wrap justify-center gap-3">
-      {[
-        [
+   {[
   "Learn",
   "Practice",
   "Build",
@@ -81,8 +85,7 @@ export default function Home() {
   "Apply",
   "Create",
   "Lead",
-]
-      ].map((step) => (
+].map((step) => (
         <span
           key={step}
           className="rounded-full bg-blue-50 px-5 py-2 text-sm font-semibold text-blue-700"
@@ -103,42 +106,7 @@ export default function Home() {
        <SchoolsSection />
        
 
-      <section className="section py-16">
-        <div className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-wide text-blue-600">
-            Learning libraries
-          </p>
-
-          <h2 className="mt-2 text-3xl font-bold text-slate-950">
-            Choose your learning journey
-          </h2>
-
-          <p className="mt-3 text-slate-600">
-            Explore structured libraries that help you learn, practice, build
-            projects, and create portfolio-ready work.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {topics.map((topic) => {
-            const Icon = topic.icon;
-
-            return (
-              <article className="card p-6" key={topic.title}>
-                <Icon className="text-brand-600" size={30} />
-
-                <h3 className="mt-4 text-xl font-bold text-slate-950">
-                  {topic.title}
-                </h3>
-
-                <p className="mt-2 leading-7 text-slate-600">
-                  {topic.text}
-                </p>
-              </article>
-            );
-          })}
-        </div>
-      </section>
+      <LearningJourneySection />
     </main>
   );
 }

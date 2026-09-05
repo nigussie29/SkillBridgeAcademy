@@ -7,7 +7,9 @@ import PythonFoundationsModule from "./pages/library/python/PythonFoundationsMod
 import PythonLesson from "./pages/library/python/PythonLesson.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+
 import Mathematics from "./pages/library/Mathematics";
+import Schools from "./pages/schools/Schools.jsx";
 import MathematicsSchool from "./pages/schools/Mathematics";
 import AlgebraTwo from "./pages/library/highschool/AlgebraTwo.jsx";
 import AlgebraTwoModule from "./pages/library/highschool/AlgebraTwoModule.jsx";
@@ -86,6 +88,15 @@ export default function App() {
   element={<LessonEnginePage />}
 />
 <Route path="/portfolio" element={<Portfolio />} />
+<Route
+  path="/schools"
+  element={<Schools />}
+/>
+
+<Route
+  path="/schools/mathematics"
+  element={<MathematicsSchool />}
+/>
           <Route
 path="/schools/mathematics"
   element={<MathematicsSchool />}

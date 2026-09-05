@@ -45,6 +45,15 @@ function getCoursePath(course) {
     return "/library/high-school/algebra-1";
   }
 
+  // Algebra II
+  if (
+    slug === "algebra-two" ||
+    slug === "algebra-2" ||
+    title === "algebra ii"
+  ) {
+    return "/library/high-school/algebra-2";
+  }
+
   // Linear Algebra
   if (
     slug === "linear-algebra-foundations" ||
@@ -87,9 +96,44 @@ function getCoursePath(course) {
     return "/library/data-ai";
   }
 
-  // Fall back to the regular course detail page.
+  // Default course detail page
   return `/courses/${course.id}`;
 }
+
+function getPublicCourses(courses) {
+  const hiddenTitles = new Set([
+    "skillbridge test course",
+    "quadratic equation",
+  ]);
+
+  const seenTitles = new Set();
+
+  return courses.filter((course) => {
+    const title =
+      course.title?.trim().toLowerCase() || "";
+
+    if (!title) {
+      return false;
+    }
+
+    // Hide known test/incomplete courses
+    if (hiddenTitles.has(title)) {
+      return false;
+    }
+
+    // Remove duplicate course titles
+    if (seenTitles.has(title)) {
+      return false;
+    }
+
+    seenTitles.add(title);
+
+    return true;
+  });
+}
+  // Fall back to the regular course detail page.
+  
+
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
@@ -122,8 +166,11 @@ export default function Courses() {
 
     loadCourses();
   }, []);
+const publicCourses =
+  getPublicCourses(courses);
 
-  const filteredCourses = courses.filter((course) => {
+const filteredCourses =
+  publicCourses.filter((course) => {
     const category = course.category || "";
     const title = course.title || "";
     const description =
@@ -144,7 +191,6 @@ export default function Courses() {
 
     return matchesCategory && matchesSearch;
   });
-
   return (
     <main className="min-h-screen bg-slate-50">
       <section className="px-6 py-14">
@@ -170,12 +216,12 @@ export default function Courses() {
           {/* Summary Cards */}
 
           <div className="mt-10 grid gap-4 md:grid-cols-4">
-            {[
-              [courses.length || "0", "Courses"],
-              ["2,500+", "Students"],
-              ["98%", "Completion"],
-              ["4.9", "Average Rating"],
-            ].map(([number, label]) => (
+           {[
+  [publicCourses.length || "0", "Courses"],
+  ["6", "Learning Areas"],
+  ["Project-Based", "Learning"],
+  ["Self-Paced", "Flexible"],
+].map(([number, label]) => (
               <div
                 key={label}
                 className="rounded-2xl bg-white p-5 shadow-sm"

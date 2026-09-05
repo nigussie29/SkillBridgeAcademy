@@ -15,9 +15,8 @@ export default function HomeHero() {
       <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
           <p className="inline-flex rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-2 text-sm font-bold text-blue-200">
-            SkillBridge Learning OS
-          </p>
-
+  Learning → Creation → Opportunity
+</p>
           <h1 className="mt-6 max-w-4xl text-5xl font-black leading-tight tracking-tight md:text-7xl">
             Build skills.
             <span className="block text-blue-400">Create real work.</span>
@@ -37,12 +36,20 @@ export default function HomeHero() {
   Explore Courses
 </Link>
 
-            <Link
-              to="/dashboard"
-              className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-center font-bold text-white transition hover:bg-white/10"
-            >
-              Open My Learning OS
-            </Link>
+            <button
+  type="button"
+  onClick={() => {
+    document
+      .getElementById("learning-os")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  }}
+  className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-center font-bold text-white transition hover:bg-white/10"
+>
+  Open My Learning OS
+</button>
           </div>
 
           <div className="mt-10 grid gap-3 sm:grid-cols-2">
