@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 
 import LessonViewer from "../../../components/library/LessonViewer";
+import MathLessonNotesViewer from "../../../components/library/MathLessonNotesViewer.jsx";
 import Breadcrumbs from "../../../components/navigation/Breadcrumbs";
 
 import {
@@ -240,6 +241,9 @@ export default function AlgebraTwoLesson() {
     nextLesson,
   };
 
+  const useGraphFirstMathViewer =
+    Number(moduleNumber) === 3;
+
   return (
     <>
       <Breadcrumbs
@@ -272,15 +276,27 @@ export default function AlgebraTwoLesson() {
         ]}
       />
 
-      <LessonViewer
-        lesson={lesson}
-        progressCourseId="algebra-2"
-        onPrevious={handlePrevious}
-        onNext={handleNext}
-        onBackToModule={
-          handleBackToModule
-        }
-      />
+      {useGraphFirstMathViewer ? (
+        <MathLessonNotesViewer
+          lesson={lesson}
+          progressCourseId="algebra-2"
+          onPrevious={handlePrevious}
+          onNext={handleNext}
+          onBackToModule={
+            handleBackToModule
+          }
+        />
+      ) : (
+        <LessonViewer
+          lesson={lesson}
+          progressCourseId="algebra-2"
+          onPrevious={handlePrevious}
+          onNext={handleNext}
+          onBackToModule={
+            handleBackToModule
+          }
+        />
+      )}
     </>
   );
 }
