@@ -1,7 +1,9 @@
 import module01Lessons from "./module01/index.js";
+import module03Lessons from "./module03/index.js";
 
 const algebraTwoLessons = [
   ...module01Lessons,
+  ...module03Lessons,
 ];
 
 export function getAlgebraTwoLessonById(id) {
