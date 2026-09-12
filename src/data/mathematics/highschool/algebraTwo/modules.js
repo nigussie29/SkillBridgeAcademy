@@ -67,31 +67,30 @@ const algebraTwoModules = [
     title: "Quadratic Functions and Equations",
 
     description:
-      "Analyze quadratic relationships through graphs, equations, multiple forms, solving methods, transformations, modeling, coding, and creator projects.",
+      "Solve quadratic equations rigorously through factoring, completing the square, the quadratic formula, discriminant analysis, graph interpretation, method selection, verification, and solution preservation.",
 
     level: "Intermediate",
     estimatedTime: "12–14 hours",
     lessonCount: 8,
 
-   status: "Planned",
+    status: "Available",
 
     theme:
       "from-violet-950 via-purple-900 to-slate-950",
 
     topics: [
-      "Quadratic relationships",
-      "Parabolas",
-      "Vertex and axis of symmetry",
-      "Standard form",
-      "Vertex form",
-      "Factoring",
+      "Factoring quadratic equations",
       "Completing the square",
       "Quadratic formula",
-      "Quadratic modeling",
+      "The discriminant",
+      "Nature of roots",
+      "Choosing an efficient solution method",
+      "Roots, graphs, and verification",
+      "Losing and gaining roots",
     ],
 
     learningPathway:
-      "Situation → Pattern → Quadratic Model → Represent → Analyze → Solve → Verify → Interpret → Code → Create",
+      "Equation → Factor → Complete the Square → Formula → Discriminant → Predict Roots → Choose Method → Verify",
   },
 ];
 
