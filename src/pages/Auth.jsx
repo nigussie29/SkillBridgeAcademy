@@ -125,11 +125,11 @@ export default function Auth() {
     <main className="min-h-screen bg-slate-50 px-6 py-16">
       <div className="mx-auto max-w-md rounded-3xl bg-white p-8 shadow-sm">
         <p className="text-sm font-bold uppercase tracking-wide text-blue-600">
-          SkillBridge Academy
+          KingsNigus Academy
         </p>
 
         <h1 className="text-3xl font-bold text-slate-950">
-  Welcome to SkillBridge Academy
+  Welcome to KingsNigus Academy
 </h1>
 
 <div className="mt-3">
