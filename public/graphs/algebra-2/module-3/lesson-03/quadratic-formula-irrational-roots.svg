@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+<title id="title">Quadratic formula with irrational roots</title>
+<desc id="desc">Graph of y equals x squared minus 2x minus 1 with exact roots 1 minus square root of 2 and 1 plus square root of 2 and vertex 1 negative 2.</desc>
+<style>.grid{stroke:#dbe3ee;stroke-width:1}.axis{stroke:#64748b;stroke-width:2}.tick{font:14px Arial,sans-serif;fill:#334155}.label{font:bold 18px Arial,sans-serif}.small{font:bold 15px Arial,sans-serif}</style>
+<defs><clipPath id="plot"><rect x="80" y="35" width="775" height="420"/></clipPath></defs>
+<rect width="900" height="520" fill="white"/>
+<g class="grid">
+<line x1="80" y1="35" x2="80" y2="455"/><line x1="209.17" y1="35" x2="209.17" y2="455"/><line x1="338.33" y1="35" x2="338.33" y2="455"/><line x1="467.5" y1="35" x2="467.5" y2="455"/><line x1="596.67" y1="35" x2="596.67" y2="455"/><line x1="725.83" y1="35" x2="725.83" y2="455"/><line x1="855" y1="35" x2="855" y2="455"/>
+<line x1="80" y1="416.82" x2="855" y2="416.82"/><line x1="80" y1="340.45" x2="855" y2="340.45"/><line x1="80" y1="264.09" x2="855" y2="264.09"/><line x1="80" y1="187.73" x2="855" y2="187.73"/><line x1="80" y1="111.36" x2="855" y2="111.36"/><line x1="80" y1="35" x2="855" y2="35"/>
+</g>
+<line x1="80" y1="340.45" x2="855" y2="340.45" class="axis"/><line x1="338.33" y1="35" x2="338.33" y2="455" class="axis"/>
+<line x1="467.5" y1="35" x2="467.5" y2="455" stroke="#64748b" stroke-width="2" stroke-dasharray="7 7"/>
+<path d="M80 73.18 Q467.5 760.45 855 73.18" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" clip-path="url(#plot)"/>
+<circle cx="284.88" cy="340.45" r="7" fill="#059669"/><circle cx="650.12" cy="340.45" r="7" fill="#059669"/><circle cx="467.5" cy="416.82" r="7" fill="#7c3aed"/>
+<text x="80" y="478" text-anchor="middle" class="tick">-2</text><text x="209.17" y="478" text-anchor="middle" class="tick">-1</text><text x="338.33" y="478" text-anchor="middle" class="tick">0</text><text x="467.5" y="478" text-anchor="middle" class="tick">1</text><text x="596.67" y="478" text-anchor="middle" class="tick">2</text><text x="725.83" y="478" text-anchor="middle" class="tick">3</text><text x="855" y="478" text-anchor="middle" class="tick">4</text>
+<text x="66" y="422" text-anchor="end" class="tick">-2</text><text x="66" y="346" text-anchor="end" class="tick">0</text><text x="66" y="269" text-anchor="end" class="tick">2</text><text x="66" y="193" text-anchor="end" class="tick">4</text><text x="66" y="116" text-anchor="end" class="tick">6</text><text x="66" y="40" text-anchor="end" class="tick">8</text>
+<text x="266" y="322" text-anchor="end" fill="#047857" class="small">1 - √2 ≈ -0.414</text><text x="668" y="322" fill="#047857" class="small">1 + √2 ≈ 2.414</text>
+<text x="467.5" y="443" text-anchor="middle" fill="#7c3aed" class="small">vertex (1, -2)</text><text x="467.5" y="55" text-anchor="middle" fill="#64748b" class="small">x = 1</text>
+<text x="610" y="145" fill="#2563eb" class="label">y = x² - 2x - 1</text><text x="875" y="346" class="label">x</text><text x="350" y="52" class="label">y</text>
+</svg>
