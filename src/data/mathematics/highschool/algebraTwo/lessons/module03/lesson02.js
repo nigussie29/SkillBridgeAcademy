@@ -300,6 +300,101 @@ const lesson02 = {
     },
   ],
 
+  realWorldApplications: [
+    {
+      id: "projectile-motion",
+      field: "Physics",
+      title: "Projectile Motion",
+      application:
+        "Completing the square rewrites a height model into vertex form so the maximum height and time of the peak become visible immediately.",
+      model: "h(t) = -5t² + 20t + 15 = -5(t - 2)² + 35",
+      question:
+        "What does the vertex (2, 35) mean in the motion of the ball?",
+    },
+    {
+      id: "bridge-arch",
+      field: "Engineering",
+      title: "Bridge and Arch Design",
+      application:
+        "A parabolic arch can be modeled in standard form and then rewritten in vertex form to locate its highest point and line of symmetry.",
+      model: "y = -0.5x² + 6x = -0.5(x - 6)² + 18",
+      question:
+        "How does the vertex help an engineer identify the center and maximum height of the arch?",
+    },
+    {
+      id: "business-profit",
+      field: "Business",
+      title: "Profit Optimization",
+      application:
+        "Quadratic profit models can be rewritten by completing the square to reveal the production level associated with maximum profit.",
+      model: "P(x) = -2x² + 80x - 500 = -2(x - 20)² + 300",
+      question:
+        "What do x = 20 and P(20) = 300 mean for a business decision?",
+    },
+    {
+      id: "robot-path",
+      field: "Robotics",
+      title: "Trajectory and Path Planning",
+      application:
+        "Quadratic paths appear in simplified trajectory planning. Vertex form makes the turning point of a parabolic path easy to identify and communicate.",
+      model: "y = (x - 4)² + 2",
+      question:
+        "If this equation models a robot's path in a coordinate system, what geometric information does the vertex provide?",
+    },
+  ],
+
+  pythonLab: {
+    title: "Python Lab — Verify Completing the Square",
+    objective:
+      "Use Python to compare standard form and vertex form numerically and verify that both expressions produce the same output.",
+    connection:
+      "The mathematics transforms x² + 6x + 5 into (x + 3)² - 4. The code evaluates both forms for the same inputs so students can verify computationally that the transformation preserves the function.",
+    code: `def standard_form(x):
+    return x**2 + 6*x + 5
+
+def vertex_form(x):
+    return (x + 3)**2 - 4
+
+for x in range(-7, 2):
+    y1 = standard_form(x)
+    y2 = vertex_form(x)
+    print(x, y1, y2, y1 == y2)
+
+# Roots from the completed-square equation:
+# (x + 3)^2 = 4
+roots = [-3 + 2, -3 - 2]
+print("roots:", roots)`,
+    questions: [
+      "Why should standard_form(x) and vertex_form(x) return the same value for every x?",
+      "What Python operator represents squaring?",
+      "What do the Boolean values True or False tell us in the printed output?",
+      "How does the list roots = [-3 + 2, -3 - 2] represent the ± step?",
+      "How could you modify the code to test x² - 8x + 7 = (x - 4)² - 9?",
+    ],
+    extension:
+      "Create a Python function that accepts b and c for x² + bx + c and reports the completing-square number (b/2)², the vertex x-coordinate, and the completed-square constant.",
+  },
+
+  lumineryGuidance: {
+    title: "Luminery AI — Completing the Square Coach",
+    message:
+      "Luminery should guide the learner's reasoning without immediately giving the finished solution. The learner should identify the structure, choose the completing-square number, explain why balance must be preserved, and connect the result to the graph.",
+    prompt:
+      "I am solving a quadratic by completing the square. Do not give me the final answer first. Ask me one question at a time so I can identify b, calculate (b/2)², balance the equation, factor the perfect square, use ± correctly, and interpret the result on the graph.",
+    coachingQuestions: [
+      "What is the coefficient of x after the x² coefficient has been normalized to 1?",
+      "What is half of that coefficient?",
+      "What happens when you square that half-value?",
+      "Why must that number be added to both sides of the equation?",
+      "What perfect-square binomial does the left side become?",
+      "After taking square roots, have you included both signs?",
+      "What does your completed-square form reveal about the vertex and axis of symmetry?",
+      "How can the graph verify your algebraic solutions?",
+    ],
+    masteryCheck:
+      "A learner demonstrates mastery when they can complete the square, explain why every transformation is valid, use ± correctly, connect the completed form to the graph, and verify the solutions without depending on Luminery for the final steps.",
+  },
+
   independentPractice: [
     {
       question: "Solve x² + 4x - 5 = 0 by completing the square.",
