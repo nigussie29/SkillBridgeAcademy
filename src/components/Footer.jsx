@@ -5,9 +5,9 @@ export default function Footer() {
     <footer className="border-t border-slate-200 bg-white">
       <div className="section grid gap-8 py-10 md:grid-cols-4">
         <div className="md:col-span-2">
-          <h3 className="text-lg font-bold">SkillBridge Academy</h3>
+          <h3 className="text-lg font-bold">KingsNigus Academy</h3>
           <p className="mt-3 max-w-xl text-slate-600">
-            Practical online courses in math, coding, data analytics, Power BI, SQL, Microsoft Fabric, Python, and AI projects.
+            Learning that transforms knowledge into capability through mathematics, coding, data, AI, research, and real-world creation.
           </p>
         </div>
         <div>
