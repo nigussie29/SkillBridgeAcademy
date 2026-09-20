@@ -12,7 +12,7 @@ export default function About() {
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-slate-600">
-            SkillBridge Academy helps beginners build real technology skills through
+            KingsNigus Academy helps beginners build real technology skills through
             practical, step-by-step, mastery-based learning. We focus on math,
             programming, data analytics, Power BI, SQL, Microsoft Fabric, and
             artificial intelligence.
@@ -79,21 +79,21 @@ export default function About() {
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-blue-300">
-              Luminary Learning
+              Luminery AI
             </p>
 
             <h2 className="mt-3 text-3xl font-extrabold">
-              Our AI-powered mastery system.
+              Our intelligent learning mentor.
             </h2>
 
             <p className="mt-5 leading-8 text-slate-300">
-              Luminary Learning is the learning engine inside SkillBridge Academy.
+              Luminery AI is the intelligent mentor inside KingsNigus Academy.
               It is designed to help learners practice, receive feedback, check their
               understanding, and move forward step by step.
             </p>
 
             <p className="mt-4 leading-8 text-slate-300">
-              As SkillBridge Academy grows, Luminary Learning will support guided
+              As KingsNigus Academy grows, Luminery AI will support guided
               practice, project challenges, progress tracking, AI tutoring, and mentor
               support from expert guides.
             </p>
@@ -109,7 +109,7 @@ export default function About() {
             </p>
 
             <p className="mt-4 leading-7 text-slate-300">
-              The future of SkillBridge Academy is a place where students do not just
+              The future of KingsNigus Academy is a place where students do not just
               consume content. They practice, build, master, and create.
             </p>
           </div>
