@@ -171,6 +171,9 @@ export default function MathLessonNotesViewer({
   const homework = lesson.homework || [];
   const quiz = lesson.quiz || [];
   const commonMistakes = lesson.commonMistakes || [];
+  const realWorldApplications = lesson.realWorldApplications || [];
+  const pythonLab = lesson.pythonLab || null;
+  const lumineryGuidance = lesson.lumineryGuidance || null;
 
   return (
     <main className="min-h-screen bg-slate-50 pb-20">
@@ -273,6 +276,97 @@ export default function MathLessonNotesViewer({
               ))}
             </div>
           </Section>
+        )}
+
+        {realWorldApplications.length > 0 && (
+          <Section eyebrow="Real-world transfer" title="Real-World Applications">
+            <div className="grid gap-4 md:grid-cols-2">
+              {realWorldApplications.map((item, index) => (
+                <article key={item.id || item.title || index} className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">
+                    {item.field || "Application"}
+                  </p>
+                  <h3 className="mt-2 text-xl font-black text-emerald-950">
+                    {item.title || "Mathematics in the real world"}
+                  </h3>
+                  {item.application && (
+                    <p className="mt-3 leading-7 text-emerald-900">{item.application}</p>
+                  )}
+                  {item.model && (
+                    <div className="mt-4 rounded-xl bg-white p-4 font-mono font-bold text-emerald-950">
+                      {item.model}
+                    </div>
+                  )}
+                  {item.question && (
+                    <p className="mt-4 font-semibold leading-7 text-emerald-950">
+                      Think: {item.question}
+                    </p>
+                  )}
+                </article>
+              ))}
+            </div>
+          </Section>
+        )}
+
+        {pythonLab && (
+          <Section eyebrow="Coding connection" title={pythonLab.title || "Python Lab"}>
+            {pythonLab.objective && (
+              <p className="text-lg leading-8 text-slate-700">{pythonLab.objective}</p>
+            )}
+            {pythonLab.connection && (
+              <div className="mt-5 rounded-2xl border border-blue-200 bg-blue-50 p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-blue-700">Math → Code Connection</p>
+                <p className="mt-2 leading-7 text-blue-950">{pythonLab.connection}</p>
+              </div>
+            )}
+            {pythonLab.code && (
+              <pre className="mt-6 overflow-x-auto rounded-2xl bg-slate-950 p-6 text-sm leading-7 text-slate-100">
+                <code>{pythonLab.code}</code>
+              </pre>
+            )}
+            {pythonLab.questions?.length > 0 && (
+              <div className="mt-6">
+                <p className="mb-3 text-lg font-black text-slate-950">Coding Questions</p>
+                <NumberedItems items={pythonLab.questions} />
+              </div>
+            )}
+            {pythonLab.extension && (
+              <div className="mt-6 rounded-2xl border border-violet-200 bg-violet-50 p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-violet-700">Extension Challenge</p>
+                <p className="mt-2 leading-7 text-violet-950">{pythonLab.extension}</p>
+              </div>
+            )}
+          </Section>
+        )}
+
+        {lumineryGuidance && (
+          <section className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-indigo-50 to-blue-50 p-6 shadow-sm md:p-8">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-violet-700">Luminery AI Mentor</p>
+            <h2 className="mt-2 text-2xl font-black text-violet-950 md:text-3xl">
+              {lumineryGuidance.title || "Think Before You Ask for the Answer"}
+            </h2>
+            {lumineryGuidance.message && (
+              <p className="mt-4 text-lg leading-8 text-violet-900">{lumineryGuidance.message}</p>
+            )}
+            {lumineryGuidance.prompt && (
+              <div className="mt-5 rounded-2xl border border-violet-200 bg-white/80 p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-violet-700">Mentor Prompt</p>
+                <p className="mt-2 font-semibold leading-7 text-violet-950">{lumineryGuidance.prompt}</p>
+              </div>
+            )}
+            {lumineryGuidance.coachingQuestions?.length > 0 && (
+              <div className="mt-6">
+                <p className="mb-3 text-lg font-black text-violet-950">Coaching Questions</p>
+                <NumberedItems items={lumineryGuidance.coachingQuestions} />
+              </div>
+            )}
+            {lumineryGuidance.masteryCheck && (
+              <div className="mt-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-emerald-700">Mastery Check</p>
+                <p className="mt-2 leading-7 text-emerald-950">{lumineryGuidance.masteryCheck}</p>
+              </div>
+            )}
+          </section>
         )}
 
         {independentPractice.length > 0 && (
