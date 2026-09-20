@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img">
+<rect width="900" height="520" fill="white"/>
+<g stroke="#dbe3ee" stroke-width="1">
+<line x1="80" y1="40" x2="80" y2="455"/><line x1="176.875" y1="40" x2="176.875" y2="455"/><line x1="273.75" y1="40" x2="273.75" y2="455"/><line x1="370.625" y1="40" x2="370.625" y2="455"/><line x1="467.5" y1="40" x2="467.5" y2="455"/><line x1="564.375" y1="40" x2="564.375" y2="455"/><line x1="661.25" y1="40" x2="661.25" y2="455"/><line x1="758.125" y1="40" x2="758.125" y2="455"/><line x1="855" y1="40" x2="855" y2="455"/>
+<line x1="80" y1="55" x2="855" y2="55"/><line x1="80" y1="118" x2="855" y2="118"/><line x1="80" y1="181" x2="855" y2="181"/><line x1="80" y1="244" x2="855" y2="244"/><line x1="80" y1="307" x2="855" y2="307"/><line x1="80" y1="370" x2="855" y2="370"/><line x1="80" y1="433" x2="855" y2="433"/>
+</g>
+<line x1="80" y1="392" x2="855" y2="392" stroke="#64748b" stroke-width="2"/>
+<line x1="177" y1="40" x2="177" y2="455" stroke="#64748b" stroke-width="2"/>
+<line x1="467.5" y1="40" x2="467.5" y2="455" stroke="#64748b" stroke-width="2" stroke-dasharray="7 7"/>
+<path d="M80 55 Q467.5 728 855 55" fill="none" stroke="#2563eb" stroke-width="5"/>
+<circle cx="467.5" cy="392" r="8" fill="#7c3aed"/>
+<text x="490" y="375" font-family="Arial" font-size="18" font-weight="700" fill="#7c3aed">repeated root (3, 0)</text>
+<text x="490" y="70" font-family="Arial" font-size="18" font-weight="700" fill="#2563eb">y = x² - 6x + 9</text>
+<text x="455" y="95" font-family="Arial" font-size="16" font-weight="700" fill="#64748b">x = 3</text>
+</svg>
