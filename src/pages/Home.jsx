@@ -64,7 +64,7 @@ export default function Home() {
    <p className="mx-auto mt-8 max-w-4xl text-lg leading-8 text-slate-600">
   At{" "}
   <span className="font-semibold text-slate-900">
-    SkillBridge Academy
+    KingsNigus Academy
   </span>
   , we believe every learner has the potential to become a thinker,
   creator, researcher, innovator, and leader. Through our{" "}
