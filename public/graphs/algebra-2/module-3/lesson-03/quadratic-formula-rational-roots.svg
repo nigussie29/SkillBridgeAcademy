@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+<title id="title">Quadratic formula with two rational roots</title>
+<desc id="desc">Graph of y equals 2x squared plus 3x minus 2 with roots negative 2 and one half and vertex negative three fourths, negative three point one two five.</desc>
+<style>.grid{stroke:#dbe3ee;stroke-width:1}.axis{stroke:#64748b;stroke-width:2}.tick{font:14px Arial,sans-serif;fill:#334155}.label{font:bold 18px Arial,sans-serif}.small{font:bold 15px Arial,sans-serif}</style>
+<defs><clipPath id="plot"><rect x="80" y="35" width="775" height="420"/></clipPath></defs>
+<rect width="900" height="520" fill="white"/>
+<g class="grid">
+<line x1="80" y1="35" x2="80" y2="455"/><line x1="235" y1="35" x2="235" y2="455"/><line x1="390" y1="35" x2="390" y2="455"/><line x1="545" y1="35" x2="545" y2="455"/><line x1="700" y1="35" x2="700" y2="455"/><line x1="855" y1="35" x2="855" y2="455"/>
+<line x1="80" y1="455" x2="855" y2="455"/><line x1="80" y1="402.5" x2="855" y2="402.5"/><line x1="80" y1="350" x2="855" y2="350"/><line x1="80" y1="297.5" x2="855" y2="297.5"/><line x1="80" y1="245" x2="855" y2="245"/><line x1="80" y1="192.5" x2="855" y2="192.5"/><line x1="80" y1="140" x2="855" y2="140"/><line x1="80" y1="87.5" x2="855" y2="87.5"/><line x1="80" y1="35" x2="855" y2="35"/>
+</g>
+<line x1="80" y1="350" x2="855" y2="350" class="axis"/><line x1="545" y1="35" x2="545" y2="455" class="axis"/>
+<line x1="428.75" y1="35" x2="428.75" y2="455" stroke="#64748b" stroke-width="2" stroke-dasharray="7 7"/>
+<path d="M80 166.25 Q467.5 756.88 855 35" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" clip-path="url(#plot)"/>
+<circle cx="235" cy="350" r="7" fill="#059669"/><circle cx="622.5" cy="350" r="7" fill="#059669"/><circle cx="428.75" cy="432.03" r="7" fill="#7c3aed"/>
+<text x="80" y="478" text-anchor="middle" class="tick">-3</text><text x="235" y="478" text-anchor="middle" class="tick">-2</text><text x="390" y="478" text-anchor="middle" class="tick">-1</text><text x="545" y="478" text-anchor="middle" class="tick">0</text><text x="700" y="478" text-anchor="middle" class="tick">1</text><text x="855" y="478" text-anchor="middle" class="tick">2</text>
+<text x="66" y="460" text-anchor="end" class="tick">-4</text><text x="66" y="407" text-anchor="end" class="tick">-2</text><text x="66" y="355" text-anchor="end" class="tick">0</text><text x="66" y="302" text-anchor="end" class="tick">2</text><text x="66" y="250" text-anchor="end" class="tick">4</text><text x="66" y="197" text-anchor="end" class="tick">6</text><text x="66" y="145" text-anchor="end" class="tick">8</text><text x="66" y="92" text-anchor="end" class="tick">10</text><text x="66" y="40" text-anchor="end" class="tick">12</text>
+<text x="215" y="331" text-anchor="end" fill="#047857" class="small">root (-2, 0)</text><text x="640" y="331" fill="#047857" class="small">root (1/2, 0)</text>
+<text x="428.75" y="456" text-anchor="middle" fill="#7c3aed" class="small">vertex (-3/4, -25/8)</text><text x="428.75" y="55" text-anchor="middle" fill="#64748b" class="small">x = -3/4</text>
+<text x="640" y="168" fill="#2563eb" class="label">y = 2x² + 3x - 2</text><text x="875" y="356" class="label">x</text><text x="557" y="52" class="label">y</text>
+</svg>
