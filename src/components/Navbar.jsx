@@ -41,7 +41,7 @@ export default function Navbar() {
           <span className="rounded-xl bg-brand-600 p-2 text-white">
             <GraduationCap size={22} />
           </span>
-          <span>SkillBridge Academy</span>
+          <span>KingsNigus Academy</span>
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
