@@ -328,7 +328,7 @@ const filteredCourses =
                     <div className="flex h-40 items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-700 px-6 text-center">
                       <h2 className="text-2xl font-extrabold text-white">
                         {course.category ||
-                          "SkillBridge Course"}
+                          "KingsNigus Course"}
                       </h2>
                     </div>
 
