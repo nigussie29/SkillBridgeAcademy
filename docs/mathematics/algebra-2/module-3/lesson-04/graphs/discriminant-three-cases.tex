@@ -1,29 +1,85 @@
 \documentclass[tikz,border=6pt]{standalone}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
-\definecolor{blue}{RGB}{37,99,235}
-\definecolor{green}{RGB}{5,150,105}
-\definecolor{orange}{RGB}{234,88,12}
-\definecolor{violet}{RGB}{124,58,237}
+
+\definecolor{positiveblue}{RGB}{37,99,235}
+\definecolor{zerogreen}{RGB}{5,150,105}
+\definecolor{negativeorange}{RGB}{234,88,12}
+\definecolor{axisgray}{RGB}{100,116,139}
+
 \begin{document}
 \begin{tikzpicture}
 \begin{axis}[
-width=14cm,height=8.5cm,
-axis lines=middle,
-xlabel={$x$},ylabel={$y$},
-xmin=-1,xmax=5,ymin=-3,ymax=7,
-grid=both,minor tick num=1,
-major grid style={draw=gray!25},
-minor grid style={draw=gray!12},
-samples=240,
-legend style={at={(0.98,0.98)},anchor=north east,font=\small}
+  width=15cm,
+  height=9cm,
+  xmin=-0.5,
+  xmax=5.5,
+  ymin=-2,
+  ymax=6,
+  axis lines=middle,
+  xlabel={$x$},
+  ylabel={$y$},
+  xtick={0,1,2,3,4,5},
+  ytick={-2,-1,0,1,2,3,4,5,6},
+  grid=both,
+  minor tick num=1,
+  major grid style={draw=gray!30},
+  minor grid style={draw=gray!14},
+  axis line style={axisgray,thick},
+  tick label style={font=\small},
+  label style={font=\bfseries},
+  samples=240,
+  clip=false
 ]
-\addplot[blue,very thick,domain=-1:5]{x^2-4*x+3};
-\addlegendentry{$D=4$: $y=x^2-4x+3$}
-\addplot[green,very thick,domain=-1:5]{x^2-4*x+4};
-\addlegendentry{$D=0$: $y=x^2-4x+4$}
-\addplot[orange,very thick,domain=-1:5]{x^2-4*x+5};
-\addlegendentry{$D=-4$: $y=x^2-4x+5$}
+
+% D > 0: y = x^2 - 4x + 3
+\addplot[positiveblue,very thick,domain=-0.5:5.5]
+  {x^2 - 4*x + 3};
+
+% D = 0: y = x^2 - 4x + 4
+\addplot[zerogreen,very thick,domain=-0.5:5.5]
+  {x^2 - 4*x + 4};
+
+% D < 0: y = x^2 - 4x + 5
+\addplot[negativeorange,very thick,domain=-0.5:5.5]
+  {x^2 - 4*x + 5};
+
+% Shared axis of symmetry
+\addplot[axisgray,dashed,thick] coordinates {(2,-2) (2,6)};
+
+% Important points
+\addplot[positiveblue,only marks,mark=*,mark size=3pt]
+  coordinates {(1,0) (3,0)};
+\addplot[zerogreen,only marks,mark=*,mark size=3pt]
+  coordinates {(2,0)};
+\addplot[negativeorange,only marks,mark=*,mark size=3pt]
+  coordinates {(2,1)};
+
+% Point labels
+\node[positiveblue,font=\bfseries,anchor=north east]
+  at (axis cs:1,0) {$(1,0)$};
+\node[positiveblue,font=\bfseries,anchor=north west]
+  at (axis cs:3,0) {$(3,0)$};
+
+\node[zerogreen,font=\bfseries,anchor=south west]
+  at (axis cs:2,0) {touches at $(2,0)$};
+
+\node[negativeorange,font=\bfseries,anchor=south west]
+  at (axis cs:2,1) {vertex $(2,1)$};
+
+\node[axisgray,font=\bfseries,anchor=south]
+  at (axis cs:2,5.35) {axis of symmetry $x=2$};
+
+% Case labels
+\node[positiveblue,font=\bfseries,anchor=west]
+  at (axis cs:3.45,4.8) {$D=4>0$: two real roots};
+
+\node[zerogreen,font=\bfseries,anchor=west]
+  at (axis cs:3.45,4.15) {$D=0$: one repeated root};
+
+\node[negativeorange,font=\bfseries,anchor=west]
+  at (axis cs:3.45,3.5) {$D=-4<0$: no real roots};
+
 \end{axis}
 \end{tikzpicture}
 \end{document}
