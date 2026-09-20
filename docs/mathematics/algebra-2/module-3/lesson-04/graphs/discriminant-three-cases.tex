@@ -1,0 +1,29 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\definecolor{blue}{RGB}{37,99,235}
+\definecolor{green}{RGB}{5,150,105}
+\definecolor{orange}{RGB}{234,88,12}
+\definecolor{violet}{RGB}{124,58,237}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+width=14cm,height=8.5cm,
+axis lines=middle,
+xlabel={$x$},ylabel={$y$},
+xmin=-1,xmax=5,ymin=-3,ymax=7,
+grid=both,minor tick num=1,
+major grid style={draw=gray!25},
+minor grid style={draw=gray!12},
+samples=240,
+legend style={at={(0.98,0.98)},anchor=north east,font=\small}
+]
+\addplot[blue,very thick,domain=-1:5]{x^2-4*x+3};
+\addlegendentry{$D=4$: $y=x^2-4x+3$}
+\addplot[green,very thick,domain=-1:5]{x^2-4*x+4};
+\addlegendentry{$D=0$: $y=x^2-4x+4$}
+\addplot[orange,very thick,domain=-1:5]{x^2-4*x+5};
+\addlegendentry{$D=-4$: $y=x^2-4x+5$}
+\end{axis}
+\end{tikzpicture}
+\end{document}
