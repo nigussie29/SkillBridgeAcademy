@@ -151,13 +151,13 @@ const lesson04 = {
   tikzGraphs: [
     {
       id: "discriminant-three-cases",
-      title: "Three Discriminant Cases on One Coordinate Plane",
+      title: "How the Discriminant Controls the Graph",
       equation: "y = x² - 4x + c",
       src: "/graphs/algebra-2/module-3/lesson-04/discriminant-three-cases.svg",
       alt:
         "Three parabolas y equals x squared minus 4x plus 3, plus 4, and plus 5 showing two x-intercepts, one tangent point, and no x-intercepts.",
       caption:
-        "Changing only c changes the discriminant: D = 4 for c = 3, D = 0 for c = 4, and D = -4 for c = 5. The graphs show two crossings, one touch, and no real x-axis intersection.",
+        "For y = x² - 4x + c, the discriminant is D = 16 - 4c. When c = 3, D = 4 > 0 and the parabola crosses the x-axis at (1, 0) and (3, 0). When c = 4, D = 0 and the parabola touches the x-axis once at (2, 0). When c = 5, D = -4 < 0 and the parabola stays above the x-axis, so there are no real roots. All three graphs share the axis of symmetry x = 2.",
       sourceNote:
         "Graph design source: TikZ + PGFPlots. Browser display: SVG companion asset.",
     },
@@ -644,9 +644,9 @@ print(classify_roots(1, 2, 5))`,
     "It is the radicand in the quadratic formula.",
     "Write the equation in standard form before identifying a, b, and c.",
     "Keep every coefficient sign during substitution.",
-    "D > 0 predicts two distinct real roots.",
-    "D = 0 predicts one repeated real root.",
-    "D < 0 predicts no real roots.",
+    "D > 0 predicts two distinct real roots, so the parabola crosses the x-axis twice.",
+    "D = 0 predicts one repeated real root, so the parabola touches the x-axis once.",
+    "D < 0 predicts no real roots, so the parabola does not intersect the x-axis.",
     "The discriminant connects symbolic algebra to graph x-axis behavior.",
     "Use the discriminant as both a prediction tool and a verification tool.",
   ],
