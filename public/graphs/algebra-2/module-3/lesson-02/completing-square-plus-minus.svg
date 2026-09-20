@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+<title id="title">Completing the square and plus-or-minus</title>
+<desc id="desc">The parabola y equals open parenthesis x plus 3 close parenthesis squared meets the line y equals 4 at x equals negative 5 and x equals negative 1.</desc>
+<style>
+.grid{stroke:#dbe3ee;stroke-width:1}.axis{stroke:#64748b;stroke-width:2}
+.tick{font:14px Arial,sans-serif;fill:#334155}.label{font:bold 18px Arial,sans-serif}
+.small{font:bold 16px Arial,sans-serif}
+</style>
+<rect width="900" height="520" fill="white"/>
+<g class="grid">
+<line x1="80" y1="35" x2="80" y2="455"/><line x1="177" y1="35" x2="177" y2="455"/>
+<line x1="274" y1="35" x2="274" y2="455"/><line x1="371" y1="35" x2="371" y2="455"/>
+<line x1="468" y1="35" x2="468" y2="455"/><line x1="564" y1="35" x2="564" y2="455"/>
+<line x1="661" y1="35" x2="661" y2="455"/><line x1="758" y1="35" x2="758" y2="455"/>
+<line x1="855" y1="35" x2="855" y2="455"/>
+<line x1="80" y1="417" x2="855" y2="417"/><line x1="80" y1="341" x2="855" y2="341"/>
+<line x1="80" y1="264" x2="855" y2="264"/><line x1="80" y1="188" x2="855" y2="188"/>
+<line x1="80" y1="111" x2="855" y2="111"/><line x1="80" y1="35" x2="855" y2="35"/>
+</g>
+<line x1="80" y1="417" x2="855" y2="417" class="axis"/><line x1="758" y1="35" x2="758" y2="455" class="axis"/>
+<line x1="468" y1="35" x2="468" y2="455" stroke="#64748b" stroke-width="2" stroke-dasharray="7 7"/>
+<line x1="128" y1="264" x2="807" y2="264" stroke="#ea580c" stroke-width="4"/>
+<path d="M167.2 49.9 Q467.5 783.7 767.8 49.9" fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round"/>
+<circle cx="274" cy="264" r="7" fill="#059669"/><circle cx="661" cy="264" r="7" fill="#059669"/>
+<text x="177" y="442" text-anchor="middle" class="tick">-6</text><text x="274" y="442" text-anchor="middle" class="tick">-5</text>
+<text x="371" y="442" text-anchor="middle" class="tick">-4</text><text x="468" y="442" text-anchor="middle" class="tick">-3</text>
+<text x="564" y="442" text-anchor="middle" class="tick">-2</text><text x="661" y="442" text-anchor="middle" class="tick">-1</text>
+<text x="758" y="442" text-anchor="middle" class="tick">0</text>
+<text x="66" y="422" text-anchor="end" class="tick">0</text><text x="66" y="346" text-anchor="end" class="tick">2</text>
+<text x="66" y="269" text-anchor="end" class="tick">4</text><text x="66" y="193" text-anchor="end" class="tick">6</text>
+<text x="66" y="116" text-anchor="end" class="tick">8</text><text x="66" y="40" text-anchor="end" class="tick">10</text>
+<text x="118" y="245" fill="#ea580c" class="small">y = 4</text>
+<text x="250" y="245" text-anchor="end" fill="#047857" class="small">x = -5</text>
+<text x="675" y="245" fill="#047857" class="small">x = -1</text>
+<text x="468" y="55" text-anchor="middle" fill="#64748b" class="small">x = -3</text>
+<text x="468" y="470" text-anchor="middle" fill="#64748b" class="small">vertex (-3, 0)</text>
+<text x="620" y="87" fill="#2563eb" class="label">y = (x + 3)²</text>
+<text x="872" y="423" class="label">x</text><text x="770" y="53" class="label">y</text>
+</svg>
