@@ -163,6 +163,7 @@ export default function MathLessonNotesViewer({
   }
 
   const definitions = lesson.definitionTable;
+  const directionConcepts = lesson.directionConceptTable;
   const concepts = lesson.mainConceptTable;
   const graphs = lesson.tikzGraphs || [];
   const workedExamples = lesson.workedExamples || [];
@@ -232,6 +233,7 @@ export default function MathLessonNotesViewer({
         )}
 
         {definitions && <LessonTable table={definitions} eyebrow="Definition table" />}
+        {directionConcepts && <LessonTable table={directionConcepts} eyebrow="Graph behavior" />}
         {concepts && <LessonTable table={concepts} eyebrow="Main concept table" />}
 
         {graphs.length > 0 && (
