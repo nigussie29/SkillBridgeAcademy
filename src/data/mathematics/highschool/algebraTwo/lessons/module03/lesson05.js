@@ -22,7 +22,7 @@ const lesson05 = {
     "How can the discriminant tell us not only how many real roots a quadratic has, but also what kind of numbers those roots are?",
 
   bigIdea:
-    "The discriminant D = b² - 4ac reveals more than the number of real roots. For quadratic equations with integer coefficients, a positive perfect-square discriminant gives two distinct rational roots, a positive non-perfect-square discriminant gives two distinct irrational roots, zero gives one repeated rational root, and a negative discriminant gives two nonreal complex conjugate roots.",
+    "Before classifying roots, students should understand the overall shape of a quadratic graph. In y = ax² + bx + c, the sign of a determines whether the parabola opens upward or downward: a > 0 gives an upward-opening parabola with a minimum, while a < 0 gives a downward-opening parabola with a maximum. The discriminant D = b² - 4ac then reveals how the graph meets the x-axis and what kind of roots the equation has.",
 
   problemFirst: {
     title: "Four Equations, Four Root Types",
@@ -95,6 +95,44 @@ const lesson05 = {
     ],
   },
 
+  directionConceptTable: {
+    title: "Direction, Maximum, and Minimum",
+    description:
+      "The sign of the leading coefficient a determines the direction of the parabola and whether the vertex is a minimum or maximum. The magnitude |a| affects how narrow or wide the parabola appears.",
+    columns: [
+      { key: "condition", label: "Condition" },
+      { key: "direction", label: "Direction" },
+      { key: "vertex", label: "Vertex Meaning" },
+      { key: "interpretation", label: "Interpretation" },
+    ],
+    rows: [
+      {
+        condition: "a > 0",
+        direction: "Opens upward ∪",
+        vertex: "Minimum",
+        interpretation: "The graph decreases to its lowest point, then increases.",
+      },
+      {
+        condition: "a < 0",
+        direction: "Opens downward ∩",
+        vertex: "Maximum",
+        interpretation: "The graph increases to its highest point, then decreases.",
+      },
+      {
+        condition: "|a| > 1",
+        direction: "Same direction as the sign of a",
+        vertex: "Unchanged by width alone",
+        interpretation: "The parabola is narrower than the parent graph.",
+      },
+      {
+        condition: "0 < |a| < 1",
+        direction: "Same direction as the sign of a",
+        vertex: "Unchanged by width alone",
+        interpretation: "The parabola is wider than the parent graph.",
+      },
+    ],
+  },
+
   mainConceptTable: {
     title: "Classifying the Nature of Roots",
     description:
@@ -130,6 +168,30 @@ const lesson05 = {
 
   tikzGraphs: [
     {
+      id: "quadratic-direction-max-min",
+      title: "The Sign of a Controls Direction",
+      equation: "Compare y = (x - 1)² + 2 and y = -(x - 1)² + 2",
+      src: "/graphs/algebra-2/module-3/lesson-05/quadratic-direction-max-min.svg",
+      alt:
+        "Two parabolas with the same vertex at one comma two. The positive-a graph opens upward and has a minimum, while the negative-a graph opens downward and has a maximum.",
+      caption:
+        "Both graphs have the same vertex (1, 2). When a = 1 > 0, the parabola opens upward and the vertex gives the minimum value 2. When a = -1 < 0, the parabola opens downward and the vertex gives the maximum value 2. This isolates the effect of changing only the sign of a.",
+      sourceNote:
+        "Graph design source: TikZ + PGFPlots. Browser display: SVG companion asset.",
+    },
+    {
+      id: "leading-coefficient-width",
+      title: "The Magnitude of a Controls Width",
+      equation: "Compare y = ¼x², y = x², and y = 3x²",
+      src: "/graphs/algebra-2/module-3/lesson-05/leading-coefficient-width.svg",
+      alt:
+        "Three upward-opening parabolas showing that one fourth x squared is widest, x squared is the parent graph, and three x squared is narrowest.",
+      caption:
+        "All three graphs have a > 0, so they all open upward. The difference is width: larger |a| makes the graph narrower, while values of |a| between 0 and 1 make it wider. Sign controls direction; magnitude controls width.",
+      sourceNote:
+        "Graph design source: TikZ + PGFPlots. Browser display: SVG companion asset.",
+    },
+    {
       id: "nature-rational-vs-irrational",
       title: "Rational Roots vs. Irrational Roots",
       equation: "Compare y = x² - 5x + 6 and y = x² - 2x - 2",
@@ -156,6 +218,9 @@ const lesson05 = {
   ],
 
   learningObjectives: [
+    "Use the sign of a to predict whether a parabola opens upward or downward.",
+    "Explain why a > 0 gives a minimum and a < 0 gives a maximum.",
+    "Use |a| to compare the relative width of parabolas.",
     "Define rational, irrational, repeated, and complex roots.",
     "Calculate the discriminant accurately from standard form.",
     "Use the sign of D to determine whether roots are real or nonreal complex.",
@@ -179,6 +244,24 @@ const lesson05 = {
   ],
 
   formulas: [
+    {
+      name: "Direction from the Leading Coefficient",
+      formula: "a > 0 → opens up → minimum; a < 0 → opens down → maximum",
+      meaning:
+        "The sign of a determines the direction of the parabola and whether the vertex is a minimum or maximum.",
+    },
+    {
+      name: "Vertex x-coordinate",
+      formula: "x = -b / (2a)",
+      meaning:
+        "Substitute this x-value into the quadratic to find the maximum or minimum value when the function is in standard form.",
+    },
+    {
+      name: "Width of a Parabola",
+      formula: "|a| > 1 → narrower; 0 < |a| < 1 → wider",
+      meaning:
+        "The magnitude of a affects vertical stretch or compression. It does not reverse direction unless the sign changes.",
+    },
     {
       name: "Discriminant",
       formula: "D = b² - 4ac",
@@ -614,6 +697,18 @@ for coefficients in examples:
   commonMistakes: [
     {
       mistake:
+        "Saying a > 0 means the parabola has a maximum.",
+      correction:
+        "If a > 0, the parabola opens upward, so the vertex is the minimum. If a < 0, it opens downward, so the vertex is the maximum.",
+    },
+    {
+      mistake:
+        "Using |a| to decide whether the parabola opens up or down.",
+      correction:
+        "The sign of a controls direction. The magnitude |a| controls how narrow or wide the parabola appears.",
+    },
+    {
+      mistake:
         "Stopping after deciding that D > 0 means two real roots.",
       correction:
         "For integer coefficients, also check whether D is a perfect square to distinguish rational from irrational roots.",
@@ -651,6 +746,10 @@ for coefficients in examples:
   ],
 
   summary: [
+    "In y = ax² + bx + c, the sign of a determines the direction of the parabola.",
+    "If a > 0, the parabola opens upward and the vertex represents a minimum.",
+    "If a < 0, the parabola opens downward and the vertex represents a maximum.",
+    "The magnitude |a| affects the width of the parabola: larger |a| is narrower, while 0 < |a| < 1 is wider.",
     "The discriminant is D = b² - 4ac.",
     "The sign of D determines whether the roots are real or nonreal complex.",
     "For integer coefficients, D > 0 and a perfect-square D gives two distinct rational roots.",
