@@ -61,6 +61,7 @@ import AlgebraOneModule from "./pages/library/highschool/AlgebraOneModule.jsx";
 import AlgebraOneLesson from "./pages/library/highschool/AlgebraOneLesson.jsx";
 import ComputerScience from "./pages/library/ComputerScience.jsx";
 import DataAI from "./pages/library/DataAI.jsx";
+import DataAILesson from "./pages/library/dataAi/DataAILesson.jsx";
 
 
 
@@ -109,6 +110,10 @@ path="/schools/mathematics"
 <Route
   path="/library/data-ai"
   element={<DataAI />}
+/>
+<Route
+  path="/library/data-ai/module/:moduleNumber/lesson/:lessonSlug"
+  element={<DataAILesson />}
 />
          
 <Route

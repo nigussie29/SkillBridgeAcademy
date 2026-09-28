@@ -59,7 +59,11 @@ export const dataAiFoundationsCourse = {
         "Begin with the decision, define trustworthy success, and understand how data, analytics, machine learning, and AI work together.",
       skills: ["Problem framing", "KPIs", "Data types", "AI lifecycle", "Governance"],
       lessons: [
-        "Data, information, analytics, machine learning, and AI",
+        {
+          title: "Data, information, analytics, machine learning, and AI",
+          slug: "data-information-analytics-machine-learning-and-ai",
+          status: "available",
+        },
         "From organizational question to measurable decision",
         "Structured, semi-structured, and unstructured data",
         "Units of analysis, features, targets, and actions",

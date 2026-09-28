@@ -97,13 +97,13 @@ export default function DataAI() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href="#module-1"
+                <Link
+                  to="/library/data-ai/module/1/lesson/data-information-analytics-machine-learning-and-ai"
                   className="inline-flex items-center gap-2 rounded-xl bg-amber-400 px-5 py-3 font-black text-slate-950 transition hover:bg-amber-300"
                 >
-                  Start Module 1
+                  Start Lesson 1
                   <ArrowRight size={18} />
-                </a>
+                </Link>
 
                 <a
                   href="#curriculum"
@@ -414,19 +414,45 @@ function ModuleCard({ module }) {
               Module lessons
             </h4>
             <ol className="mt-5 grid gap-3 sm:grid-cols-2">
-              {module.lessons.map((lesson, index) => (
+              {module.lessons.map((lesson, index) => {
+                const lessonTitle =
+                  typeof lesson === "string" ? lesson : lesson.title;
+                const lessonPath =
+                  typeof lesson === "object" && lesson.status === "available"
+                    ? `/library/data-ai/module/${module.id}/lesson/${lesson.slug}`
+                    : null;
+
+                return (
                 <li
-                  key={lesson}
-                  className="flex gap-3 rounded-2xl border border-slate-200 bg-white p-4"
+                  key={lessonTitle}
+                  className={`flex gap-3 rounded-2xl border bg-white p-4 ${
+                    lessonPath
+                      ? "border-emerald-300 shadow-sm"
+                      : "border-slate-200"
+                  }`}
                 >
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-black text-white">
                     {index + 1}
                   </span>
-                  <span className="text-sm font-semibold leading-6 text-slate-700">
-                    {lesson}
-                  </span>
+                  {lessonPath ? (
+                    <Link
+                      to={lessonPath}
+                      className="group/lesson flex flex-1 items-center justify-between gap-3 text-sm font-bold leading-6 text-emerald-800 transition hover:text-emerald-600"
+                    >
+                      <span>{lessonTitle}</span>
+                      <ArrowRight
+                        size={17}
+                        className="shrink-0 transition group-hover/lesson:translate-x-1"
+                      />
+                    </Link>
+                  ) : (
+                    <span className="text-sm font-semibold leading-6 text-slate-700">
+                      {lessonTitle}
+                    </span>
+                  )}
                 </li>
-              ))}
+                );
+              })}
             </ol>
           </div>
 
