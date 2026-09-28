@@ -64,7 +64,11 @@ export const dataAiFoundationsCourse = {
           slug: "data-information-analytics-machine-learning-and-ai",
           status: "available",
         },
-        "From organizational question to measurable decision",
+        {
+          title: "From organizational question to measurable decision",
+          slug: "from-organizational-question-to-measurable-decision",
+          status: "available",
+        },
         "Structured, semi-structured, and unstructured data",
         "Units of analysis, features, targets, and actions",
         "KPIs, baselines, constraints, and definitions of done",
