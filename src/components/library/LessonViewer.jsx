@@ -127,7 +127,7 @@ learningObjectives = [],
   } = lesson;
 
   return (
-    <main className="min-h-screen bg-slate-50 pb-20">
+    <main className="lesson-reader min-h-screen bg-slate-50 pb-20 text-[17px]">
       <LessonHero
         title={title}
         subtitle={subtitle}
