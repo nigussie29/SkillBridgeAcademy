@@ -69,7 +69,11 @@ export const dataAiFoundationsCourse = {
           slug: "from-organizational-question-to-measurable-decision",
           status: "available",
         },
-        "Structured, semi-structured, and unstructured data",
+        {
+          title: "Structured, semi-structured, and unstructured data",
+          slug: "structured-semi-structured-and-unstructured-data",
+          status: "available",
+        },
         "Units of analysis, features, targets, and actions",
         "KPIs, baselines, constraints, and definitions of done",
         "The end-to-end data and AI lifecycle",
