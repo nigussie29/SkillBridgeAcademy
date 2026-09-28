@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import LessonViewer from "../../../components/library/LessonViewer";
@@ -23,6 +24,10 @@ export default function DataAILesson() {
     currentLessonIndex >= 0 && currentLessonIndex < moduleLessons.length - 1
       ? moduleLessons[currentLessonIndex + 1]
       : null;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [lessonSlug]);
 
   function handleBackToModule() {
     navigate(`${coursePath}#module-${moduleNumber}`);
