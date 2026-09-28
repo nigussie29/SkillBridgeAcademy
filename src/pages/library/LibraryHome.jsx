@@ -37,12 +37,14 @@ const libraries = [
     title: "Data & AI",
     icon: "🤖",
     description:
-      "Develop practical skills in analytics, business intelligence, machine learning, and artificial intelligence.",
+      "Follow a complete pathway from data analytics and engineering to machine learning, generative AI, and production systems.",
     topics: [
-      "Data Analytics",
+      "Excel & SQL",
       "Power BI",
+      "Microsoft Fabric",
       "Machine Learning",
-      "SQL for Data Analysis",
+      "Generative AI",
+      "MLOps",
     ],
     path: "/library/data-ai",
     available: true,
