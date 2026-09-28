@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabase";
 const links = [
   { to: "/", label: "Home" },
   { to: "/courses", label: "Courses" },
+  { to: "/pricing", label: "Pricing" },
   { to: "/library", label: "Library" },
   { to: "/projects", label: "Projects" },
   { to: "/resources", label: "Resources" },
@@ -44,7 +45,7 @@ export default function Navbar() {
           <span>KingsNigus Academy</span>
         </Link>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-5 md:flex">
           {links.map((link) => (
             <NavLink key={link.to} to={link.to} className={navClass}>
               {link.label}

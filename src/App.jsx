@@ -62,6 +62,7 @@ import AlgebraOneLesson from "./pages/library/highschool/AlgebraOneLesson.jsx";
 import ComputerScience from "./pages/library/ComputerScience.jsx";
 import DataAI from "./pages/library/DataAI.jsx";
 import DataAILesson from "./pages/library/dataAi/DataAILesson.jsx";
+import Pricing from "./pages/Pricing.jsx";
 
 
 
@@ -76,6 +77,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/lessons/:lessonSlug" element={<LessonPage />} />
           <Route path="/resources" element={<Resources />} />

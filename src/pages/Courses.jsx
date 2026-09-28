@@ -8,6 +8,10 @@ import {
 } from "react-icons/fa";
 
 import { getCourses } from "../services/courses";
+import {
+  formatPrice,
+  getCoursePricing,
+} from "../data/coursePricing.js";
 
 const categories = [
   "All",
@@ -299,6 +303,7 @@ const filteredCourses =
           {!loading && !error && (
             <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredCourses.map((course) => {
+                const pricing = getCoursePricing(course);
                 const description =
                   course.description ||
                   course.short_description ||
@@ -356,6 +361,22 @@ const filteredCourses =
                         {description}
                       </p>
 
+                      {pricing && (
+                        <div className="mt-5 flex items-end justify-between rounded-2xl bg-emerald-50 p-4">
+                          <div>
+                            <p className="text-xs font-black uppercase tracking-wide text-emerald-700">
+                              Founding price
+                            </p>
+                            <p className="mt-1 text-2xl font-extrabold text-emerald-950">
+                              {formatPrice(pricing.launchPrice)}
+                            </p>
+                          </div>
+                          <p className="pb-1 text-sm font-bold text-slate-400 line-through">
+                            {formatPrice(pricing.regularPrice)}
+                          </p>
+                        </div>
+                      )}
+
                       <div className="mt-5 grid grid-cols-2 gap-3 text-sm text-slate-600">
                         <p className="flex items-center gap-2">
                           <FaBookOpen />
@@ -383,6 +404,13 @@ const filteredCourses =
                         className="mt-6 block w-full rounded-xl bg-blue-600 py-3 text-center font-bold text-white transition hover:bg-blue-700"
                       >
                         Explore Course →
+                      </Link>
+
+                      <Link
+                        to="/pricing"
+                        className="mt-3 block text-center text-sm font-bold text-blue-700 hover:text-blue-900"
+                      >
+                        Compare all prices
                       </Link>
                     </div>
                   </article>

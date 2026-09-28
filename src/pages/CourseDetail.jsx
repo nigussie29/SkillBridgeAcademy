@@ -11,6 +11,10 @@ import {
 
 import { getCourseById } from "../services/courses";
 import { getModulesByCourse } from "../services/supabase/modules";
+import {
+  formatPrice,
+  getCoursePricing,
+} from "../data/coursePricing.js";
 
 export default function CourseDetail() {
   const { id } = useParams();
@@ -116,6 +120,8 @@ setLessons(lessonData);
     Array.isArray(course.curriculum)
       ? course.curriculum
       : [];
+
+  const pricing = getCoursePricing(course);
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -259,6 +265,25 @@ setLessons(lessonData);
               Enroll in this course
             </h3>
 
+            {pricing && (
+              <div className="mt-5 rounded-2xl bg-emerald-50 p-5">
+                <p className="text-xs font-black uppercase tracking-wide text-emerald-700">
+                  Founding price
+                </p>
+                <div className="mt-1 flex items-end gap-3">
+                  <span className="text-4xl font-black text-emerald-950">
+                    {formatPrice(pricing.launchPrice)}
+                  </span>
+                  <span className="pb-1 font-bold text-slate-400 line-through">
+                    {formatPrice(pricing.regularPrice)}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm font-semibold text-emerald-800">
+                  Lifetime access · certificate included when earned
+                </p>
+              </div>
+            )}
+
             <p className="mt-4 text-slate-600">
               Start learning today and build real career-ready skills.
             </p>
@@ -281,6 +306,13 @@ setLessons(lessonData);
               className="mt-3 block w-full rounded-xl border border-slate-300 py-3 text-center font-bold text-slate-700 hover:bg-slate-50"
             >
               Go to Dashboard
+            </Link>
+
+            <Link
+              to="/pricing"
+              className="mt-3 block text-center text-sm font-bold text-blue-700 hover:text-blue-900"
+            >
+              Compare all course prices
             </Link>
           </aside>
         </div>
