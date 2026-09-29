@@ -1954,6 +1954,85 @@ function formatValue(value) {
 function VisualModel({ visual }) {
   if (!visual) return null;
 
+  if (visual.type === "lifecycle") {
+    const stages = Array.isArray(visual.stages)
+      ? visual.stages
+      : [];
+
+    const stageColors = [
+      "border-blue-200 bg-blue-50 text-blue-950",
+      "border-cyan-200 bg-cyan-50 text-cyan-950",
+      "border-teal-200 bg-teal-50 text-teal-950",
+      "border-emerald-200 bg-emerald-50 text-emerald-950",
+      "border-amber-200 bg-amber-50 text-amber-950",
+      "border-orange-200 bg-orange-50 text-orange-950",
+      "border-violet-200 bg-violet-50 text-violet-950",
+      "border-rose-200 bg-rose-50 text-rose-950",
+    ];
+
+    return (
+      <figure className="rounded-3xl border border-indigo-200 bg-gradient-to-br from-white via-indigo-50 to-blue-50 p-6 shadow-sm">
+        {visual.title && (
+          <h3 className="text-2xl font-black text-slate-950">
+            {visual.title}
+          </h3>
+        )}
+
+        {visual.description && (
+          <p className="mt-2 max-w-4xl leading-7 text-slate-700">
+            {visual.description}
+          </p>
+        )}
+
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {stages.map((stage, index) => (
+            <div
+              key={`${stage.label}-${index}`}
+              className="relative"
+            >
+              <div
+                className={`h-full rounded-2xl border p-5 ${stageColors[index % stageColors.length]}`}
+              >
+                <p className="text-lg font-black">
+                  {stage.label}
+                </p>
+                {stage.detail && (
+                  <p className="mt-2 text-[15px] leading-6 opacity-80">
+                    {stage.detail}
+                  </p>
+                )}
+              </div>
+
+              {index < stages.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-2xl font-black text-indigo-400 xl:block"
+                >
+                  →
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {visual.feedback && (
+          <div className="mt-6 rounded-2xl border-2 border-dashed border-indigo-300 bg-white p-5 text-center font-extrabold leading-7 text-indigo-900">
+            ↺ {visual.feedback}
+          </div>
+        )}
+
+        {visual.interpretation && (
+          <figcaption className="mt-5 rounded-2xl bg-slate-950 p-5 leading-7 text-slate-100">
+            <span className="font-black text-blue-300">
+              Interpretation: {" "}
+            </span>
+            {visual.interpretation}
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
+
   if (visual.type === "numberLine") {
     const {
       title,
