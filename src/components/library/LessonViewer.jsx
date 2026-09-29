@@ -1165,7 +1165,7 @@ function LessonReferenceSidebar({
   }
 
   return (
-    <aside className="hidden max-h-[calc(100vh-3rem)] self-start space-y-5 overflow-y-auto pr-1 xl:sticky xl:top-6 xl:block">
+    <aside className="hidden self-start space-y-5 xl:block">
       {vocabulary.length > 0 && (
         <section className="rounded-3xl border border-emerald-200 bg-white p-5 shadow-sm">
           <p className="text-xs font-black uppercase tracking-widest text-emerald-700">
