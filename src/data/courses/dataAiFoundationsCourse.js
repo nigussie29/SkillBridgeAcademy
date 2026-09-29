@@ -84,7 +84,11 @@ export const dataAiFoundationsCourse = {
           slug: "kpis-baselines-constraints-and-definitions-of-done",
           status: "available",
         },
-        "The end-to-end data and AI lifecycle",
+        {
+          title: "The end-to-end data and AI lifecycle",
+          slug: "the-end-to-end-data-and-ai-lifecycle",
+          status: "available",
+        },
         "Portfolio Project: One-page data and AI project charter",
       ],
       project: "Decision-centered project charter",
