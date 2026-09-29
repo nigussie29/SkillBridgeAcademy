@@ -444,7 +444,11 @@ print("READY" if all(criteria.values()) else "REVISE BEFORE DEPLOYMENT")`,
     slug: "units-of-analysis-features-targets-and-actions",
     title: "Units of Analysis, Features, Targets, and Actions",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m01-l06",
+    slug: "the-end-to-end-data-and-ai-lifecycle",
+    title: "The End-to-End Data and AI Lifecycle",
+  },
 
   lumineryGuidance: {
     message:
