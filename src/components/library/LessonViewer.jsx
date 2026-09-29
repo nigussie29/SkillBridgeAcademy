@@ -140,8 +140,13 @@ learningObjectives = [],
         onBackToModule={onBackToModule}
       />
 
-      <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_280px]">
-        <div className="space-y-8">
+      <div className="mx-auto grid max-w-[1600px] gap-8 px-5 py-10 lg:grid-cols-[minmax(0,1fr)_280px] xl:grid-cols-[290px_minmax(0,1fr)_270px]">
+        <LessonReferenceSidebar
+          vocabulary={vocabulary}
+          formulas={formulas}
+        />
+
+        <div className="min-w-0 space-y-8">
 
           {/* Essential Question + Big Idea */}
 
@@ -311,68 +316,72 @@ learningObjectives = [],
           {/* Vocabulary */}
 
           {vocabulary.length > 0 && (
-            <SectionCard
-              eyebrow="Academic language"
-              title="Vocabulary"
-            >
-              <div className="grid gap-4 md:grid-cols-2">
-                {vocabulary.map((item, index) => (
-                  <article
-                    key={`${item.term}-${index}`}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 p-5"
-                  >
-                    <h3 className="font-extrabold text-slate-900">
-                      {item.term}
-                    </h3>
+            <div className="xl:hidden">
+              <SectionCard
+                eyebrow="Academic language"
+                title="Vocabulary"
+              >
+                <div className="grid gap-4 md:grid-cols-2">
+                  {vocabulary.map((item, index) => (
+                    <article
+                      key={`${item.term}-${index}`}
+                      className="rounded-2xl border border-slate-200 bg-slate-50 p-5"
+                    >
+                      <h3 className="font-extrabold text-slate-900">
+                        {item.term}
+                      </h3>
 
-                    <p className="mt-2 leading-7 text-slate-600">
-                      {item.definition}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </SectionCard>
+                      <p className="mt-2 leading-7 text-slate-600">
+                        {item.definition}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              </SectionCard>
+            </div>
           )}
 
           {/* Formulas */}
 
           {formulas.length > 0 && (
-            <SectionCard
-              eyebrow="Mathematical reference"
-              title="Key Formulas"
-            >
-              <div className="space-y-4">
-                {formulas.map((formula, index) => (
-                  <article
-                    key={`${formula.name}-${index}`}
-                    className="rounded-2xl border border-blue-200 bg-blue-50 p-5"
-                  >
-                    <h3 className="font-extrabold text-blue-950">
-                      {formula.name}
-                    </h3>
+            <div className="xl:hidden">
+              <SectionCard
+                eyebrow="Mathematical reference"
+                title="Key Formulas"
+              >
+                <div className="space-y-4">
+                  {formulas.map((formula, index) => (
+                    <article
+                      key={`${formula.name}-${index}`}
+                      className="rounded-2xl border border-blue-200 bg-blue-50 p-5"
+                    >
+                      <h3 className="font-extrabold text-blue-950">
+                        {formula.name}
+                      </h3>
 
-                    {formula.formula && (
-                      <div className="mt-3 overflow-x-auto rounded-xl bg-white p-4 font-mono text-blue-900">
-                        {formula.formula}
-                      </div>
-                    )}
+                      {formula.formula && (
+                        <div className="mt-3 overflow-x-auto rounded-xl bg-white p-4 font-mono text-blue-900">
+                          {formula.formula}
+                        </div>
+                      )}
 
-                    {formula.meaning && (
-                      <p className="mt-3 leading-7 text-blue-900">
-                        {formula.meaning}
-                      </p>
-                    )}
+                      {formula.meaning && (
+                        <p className="mt-3 leading-7 text-blue-900">
+                          {formula.meaning}
+                        </p>
+                      )}
 
-                    {formula.requirement && (
-                      <p className="mt-2 text-sm font-semibold text-blue-700">
-                        Requirement:{" "}
-                        {formula.requirement}
-                      </p>
-                    )}
-                  </article>
-                ))}
-              </div>
-            </SectionCard>
+                      {formula.requirement && (
+                        <p className="mt-2 text-sm font-semibold text-blue-700">
+                          Requirement:{" "}
+                          {formula.requirement}
+                        </p>
+                      )}
+                    </article>
+                  ))}
+                </div>
+              </SectionCard>
+            </div>
           )}
 
           {/* Probability Scale */}
@@ -1140,6 +1149,89 @@ function LessonHero({
         </div>
       </div>
     </header>
+  );
+}
+
+/* =========================================================
+   LESSON REFERENCE SIDEBAR
+========================================================= */
+
+function LessonReferenceSidebar({
+  vocabulary = [],
+  formulas = [],
+}) {
+  if (vocabulary.length === 0 && formulas.length === 0) {
+    return null;
+  }
+
+  return (
+    <aside className="hidden max-h-[calc(100vh-3rem)] self-start space-y-5 overflow-y-auto pr-1 xl:sticky xl:top-6 xl:block">
+      {vocabulary.length > 0 && (
+        <section className="rounded-3xl border border-emerald-200 bg-white p-5 shadow-sm">
+          <p className="text-xs font-black uppercase tracking-widest text-emerald-700">
+            Left-side reference
+          </p>
+          <h2 className="mt-2 text-xl font-black text-slate-950">
+            Vocabulary
+          </h2>
+
+          <div className="mt-4 divide-y divide-slate-200">
+            {vocabulary.map((item, index) => (
+              <article
+                key={`${item.term}-${index}`}
+                className="py-4 first:pt-0 last:pb-0"
+              >
+                <h3 className="font-extrabold text-emerald-900">
+                  {item.term}
+                </h3>
+                <p className="mt-1 text-[15px] leading-6 text-slate-600">
+                  {item.definition}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {formulas.length > 0 && (
+        <section className="rounded-3xl border border-blue-200 bg-blue-50 p-5 shadow-sm">
+          <p className="text-xs font-black uppercase tracking-widest text-blue-700">
+            Quick reference
+          </p>
+          <h2 className="mt-2 text-xl font-black text-blue-950">
+            Key Formulas
+          </h2>
+
+          <div className="mt-4 space-y-4">
+            {formulas.map((formula, index) => (
+              <article
+                key={`${formula.name}-${index}`}
+                className="rounded-2xl border border-blue-200 bg-white p-4"
+              >
+                <h3 className="font-extrabold text-blue-950">
+                  {formula.name}
+                </h3>
+                {formula.formula && (
+                  <div className="mt-2 whitespace-pre-wrap break-words rounded-xl bg-slate-950 p-3 font-mono text-[13px] leading-6 text-blue-100">
+                    {formula.formula}
+                  </div>
+                )}
+                {formula.meaning && (
+                  <p className="mt-2 text-[15px] leading-6 text-blue-900">
+                    {formula.meaning}
+                  </p>
+                )}
+                {formula.requirement && (
+                  <p className="mt-2 text-sm font-semibold leading-6 text-blue-700">
+                    Requirement: {formula.requirement}
+                  </p>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+    </aside>
   );
 }
 

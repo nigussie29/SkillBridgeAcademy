@@ -74,7 +74,11 @@ export const dataAiFoundationsCourse = {
           slug: "structured-semi-structured-and-unstructured-data",
           status: "available",
         },
-        "Units of analysis, features, targets, and actions",
+        {
+          title: "Units of analysis, features, targets, and actions",
+          slug: "units-of-analysis-features-targets-and-actions",
+          status: "available",
+        },
         "KPIs, baselines, constraints, and definitions of done",
         "The end-to-end data and AI lifecycle",
         "Portfolio Project: One-page data and AI project charter",
