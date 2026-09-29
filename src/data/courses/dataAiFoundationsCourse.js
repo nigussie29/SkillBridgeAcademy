@@ -79,7 +79,11 @@ export const dataAiFoundationsCourse = {
           slug: "units-of-analysis-features-targets-and-actions",
           status: "available",
         },
-        "KPIs, baselines, constraints, and definitions of done",
+        {
+          title: "KPIs, baselines, constraints, and definitions of done",
+          slug: "kpis-baselines-constraints-and-definitions-of-done",
+          status: "available",
+        },
         "The end-to-end data and AI lifecycle",
         "Portfolio Project: One-page data and AI project charter",
       ],
