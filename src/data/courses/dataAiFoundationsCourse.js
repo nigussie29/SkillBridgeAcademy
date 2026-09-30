@@ -89,7 +89,11 @@ export const dataAiFoundationsCourse = {
           slug: "the-end-to-end-data-and-ai-lifecycle",
           status: "available",
         },
-        "Portfolio Project: One-page data and AI project charter",
+        {
+          title: "Portfolio Project: One-page data and AI project charter",
+          slug: "portfolio-project-one-page-data-and-ai-project-charter",
+          status: "available",
+        },
       ],
       project: "Decision-centered project charter",
     },
