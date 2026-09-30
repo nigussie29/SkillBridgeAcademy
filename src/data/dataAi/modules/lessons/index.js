@@ -1,6 +1,10 @@
 import dataAiModule01Lessons from "./module01/index.js";
+import dataAiModule02Lessons from "./module02/index.js";
 
-const dataAiLessons = [...dataAiModule01Lessons];
+const dataAiLessons = [
+  ...dataAiModule01Lessons,
+  ...dataAiModule02Lessons,
+];
 
 export function getDataAiLessonsByModule(moduleNumber) {
   return dataAiLessons.filter(
