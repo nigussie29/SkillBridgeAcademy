@@ -106,7 +106,11 @@ export const dataAiFoundationsCourse = {
         "Use descriptive statistics, probability, inference, and causal caution to reason clearly under uncertainty.",
       skills: ["Distributions", "Probability", "Bayes", "Inference", "Experimentation"],
       lessons: [
-        "Center, spread, shape, and unusual observations",
+        {
+          title: "Center, spread, shape, and unusual observations",
+          slug: "center-spread-shape-and-unusual-observations",
+          status: "available",
+        },
         "Probability, conditional probability, and Bayes reasoning",
         "Sampling, bias, and representative evidence",
         "Correlation, confounding, and causal claims",
