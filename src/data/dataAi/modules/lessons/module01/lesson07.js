@@ -449,7 +449,11 @@ assert requirements[["critical", "evidence", "traceable"]].notna().all().all()`,
     slug: "the-end-to-end-data-and-ai-lifecycle",
     title: "The End-to-End Data and AI Lifecycle",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m02-l01",
+    slug: "center-spread-shape-and-unusual-observations",
+    title: "Center, Spread, Shape, and Unusual Observations",
+  },
 
   lumineryGuidance: {
     message:
