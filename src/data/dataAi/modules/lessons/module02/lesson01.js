@@ -457,6 +457,7 @@ assert (series >= 0).all()`,
 
   previousLesson: {
     id: "data-ai-m01-l07",
+    moduleNumber: 1,
     slug: "portfolio-project-one-page-data-and-ai-project-charter",
     title: "Portfolio Project: One-Page Data and AI Project Charter",
   },
