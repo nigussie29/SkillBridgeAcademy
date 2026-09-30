@@ -19,11 +19,13 @@ export default function DataAILesson() {
     (item) => item.slug === lessonSlug
   );
   const previousLesson =
-    currentLessonIndex > 0 ? moduleLessons[currentLessonIndex - 1] : null;
+    currentLessonIndex > 0
+      ? moduleLessons[currentLessonIndex - 1]
+      : lesson?.previousLesson ?? null;
   const nextLesson =
     currentLessonIndex >= 0 && currentLessonIndex < moduleLessons.length - 1
       ? moduleLessons[currentLessonIndex + 1]
-      : null;
+      : lesson?.nextLesson ?? null;
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
@@ -36,13 +38,15 @@ export default function DataAILesson() {
   function handlePrevious() {
     if (!previousLesson) return;
     navigate(
-      `${coursePath}/module/${moduleNumber}/lesson/${previousLesson.slug}`
+      `${coursePath}/module/${previousLesson.moduleNumber ?? moduleNumber}/lesson/${previousLesson.slug}`
     );
   }
 
   function handleNext() {
     if (!nextLesson) return;
-    navigate(`${coursePath}/module/${moduleNumber}/lesson/${nextLesson.slug}`);
+    navigate(
+      `${coursePath}/module/${nextLesson.moduleNumber ?? moduleNumber}/lesson/${nextLesson.slug}`
+    );
   }
 
   if (!lesson) {
