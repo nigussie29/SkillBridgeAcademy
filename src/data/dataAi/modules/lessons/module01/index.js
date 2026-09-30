@@ -4,6 +4,7 @@ import lesson03 from "./lesson03.js";
 import lesson04 from "./lesson04.js";
 import lesson05 from "./lesson05.js";
 import lesson06 from "./lesson06.js";
+import lesson07 from "./lesson07.js";
 
 const dataAiModule01Lessons = [
   lesson01,
@@ -12,6 +13,7 @@ const dataAiModule01Lessons = [
   lesson04,
   lesson05,
   lesson06,
+  lesson07,
 ];
 
 export default dataAiModule01Lessons;
