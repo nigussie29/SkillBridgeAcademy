@@ -451,6 +451,7 @@ assert requirements[["critical", "evidence", "traceable"]].notna().all().all()`,
   },
   nextLesson: {
     id: "data-ai-m02-l01",
+    moduleNumber: 2,
     slug: "center-spread-shape-and-unusual-observations",
     title: "Center, Spread, Shape, and Unusual Observations",
   },
