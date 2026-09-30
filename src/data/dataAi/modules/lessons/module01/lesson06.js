@@ -468,7 +468,11 @@ assert gates["owner"].notna().all()`,
     slug: "kpis-baselines-constraints-and-definitions-of-done",
     title: "KPIs, Baselines, Constraints, and Definitions of Done",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m01-l07",
+    slug: "portfolio-project-one-page-data-and-ai-project-charter",
+    title: "Portfolio Project: One-Page Data and AI Project Charter",
+  },
 
   lumineryGuidance: {
     message:
