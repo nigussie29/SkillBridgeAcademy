@@ -515,7 +515,12 @@ assert estimates.between(0, 1).all()`,
     slug: "probability-conditional-probability-and-bayes-reasoning",
     title: "Probability, Conditional Probability, and Bayes Reasoning",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m02-l04",
+    moduleNumber: 2,
+    slug: "correlation-confounding-and-causal-claims",
+    title: "Correlation, Confounding, and Causal Claims",
+  },
 
   lumineryGuidance: {
     message:
