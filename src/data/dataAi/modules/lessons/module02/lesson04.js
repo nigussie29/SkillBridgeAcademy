@@ -519,7 +519,12 @@ assert results["maintenance"] < 0`,
     slug: "sampling-bias-and-representative-evidence",
     title: "Sampling, Bias, and Representative Evidence",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m02-l05",
+    moduleNumber: 2,
+    slug: "confidence-intervals-hypothesis-tests-and-effect-size",
+    title: "Confidence Intervals, Hypothesis Tests, and Effect Size",
+  },
 
   lumineryGuidance: {
     message:
