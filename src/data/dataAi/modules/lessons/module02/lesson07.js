@@ -651,7 +651,12 @@ assert robots.loc[severe_index, "downtime_hours"] == 44.0`,
     slug: "statistical-visualization-and-interpretation-lab",
     title: "Statistical Visualization and Interpretation Lab",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m03-l01",
+    moduleNumber: 3,
+    slug: "tidy-data-and-reliable-workbook-architecture",
+    title: "Tidy Data and Reliable Workbook Architecture",
+  },
 
   lumineryGuidance: {
     message:
