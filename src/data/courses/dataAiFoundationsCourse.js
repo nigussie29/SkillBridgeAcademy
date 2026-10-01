@@ -153,7 +153,11 @@ export const dataAiFoundationsCourse = {
         "Create tidy, auditable analysis with Excel tables, validation, formulas, PivotTables, and repeatable Power Query transformations.",
       skills: ["Excel Tables", "XLOOKUP", "SUMIFS", "PivotTables", "Power Query"],
       lessons: [
-        "Tidy data and reliable workbook architecture",
+        {
+          title: "Tidy data and reliable workbook architecture",
+          slug: "tidy-data-and-reliable-workbook-architecture",
+          status: "available",
+        },
         "Validation, data types, and quality flags",
         "Logical, lookup, and conditional aggregation formulas",
         "PivotTables, PivotCharts, and analytical summaries",
