@@ -121,7 +121,11 @@ export const dataAiFoundationsCourse = {
           slug: "sampling-bias-and-representative-evidence",
           status: "available",
         },
-        "Correlation, confounding, and causal claims",
+        {
+          title: "Correlation, confounding, and causal claims",
+          slug: "correlation-confounding-and-causal-claims",
+          status: "available",
+        },
         "Confidence intervals, hypothesis tests, and effect size",
         "Statistical visualization and interpretation lab",
         "Portfolio Project: Reproducible statistical investigation",
