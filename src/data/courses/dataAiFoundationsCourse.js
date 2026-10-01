@@ -158,7 +158,11 @@ export const dataAiFoundationsCourse = {
           slug: "tidy-data-and-reliable-workbook-architecture",
           status: "available",
         },
-        "Validation, data types, and quality flags",
+        {
+          title: "Validation, data types, and quality flags",
+          slug: "validation-data-types-and-quality-flags",
+          status: "available",
+        },
         "Logical, lookup, and conditional aggregation formulas",
         "PivotTables, PivotCharts, and analytical summaries",
         "Repeatable data cleaning with Power Query",
