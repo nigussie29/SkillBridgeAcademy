@@ -111,7 +111,11 @@ export const dataAiFoundationsCourse = {
           slug: "center-spread-shape-and-unusual-observations",
           status: "available",
         },
-        "Probability, conditional probability, and Bayes reasoning",
+        {
+          title: "Probability, conditional probability, and Bayes reasoning",
+          slug: "probability-conditional-probability-and-bayes-reasoning",
+          status: "available",
+        },
         "Sampling, bias, and representative evidence",
         "Correlation, confounding, and causal claims",
         "Confidence intervals, hypothesis tests, and effect size",
