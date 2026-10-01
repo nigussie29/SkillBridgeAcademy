@@ -126,7 +126,11 @@ export const dataAiFoundationsCourse = {
           slug: "correlation-confounding-and-causal-claims",
           status: "available",
         },
-        "Confidence intervals, hypothesis tests, and effect size",
+        {
+          title: "Confidence intervals, hypothesis tests, and effect size",
+          slug: "confidence-intervals-hypothesis-tests-and-effect-size",
+          status: "available",
+        },
         "Statistical visualization and interpretation lab",
         "Portfolio Project: Reproducible statistical investigation",
       ],
