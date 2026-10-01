@@ -136,7 +136,11 @@ export const dataAiFoundationsCourse = {
           slug: "statistical-visualization-and-interpretation-lab",
           status: "available",
         },
-        "Portfolio Project: Reproducible statistical investigation",
+        {
+          title: "Portfolio Project: Reproducible statistical investigation",
+          slug: "portfolio-project-reproducible-statistical-investigation",
+          status: "available",
+        },
       ],
       project: "Statistical investigation and findings brief",
     },
