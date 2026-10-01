@@ -1,5 +1,5 @@
-import lesson01 from "./lesson01.js";
+import lesson01 from "./lesson01.js";\nimport lesson02 from "./lesson02.js";
 
-const dataAiModule02Lessons = [lesson01];
+const dataAiModule02Lessons = [lesson01, lesson02];
 
 export default dataAiModule02Lessons;
