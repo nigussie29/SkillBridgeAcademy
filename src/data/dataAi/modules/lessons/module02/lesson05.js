@@ -540,7 +540,12 @@ assert cohen_d < 0`,
     slug: "correlation-confounding-and-causal-claims",
     title: "Correlation, Confounding, and Causal Claims",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m02-l06",
+    moduleNumber: 2,
+    slug: "statistical-visualization-and-interpretation-lab",
+    title: "Statistical Visualization and Interpretation Lab",
+  },
 
   lumineryGuidance: {
     message:
