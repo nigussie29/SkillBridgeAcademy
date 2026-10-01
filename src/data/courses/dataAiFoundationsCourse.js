@@ -131,7 +131,11 @@ export const dataAiFoundationsCourse = {
           slug: "confidence-intervals-hypothesis-tests-and-effect-size",
           status: "available",
         },
-        "Statistical visualization and interpretation lab",
+        {
+          title: "Statistical visualization and interpretation lab",
+          slug: "statistical-visualization-and-interpretation-lab",
+          status: "available",
+        },
         "Portfolio Project: Reproducible statistical investigation",
       ],
       project: "Statistical investigation and findings brief",
