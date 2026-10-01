@@ -461,7 +461,12 @@ assert (series >= 0).all()`,
     slug: "portfolio-project-one-page-data-and-ai-project-charter",
     title: "Portfolio Project: One-Page Data and AI Project Charter",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m02-l02",
+    moduleNumber: 2,
+    slug: "probability-conditional-probability-and-bayes-reasoning",
+    title: "Probability, Conditional Probability, and Bayes Reasoning",
+  },
 
   lumineryGuidance: {
     message:
