@@ -740,7 +740,12 @@ print("Created:", output.resolve())`,
     slug: "portfolio-project-reproducible-statistical-investigation",
     title: "Portfolio Project: Reproducible Statistical Investigation",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m03-l02",
+    moduleNumber: 3,
+    slug: "validation-data-types-and-quality-flags",
+    title: "Validation, Data Types, and Quality Flags",
+  },
 
   lumineryGuidance: {
     message:
