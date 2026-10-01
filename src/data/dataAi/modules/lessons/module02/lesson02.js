@@ -10,7 +10,7 @@ const lesson02 = {
   subtitle:
     "Quantify uncertainty, distinguish joint and conditional events, and update risk responsibly when new evidence arrives.",
   status: "available",
-  duration: "120-140 minutes",
+  duration: "120–140 minutes",
   level: "Beginner to Professional",
 
   essentialQuestion:
