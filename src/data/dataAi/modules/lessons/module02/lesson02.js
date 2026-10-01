@@ -10,7 +10,7 @@ const lesson02 = {
   subtitle:
     "Quantify uncertainty, distinguish joint and conditional events, and update risk responsibly when new evidence arrives.",
   status: "available",
-  duration: "120–140 minutes",
+  duration: "120-140 minutes",
   level: "Beginner to Professional",
 
   essentialQuestion:
@@ -512,7 +512,12 @@ assert metrics.between(0, 1).all()`,
     slug: "center-spread-shape-and-unusual-observations",
     title: "Center, Spread, Shape, and Unusual Observations",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m02-l03",
+    moduleNumber: 2,
+    slug: "sampling-bias-and-representative-evidence",
+    title: "Sampling, Bias, and Representative Evidence",
+  },
 
   lumineryGuidance: {
     message:
