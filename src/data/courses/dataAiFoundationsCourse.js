@@ -116,7 +116,11 @@ export const dataAiFoundationsCourse = {
           slug: "probability-conditional-probability-and-bayes-reasoning",
           status: "available",
         },
-        "Sampling, bias, and representative evidence",
+        {
+          title: "Sampling, bias, and representative evidence",
+          slug: "sampling-bias-and-representative-evidence",
+          status: "available",
+        },
         "Correlation, confounding, and causal claims",
         "Confidence intervals, hypothesis tests, and effect size",
         "Statistical visualization and interpretation lab",
