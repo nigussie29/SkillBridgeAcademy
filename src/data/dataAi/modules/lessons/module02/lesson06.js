@@ -594,7 +594,12 @@ assert robots["iqr_flag"].any()`,
     slug: "confidence-intervals-hypothesis-tests-and-effect-size",
     title: "Confidence Intervals, Hypothesis Tests, and Effect Size",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m02-l07",
+    moduleNumber: 2,
+    slug: "portfolio-project-reproducible-statistical-investigation",
+    title: "Portfolio Project: Reproducible Statistical Investigation",
+  },
 
   lumineryGuidance: {
     message:
