@@ -560,7 +560,12 @@ print("\\nPriority reconciliation:\\n", priority_counts.to_string())`,
     slug: "validation-data-types-and-quality-flags",
     title: "Validation, Data Types, and Quality Flags",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m03-l04",
+    moduleNumber: 3,
+    slug: "pivottables-pivotcharts-and-analytical-summaries",
+    title: "PivotTables, PivotCharts, and Analytical Summaries",
+  },
 
   lumineryGuidance: {
     message:
