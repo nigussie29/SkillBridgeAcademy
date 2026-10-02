@@ -587,7 +587,12 @@ assert (quality_summary["pass_rate"].between(0, 1)).all()`,
     slug: "tidy-data-and-reliable-workbook-architecture",
     title: "Tidy Data and Reliable Workbook Architecture",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m03-l03",
+    moduleNumber: 3,
+    slug: "logical-lookup-and-conditional-aggregation-formulas",
+    title: "Logical, Lookup, and Conditional Aggregation Formulas",
+  },
 
   lumineryGuidance: {
     message:
