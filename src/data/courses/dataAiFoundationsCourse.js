@@ -183,7 +183,11 @@ export const dataAiFoundationsCourse = {
           slug: "decision-focused-excel-dashboard-design",
           status: "available",
         },
-        "Portfolio Project: Refreshable business analysis workbook",
+        {
+          title: "Portfolio Project: Refreshable business analysis workbook",
+          slug: "portfolio-project-refreshable-business-analysis-workbook",
+          status: "available",
+        },
       ],
       project: "Refreshable Excel business dashboard",
     },

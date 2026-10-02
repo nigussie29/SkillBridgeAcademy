@@ -582,7 +582,12 @@ print("Created maintenance_decision_dashboard.png")`,
     slug: "repeatable-data-cleaning-with-power-query",
     title: "Repeatable Data Cleaning with Power Query",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m03-l07",
+    moduleNumber: 3,
+    slug: "portfolio-project-refreshable-business-analysis-workbook",
+    title: "Portfolio Project: Refreshable Business Analysis Workbook",
+  },
 
   lumineryGuidance: {
     message:
