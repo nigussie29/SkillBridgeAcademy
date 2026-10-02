@@ -200,7 +200,11 @@ export const dataAiFoundationsCourse = {
         "Query relational data precisely, protect row grain, use analytical SQL, and design normalized and dimensional models.",
       skills: ["SQL", "Joins", "CTEs", "Window functions", "Star schema"],
       lessons: [
-        "Tables, row grain, keys, and relationships",
+        {
+          title: "Tables, row grain, keys, and relationships",
+          slug: "tables-row-grain-keys-and-relationships",
+          status: "available",
+        },
         "Filtering, sorting, grouping, and aggregation",
         "Safe joins, unmatched records, and double counting",
         "Subqueries, CTEs, and reusable query logic",

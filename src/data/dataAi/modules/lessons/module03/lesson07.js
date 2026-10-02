@@ -668,7 +668,12 @@ print("Quality reasons:\\n", audit.loc[audit["row_status"].eq("REVIEW"), ["work_
     slug: "decision-focused-excel-dashboard-design",
     title: "Decision-Focused Excel Dashboard Design",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m04-l01",
+    moduleNumber: 4,
+    slug: "tables-row-grain-keys-and-relationships",
+    title: "Tables, Row Grain, Keys, and Relationships",
+  },
 
   lumineryGuidance: {
     message:
