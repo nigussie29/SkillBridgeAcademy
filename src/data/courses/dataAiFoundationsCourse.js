@@ -168,7 +168,11 @@ export const dataAiFoundationsCourse = {
           slug: "logical-lookup-and-conditional-aggregation-formulas",
           status: "available",
         },
-        "PivotTables, PivotCharts, and analytical summaries",
+        {
+          title: "PivotTables, PivotCharts, and analytical summaries",
+          slug: "pivottables-pivotcharts-and-analytical-summaries",
+          status: "available",
+        },
         "Repeatable data cleaning with Power Query",
         "Decision-focused Excel dashboard design",
         "Portfolio Project: Refreshable business analysis workbook",
