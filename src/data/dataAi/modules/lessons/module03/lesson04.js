@@ -560,7 +560,12 @@ print("\\nCreated validated_downtime_pivot_chart.png")`,
     slug: "logical-lookup-and-conditional-aggregation-formulas",
     title: "Logical, Lookup, and Conditional Aggregation Formulas",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m03-l05",
+    moduleNumber: 3,
+    slug: "repeatable-data-cleaning-with-power-query",
+    title: "Repeatable Data Cleaning with Power Query",
+  },
 
   lumineryGuidance: {
     message:

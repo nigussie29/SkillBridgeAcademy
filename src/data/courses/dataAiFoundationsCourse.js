@@ -173,7 +173,11 @@ export const dataAiFoundationsCourse = {
           slug: "pivottables-pivotcharts-and-analytical-summaries",
           status: "available",
         },
-        "Repeatable data cleaning with Power Query",
+        {
+          title: "Repeatable data cleaning with Power Query",
+          slug: "repeatable-data-cleaning-with-power-query",
+          status: "available",
+        },
         "Decision-focused Excel dashboard design",
         "Portfolio Project: Refreshable business analysis workbook",
       ],
