@@ -178,7 +178,11 @@ export const dataAiFoundationsCourse = {
           slug: "repeatable-data-cleaning-with-power-query",
           status: "available",
         },
-        "Decision-focused Excel dashboard design",
+        {
+          title: "Decision-focused Excel dashboard design",
+          slug: "decision-focused-excel-dashboard-design",
+          status: "available",
+        },
         "Portfolio Project: Refreshable business analysis workbook",
       ],
       project: "Refreshable Excel business dashboard",

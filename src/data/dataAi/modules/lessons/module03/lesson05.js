@@ -566,7 +566,12 @@ in
     slug: "pivottables-pivotcharts-and-analytical-summaries",
     title: "PivotTables, PivotCharts, and Analytical Summaries",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m03-l06",
+    moduleNumber: 3,
+    slug: "decision-focused-excel-dashboard-design",
+    title: "Decision-Focused Excel Dashboard Design",
+  },
 
   lumineryGuidance: {
     message:
