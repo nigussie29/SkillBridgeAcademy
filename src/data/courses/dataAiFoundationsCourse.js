@@ -163,7 +163,11 @@ export const dataAiFoundationsCourse = {
           slug: "validation-data-types-and-quality-flags",
           status: "available",
         },
-        "Logical, lookup, and conditional aggregation formulas",
+        {
+          title: "Logical, lookup, and conditional aggregation formulas",
+          slug: "logical-lookup-and-conditional-aggregation-formulas",
+          status: "available",
+        },
         "PivotTables, PivotCharts, and analytical summaries",
         "Repeatable data cleaning with Power Query",
         "Decision-focused Excel dashboard design",
