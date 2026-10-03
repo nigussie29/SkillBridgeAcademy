@@ -272,7 +272,11 @@ export const dataAiFoundationsCourse = {
           slug: "groupby-merge-reshape-and-feature-creation",
           status: "available",
         },
-        "Exploratory analysis, visualization, and reproducibility",
+        {
+          title: "Exploratory analysis, visualization, and reproducibility",
+          slug: "exploratory-analysis-visualization-and-reproducibility",
+          status: "available",
+        },
         "Portfolio Project: Audited data-analysis notebook",
       ],
       project: "Reproducible Python data-analysis notebook",

@@ -614,7 +614,12 @@ print("All groupby, merge, reshape, feature, and reconciliation tests passed.")`
     slug: "missing-data-data-types-duplicates-and-validation",
     title: "Missing Data, Data Types, Duplicates, and Validation",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m05-l06",
+    moduleNumber: 5,
+    slug: "exploratory-analysis-visualization-and-reproducibility",
+    title: "Exploratory Analysis, Visualization, and Reproducibility",
+  },
 
   lumineryGuidance: {
     message:
