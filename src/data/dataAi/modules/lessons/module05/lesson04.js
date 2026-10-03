@@ -633,7 +633,12 @@ print("All missingness, dtype, duplicate, validation, and reconciliation tests p
     slug: "dataframes-series-indexing-and-filtering",
     title: "DataFrames, Series, Indexing, and Filtering",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m05-l05",
+    moduleNumber: 5,
+    slug: "groupby-merge-reshape-and-feature-creation",
+    title: "GroupBy, Merge, Reshape, and Feature Creation",
+  },
 
   lumineryGuidance: {
     message:

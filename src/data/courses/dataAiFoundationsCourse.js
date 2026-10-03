@@ -267,7 +267,11 @@ export const dataAiFoundationsCourse = {
           slug: "missing-data-data-types-duplicates-and-validation",
           status: "available",
         },
-        "Groupby, merge, reshape, and feature creation",
+        {
+          title: "Groupby, merge, reshape, and feature creation",
+          slug: "groupby-merge-reshape-and-feature-creation",
+          status: "available",
+        },
         "Exploratory analysis, visualization, and reproducibility",
         "Portfolio Project: Audited data-analysis notebook",
       ],
