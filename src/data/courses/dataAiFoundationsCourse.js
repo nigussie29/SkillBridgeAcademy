@@ -230,7 +230,11 @@ export const dataAiFoundationsCourse = {
           slug: "normalization-facts-dimensions-and-star-schemas",
           status: "available",
         },
-        "Portfolio Project: Analytical SQL database and query pack",
+        {
+          title: "Portfolio Project: Analytical SQL database and query pack",
+          slug: "portfolio-project-analytical-sql-database-and-query-pack",
+          status: "available",
+        },
       ],
       project: "Star-schema database with analytical query portfolio",
     },

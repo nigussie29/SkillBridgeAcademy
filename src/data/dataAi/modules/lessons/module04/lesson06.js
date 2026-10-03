@@ -669,7 +669,12 @@ print("All normalization, grain, SCD Type 2, and reconciliation tests passed.")`
     slug: "window-functions-for-analytical-questions",
     title: "Window Functions for Analytical Questions",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m04-l07",
+    moduleNumber: 4,
+    slug: "portfolio-project-analytical-sql-database-and-query-pack",
+    title: "Portfolio Project: Analytical SQL Database and Query Pack",
+  },
 
   lumineryGuidance: {
     message:
