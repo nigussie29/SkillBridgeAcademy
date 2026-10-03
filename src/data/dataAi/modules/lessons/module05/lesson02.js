@@ -612,7 +612,12 @@ print("All NumPy shape, dtype, mask, broadcast, reduction, and reconciliation te
     slug: "python-types-control-flow-functions-and-modules",
     title: "Python Types, Control Flow, Functions, and Modules",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m05-l03",
+    moduleNumber: 5,
+    slug: "dataframes-series-indexing-and-filtering",
+    title: "DataFrames, Series, Indexing, and Filtering",
+  },
 
   lumineryGuidance: {
     message:

@@ -257,7 +257,11 @@ export const dataAiFoundationsCourse = {
           slug: "numpy-arrays-and-vectorized-computation",
           status: "available",
         },
-        "DataFrames, Series, indexing, and filtering",
+        {
+          title: "DataFrames, Series, indexing, and filtering",
+          slug: "dataframes-series-indexing-and-filtering",
+          status: "available",
+        },
         "Missing data, data types, duplicates, and validation",
         "Groupby, merge, reshape, and feature creation",
         "Exploratory analysis, visualization, and reproducibility",
