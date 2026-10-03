@@ -557,7 +557,12 @@ print("All relational integrity tests passed.")
     slug: "portfolio-project-refreshable-business-analysis-workbook",
     title: "Portfolio Project: Refreshable Business Analysis Workbook",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m04-l02",
+    moduleNumber: 4,
+    slug: "filtering-sorting-grouping-and-aggregation",
+    title: "Filtering, Sorting, Grouping, and Aggregation",
+  },
 
   lumineryGuidance: {
     message:

@@ -205,7 +205,11 @@ export const dataAiFoundationsCourse = {
           slug: "tables-row-grain-keys-and-relationships",
           status: "available",
         },
-        "Filtering, sorting, grouping, and aggregation",
+        {
+          title: "Filtering, sorting, grouping, and aggregation",
+          slug: "filtering-sorting-grouping-and-aggregation",
+          status: "available",
+        },
         "Safe joins, unmatched records, and double counting",
         "Subqueries, CTEs, and reusable query logic",
         "Window functions for analytical questions",
