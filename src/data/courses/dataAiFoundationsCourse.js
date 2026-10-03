@@ -210,7 +210,11 @@ export const dataAiFoundationsCourse = {
           slug: "filtering-sorting-grouping-and-aggregation",
           status: "available",
         },
-        "Safe joins, unmatched records, and double counting",
+        {
+          title: "Safe joins, unmatched records, and double counting",
+          slug: "safe-joins-unmatched-records-and-double-counting",
+          status: "available",
+        },
         "Subqueries, CTEs, and reusable query logic",
         "Window functions for analytical questions",
         "Normalization, facts, dimensions, and star schemas",

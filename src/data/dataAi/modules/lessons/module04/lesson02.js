@@ -544,7 +544,12 @@ print("All filter, ordering, grouping, and reconciliation tests passed.")`,
     slug: "tables-row-grain-keys-and-relationships",
     title: "Tables, Row Grain, Keys, and Relationships",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m04-l03",
+    moduleNumber: 4,
+    slug: "safe-joins-unmatched-records-and-double-counting",
+    title: "Safe Joins, Unmatched Records, and Double Counting",
+  },
 
   lumineryGuidance: {
     message:
