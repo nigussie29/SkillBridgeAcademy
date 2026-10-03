@@ -225,7 +225,11 @@ export const dataAiFoundationsCourse = {
           slug: "window-functions-for-analytical-questions",
           status: "available",
         },
-        "Normalization, facts, dimensions, and star schemas",
+        {
+          title: "Normalization, facts, dimensions, and star schemas",
+          slug: "normalization-facts-dimensions-and-star-schemas",
+          status: "available",
+        },
         "Portfolio Project: Analytical SQL database and query pack",
       ],
       project: "Star-schema database with analytical query portfolio",

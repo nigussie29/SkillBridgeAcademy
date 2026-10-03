@@ -624,7 +624,12 @@ print("All ranking, offset, frame, share, and reconciliation tests passed.")`,
     slug: "subqueries-ctes-and-reusable-query-logic",
     title: "Subqueries, CTEs, and Reusable Query Logic",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m04-l06",
+    moduleNumber: 4,
+    slug: "normalization-facts-dimensions-and-star-schemas",
+    title: "Normalization, Facts, Dimensions, and Star Schemas",
+  },
 
   lumineryGuidance: {
     message:
