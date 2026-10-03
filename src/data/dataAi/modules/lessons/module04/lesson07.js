@@ -861,7 +861,12 @@ print("All capstone row, grain, relationship, history, measure, and query tests 
     slug: "normalization-facts-dimensions-and-star-schemas",
     title: "Normalization, Facts, Dimensions, and Star Schemas",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m05-l01",
+    moduleNumber: 5,
+    slug: "python-types-control-flow-functions-and-modules",
+    title: "Python Types, Control Flow, Functions, and Modules",
+  },
 
   lumineryGuidance: {
     message:

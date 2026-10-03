@@ -247,7 +247,11 @@ export const dataAiFoundationsCourse = {
         "Use Python and pandas for reproducible profiling, cleaning, transformation, analysis, visualization, and export.",
       skills: ["Python", "pandas", "NumPy", "Data cleaning", "Testing"],
       lessons: [
-        "Python types, control flow, functions, and modules",
+        {
+          title: "Python types, control flow, functions, and modules",
+          slug: "python-types-control-flow-functions-and-modules",
+          status: "available",
+        },
         "NumPy arrays and vectorized computation",
         "DataFrames, Series, indexing, and filtering",
         "Missing data, data types, duplicates, and validation",
