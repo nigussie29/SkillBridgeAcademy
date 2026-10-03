@@ -1,5 +1,6 @@
 import lesson01 from "./lesson01.js";
+import lesson02 from "./lesson02.js";
 
-const dataAiModule05Lessons = [lesson01];
+const dataAiModule05Lessons = [lesson01, lesson02];
 
 export default dataAiModule05Lessons;

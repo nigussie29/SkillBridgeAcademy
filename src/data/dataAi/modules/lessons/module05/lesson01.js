@@ -642,7 +642,12 @@ if __name__ == "__main__":
     slug: "portfolio-project-analytical-sql-database-and-query-pack",
     title: "Portfolio Project: Analytical SQL Database and Query Pack",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m05-l02",
+    moduleNumber: 5,
+    slug: "numpy-arrays-and-vectorized-computation",
+    title: "NumPy Arrays and Vectorized Computation",
+  },
 
   lumineryGuidance: {
     message:

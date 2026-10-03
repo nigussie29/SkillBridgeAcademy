@@ -252,7 +252,11 @@ export const dataAiFoundationsCourse = {
           slug: "python-types-control-flow-functions-and-modules",
           status: "available",
         },
-        "NumPy arrays and vectorized computation",
+        {
+          title: "NumPy arrays and vectorized computation",
+          slug: "numpy-arrays-and-vectorized-computation",
+          status: "available",
+        },
         "DataFrames, Series, indexing, and filtering",
         "Missing data, data types, duplicates, and validation",
         "Groupby, merge, reshape, and feature creation",
