@@ -215,7 +215,11 @@ export const dataAiFoundationsCourse = {
           slug: "safe-joins-unmatched-records-and-double-counting",
           status: "available",
         },
-        "Subqueries, CTEs, and reusable query logic",
+        {
+          title: "Subqueries, CTEs, and reusable query logic",
+          slug: "subqueries-ctes-and-reusable-query-logic",
+          status: "available",
+        },
         "Window functions for analytical questions",
         "Normalization, facts, dimensions, and star schemas",
         "Portfolio Project: Analytical SQL database and query pack",

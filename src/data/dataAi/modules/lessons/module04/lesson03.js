@@ -628,7 +628,12 @@ print("All safe-join and reconciliation tests passed.")`,
     slug: "filtering-sorting-grouping-and-aggregation",
     title: "Filtering, Sorting, Grouping, and Aggregation",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m04-l04",
+    moduleNumber: 4,
+    slug: "subqueries-ctes-and-reusable-query-logic",
+    title: "Subqueries, CTEs, and Reusable Query Logic",
+  },
 
   lumineryGuidance: {
     message:
