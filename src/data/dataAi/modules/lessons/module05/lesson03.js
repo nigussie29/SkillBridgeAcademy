@@ -620,7 +620,12 @@ print("All pandas schema, indexing, filtering, assignment, sorting, and reconcil
     slug: "numpy-arrays-and-vectorized-computation",
     title: "NumPy Arrays and Vectorized Computation",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m05-l04",
+    moduleNumber: 5,
+    slug: "missing-data-data-types-duplicates-and-validation",
+    title: "Missing Data, Data Types, Duplicates, and Validation",
+  },
 
   lumineryGuidance: {
     message:

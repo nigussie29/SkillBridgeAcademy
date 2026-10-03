@@ -262,7 +262,11 @@ export const dataAiFoundationsCourse = {
           slug: "dataframes-series-indexing-and-filtering",
           status: "available",
         },
-        "Missing data, data types, duplicates, and validation",
+        {
+          title: "Missing data, data types, duplicates, and validation",
+          slug: "missing-data-data-types-duplicates-and-validation",
+          status: "available",
+        },
         "Groupby, merge, reshape, and feature creation",
         "Exploratory analysis, visualization, and reproducibility",
         "Portfolio Project: Audited data-analysis notebook",
