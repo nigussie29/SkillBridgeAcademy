@@ -646,7 +646,12 @@ print("All subquery, CTE, and reconciliation tests passed.")`,
     slug: "safe-joins-unmatched-records-and-double-counting",
     title: "Safe Joins, Unmatched Records, and Double Counting",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m04-l05",
+    moduleNumber: 4,
+    slug: "window-functions-for-analytical-questions",
+    title: "Window Functions for Analytical Questions",
+  },
 
   lumineryGuidance: {
     message:

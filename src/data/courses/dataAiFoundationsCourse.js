@@ -220,7 +220,11 @@ export const dataAiFoundationsCourse = {
           slug: "subqueries-ctes-and-reusable-query-logic",
           status: "available",
         },
-        "Window functions for analytical questions",
+        {
+          title: "Window functions for analytical questions",
+          slug: "window-functions-for-analytical-questions",
+          status: "available",
+        },
         "Normalization, facts, dimensions, and star schemas",
         "Portfolio Project: Analytical SQL database and query pack",
       ],
