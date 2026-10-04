@@ -596,7 +596,12 @@ print("All chart-purpose, ordering, denominator, population, and artifact tests 
     slug: "portfolio-project-audited-data-analysis-notebook",
     title: "Portfolio Project: Audited Data-Analysis Notebook",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m06-l02",
+    moduleNumber: 6,
+    slug: "visual-hierarchy-accessibility-and-honest-communication",
+    title: "Visual Hierarchy, Accessibility, and Honest Communication",
+  },
 
   lumineryGuidance: {
     message:

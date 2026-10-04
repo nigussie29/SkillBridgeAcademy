@@ -299,7 +299,11 @@ export const dataAiFoundationsCourse = {
           slug: "choosing-charts-by-analytical-purpose",
           status: "available",
         },
-        "Visual hierarchy, accessibility, and honest communication",
+        {
+          title: "Visual hierarchy, accessibility, and honest communication",
+          slug: "visual-hierarchy-accessibility-and-honest-communication",
+          status: "available",
+        },
         "Power BI star-schema semantic modeling",
         "Measures, filter context, row context, and CALCULATE",
         "Time intelligence and performance measures",
