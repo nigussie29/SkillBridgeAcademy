@@ -619,7 +619,12 @@ print("All EDA, visualization, sensitivity, and reproducibility tests passed.")`
     slug: "groupby-merge-reshape-and-feature-creation",
     title: "GroupBy, Merge, Reshape, and Feature Creation",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m05-l07",
+    moduleNumber: 5,
+    slug: "portfolio-project-audited-data-analysis-notebook",
+    title: "Portfolio Project: Audited Data-Analysis Notebook",
+  },
 
   lumineryGuidance: {
     message:

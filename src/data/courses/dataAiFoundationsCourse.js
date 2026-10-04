@@ -277,7 +277,11 @@ export const dataAiFoundationsCourse = {
           slug: "exploratory-analysis-visualization-and-reproducibility",
           status: "available",
         },
-        "Portfolio Project: Audited data-analysis notebook",
+        {
+          title: "Portfolio Project: Audited data-analysis notebook",
+          slug: "portfolio-project-audited-data-analysis-notebook",
+          status: "available",
+        },
       ],
       project: "Reproducible Python data-analysis notebook",
     },
