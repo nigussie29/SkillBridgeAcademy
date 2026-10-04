@@ -3,6 +3,7 @@ import dataAiModule02Lessons from "./module02/index.js";
 import dataAiModule03Lessons from "./module03/index.js";
 import dataAiModule04Lessons from "./module04/index.js";
 import dataAiModule05Lessons from "./module05/index.js";
+import dataAiModule06Lessons from "./module06/index.js";
 
 const dataAiLessons = [
   ...dataAiModule01Lessons,
@@ -10,6 +11,7 @@ const dataAiLessons = [
   ...dataAiModule03Lessons,
   ...dataAiModule04Lessons,
   ...dataAiModule05Lessons,
+  ...dataAiModule06Lessons,
 ];
 
 export function getDataAiLessonsByModule(moduleNumber) {

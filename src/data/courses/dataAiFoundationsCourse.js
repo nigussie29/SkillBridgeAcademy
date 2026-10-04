@@ -294,7 +294,11 @@ export const dataAiFoundationsCourse = {
         "Build accessible decision intelligence with strong visual encoding, star-schema semantic models, DAX, and governed Power BI reports.",
       skills: ["Visualization", "Power BI", "DAX", "Semantic models", "RLS"],
       lessons: [
-        "Choosing charts by analytical purpose",
+        {
+          title: "Choosing charts by analytical purpose",
+          slug: "choosing-charts-by-analytical-purpose",
+          status: "available",
+        },
         "Visual hierarchy, accessibility, and honest communication",
         "Power BI star-schema semantic modeling",
         "Measures, filter context, row context, and CALCULATE",

@@ -671,7 +671,12 @@ print("All capstone quality, integration, analysis, artifact, and reproducibilit
     slug: "exploratory-analysis-visualization-and-reproducibility",
     title: "Exploratory Analysis, Visualization, and Reproducibility",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m06-l01",
+    moduleNumber: 6,
+    slug: "choosing-charts-by-analytical-purpose",
+    title: "Choosing Charts by Analytical Purpose",
+  },
 
   lumineryGuidance: {
     message:
