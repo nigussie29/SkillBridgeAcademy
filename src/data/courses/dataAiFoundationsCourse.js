@@ -304,7 +304,11 @@ export const dataAiFoundationsCourse = {
           slug: "visual-hierarchy-accessibility-and-honest-communication",
           status: "available",
         },
-        "Power BI star-schema semantic modeling",
+        {
+          title: "Power BI Star-Schema Semantic Modeling",
+          slug: "power-bi-star-schema-semantic-modeling",
+          status: "available",
+        },
         "Measures, filter context, row context, and CALCULATE",
         "Time intelligence and performance measures",
         "Drillthrough, tooltips, security, and report validation",

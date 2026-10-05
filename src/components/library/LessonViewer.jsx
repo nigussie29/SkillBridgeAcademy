@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import VennDiagram from "./VennDiagram";
 import RepresentationTableGraph from "./RepresentationTableGraph.jsx";
+import StarSchemaDiagram from "./StarSchemaDiagram.jsx";
 import {
   isLessonCompleted as isLinearAlgebraLessonCompleted,
   toggleLessonCompletion as toggleLinearAlgebraLessonCompletion,
@@ -82,6 +83,7 @@ function handleToggleComplete() {
 
 visualModels = [],
 representationModel = null,
+starSchemaDiagram = null,
 
 
 learningObjectives = [],
@@ -289,6 +291,10 @@ learningObjectives = [],
   <RepresentationTableGraph
     model={representationModel}
   />
+)}
+
+{starSchemaDiagram && (
+  <StarSchemaDiagram model={starSchemaDiagram} />
 )}
 
           {/* Learning Objectives */}

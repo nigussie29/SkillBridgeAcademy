@@ -651,7 +651,12 @@ print("All hierarchy, contrast, non-color, tab-order, denominator, and artifact 
     slug: "choosing-charts-by-analytical-purpose",
     title: "Choosing Charts by Analytical Purpose",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m06-l03",
+    moduleNumber: 6,
+    slug: "power-bi-star-schema-semantic-modeling",
+    title: "Power BI Star-Schema Semantic Modeling",
+  },
 
   lumineryGuidance: {
     message:
