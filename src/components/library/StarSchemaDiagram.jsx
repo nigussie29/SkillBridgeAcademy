@@ -107,7 +107,7 @@ export default function StarSchemaDiagram({ model }) {
           <path d="M500 210 L500 315" fill="none" stroke="#2563eb" strokeWidth="4" markerEnd="url(#star-schema-arrow)" />
         </svg>
 
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(280px,1.05fr)_minmax(0,1fr)] lg:grid-rows-[auto_auto_auto] lg:items-center lg:gap-x-16 lg:gap-y-10">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(220px,1.05fr)_minmax(0,1fr)] lg:grid-rows-[auto_auto_auto] lg:items-center lg:gap-x-5 lg:gap-y-10">
           {dimensions[0] && <TableCard table={dimensions[0]} className="lg:col-start-1 lg:row-start-1" />}
           {dimensions[1] && <TableCard table={dimensions[1]} className="lg:col-start-3 lg:row-start-1" />}
           {dimensions[2] && <TableCard table={dimensions[2]} className="lg:col-start-2 lg:row-start-1" />}
