@@ -309,7 +309,11 @@ export const dataAiFoundationsCourse = {
           slug: "power-bi-star-schema-semantic-modeling",
           status: "available",
         },
-        "Measures, filter context, row context, and CALCULATE",
+        {
+          title: "Measures, Filter Context, Row Context, and CALCULATE",
+          slug: "measures-filter-context-row-context-and-calculate",
+          status: "available",
+        },
         "Time intelligence and performance measures",
         "Drillthrough, tooltips, security, and report validation",
         "Portfolio Project: Executive Power BI decision system",

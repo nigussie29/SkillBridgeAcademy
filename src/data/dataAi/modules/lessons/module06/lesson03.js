@@ -718,7 +718,12 @@ print("\\nArtifacts:", sorted(path.name for path in output_dir.iterdir()))`,
     slug: "visual-hierarchy-accessibility-and-honest-communication",
     title: "Visual Hierarchy, Accessibility, and Honest Communication",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m06-l04",
+    moduleNumber: 6,
+    slug: "measures-filter-context-row-context-and-calculate",
+    title: "Measures, Filter Context, Row Context, and CALCULATE",
+  },
 
   lumineryGuidance: {
     message:
