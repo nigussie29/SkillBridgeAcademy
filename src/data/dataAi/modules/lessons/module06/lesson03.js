@@ -540,9 +540,9 @@ with (output_dir / "semantic_model_manifest.json").open("w", encoding="utf-8") a
     json.dump(manifest, file, indent=2)
 
 print(pd.DataFrame(tests).to_string(index=False))
-print("\nGoverned KPIs:\n", kpis.round(2).to_string(index=False))
-print("\nPlant filter result:\n", plant_summary.round(2).to_string(index=False))
-print("\nArtifacts:", sorted(path.name for path in output_dir.iterdir()))`,
+print("\\nGoverned KPIs:\\n", kpis.round(2).to_string(index=False))
+print("\\nPlant filter result:\\n", plant_summary.round(2).to_string(index=False))
+print("\\nArtifacts:", sorted(path.name for path in output_dir.iterdir()))`,
     questions: [
       "Why does merge(validate='many_to_one') protect the dimension-to-fact contract?",
       "Which assertions would fail if DimAsset contained a duplicate AssetKey?",
