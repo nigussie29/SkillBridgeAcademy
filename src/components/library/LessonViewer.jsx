@@ -2039,6 +2039,88 @@ function VisualModel({ visual }) {
     );
   }
 
+  if (visual.type === "barChart") {
+    const items = Array.isArray(visual.items)
+      ? visual.items.filter((item) => Number.isFinite(Number(item.value)))
+      : [];
+
+    if (!items.length) return null;
+
+    const maximum = Math.max(
+      Number(visual.max) || 0,
+      ...items.map((item) => Number(item.value)),
+      1
+    );
+
+    const barColors = [
+      "bg-blue-600",
+      "bg-teal-600",
+      "bg-violet-600",
+      "bg-amber-500",
+      "bg-rose-600",
+    ];
+
+    return (
+      <figure className="rounded-3xl border border-sky-200 bg-gradient-to-br from-white via-sky-50 to-cyan-50 p-6 shadow-sm">
+        {visual.title && (
+          <h3 className="text-2xl font-black text-slate-950">
+            {visual.title}
+          </h3>
+        )}
+
+        {visual.description && (
+          <p className="mt-2 max-w-4xl leading-7 text-slate-700">
+            {visual.description}
+          </p>
+        )}
+
+        <div
+          className="mt-7 space-y-4 rounded-2xl border border-slate-200 bg-white p-5"
+          role="img"
+          aria-label={visual.ariaLabel || visual.title || "Bar graph"}
+        >
+          {items.map((item, index) => {
+            const value = Number(item.value);
+            const width = Math.max(0, Math.min(100, (value / maximum) * 100));
+
+            return (
+              <div key={`${item.label}-${index}`}>
+                <div className="mb-2 flex items-end justify-between gap-4">
+                  <span className="font-extrabold text-slate-800">
+                    {item.label}
+                  </span>
+                  <span className="font-mono text-lg font-black text-slate-950">
+                    {value}{visual.unit ? ` ${visual.unit}` : ""}
+                  </span>
+                </div>
+                <div className="h-7 overflow-hidden rounded-full bg-slate-100">
+                  <div
+                    className={`h-full rounded-full ${item.color || barColors[index % barColors.length]}`}
+                    style={{ width: `${width}%` }}
+                  />
+                </div>
+                {item.note && (
+                  <p className="mt-1 text-sm leading-6 text-slate-600">
+                    {item.note}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {visual.interpretation && (
+          <figcaption className="mt-5 rounded-2xl bg-slate-950 p-5 leading-7 text-slate-100">
+            <span className="font-black text-sky-300">
+              Interpretation: {" "}
+            </span>
+            {visual.interpretation}
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
+
   if (visual.type === "numberLine") {
     const {
       title,

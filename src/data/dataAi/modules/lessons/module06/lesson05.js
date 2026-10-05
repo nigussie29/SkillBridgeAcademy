@@ -666,7 +666,12 @@ print("All time-intelligence, boundary, target, and reliability tests passed.")`
     slug: "measures-filter-context-row-context-and-calculate",
     title: "Measures, Filter Context, Row Context, and CALCULATE",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m06-l06",
+    moduleNumber: 6,
+    slug: "drillthrough-tooltips-security-and-report-validation",
+    title: "Drillthrough, Tooltips, Security, and Report Validation",
+  },
 
   lumineryGuidance: {
     message:

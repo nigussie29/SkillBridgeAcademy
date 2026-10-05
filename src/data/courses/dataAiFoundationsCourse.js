@@ -319,7 +319,11 @@ export const dataAiFoundationsCourse = {
           slug: "time-intelligence-and-performance-measures",
           status: "available",
         },
-        "Drillthrough, tooltips, security, and report validation",
+        {
+          title: "Drillthrough, Tooltips, Security, and Report Validation",
+          slug: "drillthrough-tooltips-security-and-report-validation",
+          status: "available",
+        },
         "Portfolio Project: Executive Power BI decision system",
       ],
       project: "Three-page Power BI executive report",
