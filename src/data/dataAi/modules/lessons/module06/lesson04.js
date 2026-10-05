@@ -676,7 +676,12 @@ print("All context, replacement, intersection, denominator, and iterator tests p
     slug: "power-bi-star-schema-semantic-modeling",
     title: "Power BI Star-Schema Semantic Modeling",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m06-l05",
+    moduleNumber: 6,
+    slug: "time-intelligence-and-performance-measures",
+    title: "Time Intelligence and Performance Measures",
+  },
 
   lumineryGuidance: {
     message:

@@ -314,7 +314,11 @@ export const dataAiFoundationsCourse = {
           slug: "measures-filter-context-row-context-and-calculate",
           status: "available",
         },
-        "Time intelligence and performance measures",
+        {
+          title: "Time Intelligence and Performance Measures",
+          slug: "time-intelligence-and-performance-measures",
+          status: "available",
+        },
         "Drillthrough, tooltips, security, and report validation",
         "Portfolio Project: Executive Power BI decision system",
       ],
