@@ -341,7 +341,11 @@ export const dataAiFoundationsCourse = {
         "Design governed ingestion, transformation, Lakehouse, and serving workflows using Microsoft Fabric and medallion architecture.",
       skills: ["ETL/ELT", "Fabric", "Lakehouse", "Spark", "Data quality"],
       lessons: [
-        "ETL, ELT, batch, streaming, and orchestration",
+        {
+          title: "ETL, ELT, Batch, Streaming, and Orchestration",
+          slug: "etl-elt-batch-streaming-and-orchestration",
+          status: "available",
+        },
         "Data lakes, warehouses, Lakehouses, and OneLake",
         "Bronze, Silver, and Gold medallion architecture",
         "Fabric pipelines, Dataflows Gen2, notebooks, and Spark",

@@ -850,7 +850,12 @@ print("All model, KPI, time, security, release, and manifest tests passed.")`,
     slug: "drillthrough-tooltips-security-and-report-validation",
     title: "Drillthrough, Tooltips, Security, and Report Validation",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m07-l01",
+    moduleNumber: 7,
+    slug: "etl-elt-batch-streaming-and-orchestration",
+    title: "ETL, ELT, Batch, Streaming, and Orchestration",
+  },
 
   lumineryGuidance: {
     message:
