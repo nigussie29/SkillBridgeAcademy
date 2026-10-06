@@ -722,7 +722,12 @@ print("All RLS, drillthrough, tooltip, defect, and performance tests passed.")`,
     slug: "time-intelligence-and-performance-measures",
     title: "Time Intelligence and Performance Measures",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m06-l07",
+    moduleNumber: 6,
+    slug: "portfolio-project-executive-power-bi-decision-system",
+    title: "Portfolio Project: Executive Power BI Decision System",
+  },
 
   lumineryGuidance: {
     message:

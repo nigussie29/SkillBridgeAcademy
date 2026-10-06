@@ -324,7 +324,11 @@ export const dataAiFoundationsCourse = {
           slug: "drillthrough-tooltips-security-and-report-validation",
           status: "available",
         },
-        "Portfolio Project: Executive Power BI decision system",
+        {
+          title: "Portfolio Project: Executive Power BI Decision System",
+          slug: "portfolio-project-executive-power-bi-decision-system",
+          status: "available",
+        },
       ],
       project: "Three-page Power BI executive report",
     },
