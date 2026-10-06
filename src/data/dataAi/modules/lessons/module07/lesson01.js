@@ -732,7 +732,12 @@ print("Artifacts:", sorted(path.name for path in output_dir.iterdir()))`,
     slug: "portfolio-project-executive-power-bi-decision-system",
     title: "Portfolio Project: Executive Power BI Decision System",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m07-l02",
+    moduleNumber: 7,
+    slug: "data-lakes-warehouses-lakehouses-and-onelake",
+    title: "Data Lakes, Warehouses, Lakehouses, and OneLake",
+  },
 
   lumineryGuidance: {
     message:

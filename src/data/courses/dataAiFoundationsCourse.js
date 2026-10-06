@@ -346,7 +346,11 @@ export const dataAiFoundationsCourse = {
           slug: "etl-elt-batch-streaming-and-orchestration",
           status: "available",
         },
-        "Data lakes, warehouses, Lakehouses, and OneLake",
+        {
+          title: "Data Lakes, Warehouses, Lakehouses, and OneLake",
+          slug: "data-lakes-warehouses-lakehouses-and-onelake",
+          status: "available",
+        },
         "Bronze, Silver, and Gold medallion architecture",
         "Fabric pipelines, Dataflows Gen2, notebooks, and Spark",
         "Delta tables, partitioning, idempotence, and reruns",
