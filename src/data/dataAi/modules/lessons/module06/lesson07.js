@@ -690,14 +690,14 @@ print("All model, KPI, time, security, release, and manifest tests passed.")`,
   ],
 
   independentPractice: [
-    "Write the complete executive brief, scope, stakeholder matrix, decisions, risks, and acceptance criteria.",
-    "Create the star-schema and deployment architecture diagrams with grain, relationships, environments, security, and ownership.",
-    "Build a measure catalog containing at least fifteen base, derived, time, target, reliability, and interaction measures.",
-    "Create wireframes and final specifications for all three pages, including titles, filters, interactions, accessibility, mobile behavior, and empty states.",
-    "Build exact-known-result tests for plant totals, December KPIs, YTD, rolling periods, targets, availability, subtotals, and no-data cases.",
-    "Create a five-identity RLS matrix with exact allowed and denied keys, copied-link tests, exports, and overlapping-role analysis.",
-    "Create a release test plan, defect register, performance record, UAT script, smoke tests, monitoring plan, and rollback decision tree.",
-    "Write the README, data and privacy statement, executive summary, limitations, portfolio case study, and ninety-second interview narrative.",
+    { id: "ip-06-07-01", difficulty: "Build", question: "Write the complete executive brief, scope, stakeholder matrix, decisions, risks, and acceptance criteria." },
+    { id: "ip-06-07-02", difficulty: "Build", question: "Create the star-schema and deployment architecture diagrams with grain, relationships, environments, security, and ownership." },
+    { id: "ip-06-07-03", difficulty: "Build", question: "Build a measure catalog containing at least fifteen base, derived, time, target, reliability, and interaction measures." },
+    { id: "ip-06-07-04", difficulty: "Design", question: "Create wireframes and final specifications for all three pages, including titles, filters, interactions, accessibility, mobile behavior, and empty states." },
+    { id: "ip-06-07-05", difficulty: "Validate", question: "Build exact-known-result tests for plant totals, December KPIs, YTD, rolling periods, targets, availability, subtotals, and no-data cases." },
+    { id: "ip-06-07-06", difficulty: "Secure", question: "Create a five-identity RLS matrix with exact allowed and denied keys, copied-link tests, exports, and overlapping-role analysis." },
+    { id: "ip-06-07-07", difficulty: "Release", question: "Create a release test plan, defect register, performance record, UAT script, smoke tests, monitoring plan, and rollback decision tree." },
+    { id: "ip-06-07-08", difficulty: "Present", question: "Write the README, data and privacy statement, executive summary, limitations, portfolio case study, and ninety-second interview narrative." },
   ],
 
   commonMistakes: [
@@ -730,7 +730,9 @@ print("All model, KPI, time, security, release, and manifest tests passed.")`,
     title: "Capstone Evaluation — 100 Points",
     instructions:
       "Score each category from the submitted evidence. Each category is worth 10 points. Any unresolved critical defect in data integrity, security, privacy, accessibility for required users, or reproducibility blocks portfolio completion regardless of total points.",
-    items: [
+    totalPoints: 100,
+    passingScore: 80,
+    questions: [
       { id: "check-06-07-01", type: "project", points: 10, prompt: "Decision brief and acceptance criteria", sampleAnswer: "Full credit requires named stakeholders, decision, questions, users, actions, scope, risks, deliverables, and observable acceptance criteria." },
       { id: "check-06-07-02", type: "model", points: 10, prompt: "Data preparation and semantic model", sampleAnswer: "Full credit requires grain, keys, exceptions, reconciliation, star schema, relationship tests, date roles, target grain, metadata, and lineage." },
       { id: "check-06-07-03", type: "dax", points: 10, prompt: "Governed measure system", sampleAnswer: "Full credit requires reusable base and derived measures, time intelligence, targets, reliability, variables, formats, blanks, denominators, and known-result tests." },
@@ -746,16 +748,20 @@ print("All model, KPI, time, security, release, and manifest tests passed.")`,
 
   researchExtension: {
     title: "Research Extension — Compare Executive Decision-System Designs",
-    prompt:
+    description:
+      "Compare two defensible architectures for the same executive decision while keeping the stakeholder, metric contracts, and acceptance criteria constant.",
+    researchQuestion:
       "Evaluate two alternative designs for the same executive maintenance decision and determine which better supports accurate, accessible, secure, and timely action.",
-    choices: [
+    applicationOptions: [
       "One dense dashboard versus a three-page decision path",
       "Calendar-month reporting versus operational 4-4-5 reporting",
       "Static RLS groups versus dynamic identity-to-plant mapping",
       "Import semantic model versus DirectQuery or Direct Lake architecture",
       "Direct production publication versus controlled Development–Test–Production lifecycle",
     ],
-    requirements: [
+    task:
+      "Select one design pair, define the comparison criteria before testing, collect evidence for representative user scenarios and edge cases, and recommend the stronger option with explicit reversal conditions.",
+    requiredEvidence: [
       "Hold the stakeholder decision and metric contracts constant",
       "Define evaluation criteria before comparing designs",
       "Include correctness, usability, accessibility, security, performance, maintainability, and deployment risk",
@@ -768,7 +774,7 @@ print("All model, KPI, time, security, release, and manifest tests passed.")`,
 
   portfolioArtifact: {
     title: "Final Portfolio Submission — Executive Power BI Decision System",
-    purpose:
+    description:
       "Submit one coherent evidence product demonstrating that you can design, build, validate, secure, release, explain, and defend a professional Power BI solution.",
     requiredSections: [
       "Executive brief, stakeholder matrix, scope, risks, and acceptance criteria",
