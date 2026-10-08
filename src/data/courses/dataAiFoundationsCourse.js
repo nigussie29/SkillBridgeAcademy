@@ -356,7 +356,11 @@ export const dataAiFoundationsCourse = {
           slug: "bronze-silver-and-gold-medallion-architecture",
           status: "available",
         },
-        "Fabric pipelines, Dataflows Gen2, notebooks, and Spark",
+        {
+          title: "Fabric Pipelines, Dataflows Gen2, Notebooks, and Spark",
+          slug: "fabric-pipelines-dataflows-gen2-notebooks-and-spark",
+          status: "available",
+        },
         "Delta tables, partitioning, idempotence, and reruns",
         "Quality contracts, lineage, monitoring, and cost",
         "Portfolio Project: End-to-end Fabric Lakehouse pipeline",

@@ -695,7 +695,12 @@ print("Artifacts:", sorted(path.name for path in output_dir.iterdir()))`,
     slug: "data-lakes-warehouses-lakehouses-and-onelake",
     title: "Data Lakes, Warehouses, Lakehouses, and OneLake",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m07-l04",
+    moduleNumber: 7,
+    slug: "fabric-pipelines-dataflows-gen2-notebooks-and-spark",
+    title: "Fabric Pipelines, Dataflows Gen2, Notebooks, and Spark",
+  },
 
   lumineryGuidance: {
     message:
