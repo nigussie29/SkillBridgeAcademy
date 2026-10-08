@@ -665,7 +665,12 @@ print("Artifacts:", sorted(path.name for path in output_dir.iterdir()))`,
     slug: "etl-elt-batch-streaming-and-orchestration",
     title: "ETL, ELT, Batch, Streaming, and Orchestration",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m07-l03",
+    moduleNumber: 7,
+    slug: "bronze-silver-and-gold-medallion-architecture",
+    title: "Bronze, Silver, and Gold Medallion Architecture",
+  },
 
   lumineryGuidance: {
     message:

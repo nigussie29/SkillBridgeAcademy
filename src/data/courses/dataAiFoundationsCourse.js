@@ -351,7 +351,11 @@ export const dataAiFoundationsCourse = {
           slug: "data-lakes-warehouses-lakehouses-and-onelake",
           status: "available",
         },
-        "Bronze, Silver, and Gold medallion architecture",
+        {
+          title: "Bronze, Silver, and Gold Medallion Architecture",
+          slug: "bronze-silver-and-gold-medallion-architecture",
+          status: "available",
+        },
         "Fabric pipelines, Dataflows Gen2, notebooks, and Spark",
         "Delta tables, partitioning, idempotence, and reruns",
         "Quality contracts, lineage, monitoring, and cost",
