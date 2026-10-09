@@ -361,7 +361,11 @@ export const dataAiFoundationsCourse = {
           slug: "fabric-pipelines-dataflows-gen2-notebooks-and-spark",
           status: "available",
         },
-        "Delta tables, partitioning, idempotence, and reruns",
+        {
+          title: "Delta Tables, Partitioning, Idempotence, and Reruns",
+          slug: "delta-tables-partitioning-idempotence-and-reruns",
+          status: "available",
+        },
         "Quality contracts, lineage, monitoring, and cost",
         "Portfolio Project: End-to-end Fabric Lakehouse pipeline",
       ],

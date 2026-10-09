@@ -626,7 +626,12 @@ print("Artifacts:", sorted(path.name for path in output_dir.iterdir()))`,
     slug: "bronze-silver-and-gold-medallion-architecture",
     title: "Bronze, Silver, and Gold Medallion Architecture",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m07-l05",
+    moduleNumber: 7,
+    slug: "delta-tables-partitioning-idempotence-and-reruns",
+    title: "Delta Tables, Partitioning, Idempotence, and Reruns",
+  },
 
   lumineryGuidance: {
     message:
