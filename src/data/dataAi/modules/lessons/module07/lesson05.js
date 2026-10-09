@@ -657,7 +657,12 @@ print("Artifacts:", sorted(path.name for path in output_dir.iterdir()))`,
     slug: "fabric-pipelines-dataflows-gen2-notebooks-and-spark",
     title: "Fabric Pipelines, Dataflows Gen2, Notebooks, and Spark",
   },
-  nextLesson: null,
+  nextLesson: {
+    id: "data-ai-m07-l06",
+    moduleNumber: 7,
+    slug: "quality-contracts-lineage-monitoring-and-cost",
+    title: "Quality Contracts, Lineage, Monitoring, and Cost",
+  },
 
   lumineryGuidance: {
     message:
