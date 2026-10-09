@@ -16,6 +16,7 @@ export default function LessonViewer({
   lesson,
   onPrevious,
   onNext,
+  onCourseCompletion,
   onBackToModule,
   progressCourseId = null,
 }) {
@@ -1056,6 +1057,7 @@ learningObjectives = [],
             nextLesson={nextLesson}
             onPrevious={onPrevious}
             onNext={onNext}
+            onCourseCompletion={onCourseCompletion}
           />
         </div>
 
@@ -1771,6 +1773,7 @@ function LessonNavigation({
   nextLesson,
   onPrevious,
   onNext,
+  onCourseCompletion,
 }) {
   return (
     <nav className="grid gap-4 md:grid-cols-2">
@@ -1792,17 +1795,21 @@ function LessonNavigation({
 
       <button
         type="button"
-        onClick={onNext}
-        disabled={!nextLesson}
+        onClick={nextLesson ? onNext : onCourseCompletion}
+        disabled={!nextLesson && !onCourseCompletion}
         className="rounded-2xl border border-slate-200 bg-white p-5 text-left transition hover:border-blue-300 hover:shadow-sm disabled:cursor-not-allowed disabled:opacity-40"
       >
         <p className="text-sm font-bold uppercase tracking-wide text-slate-500">
-          Next Lesson →
+          {nextLesson || !onCourseCompletion
+            ? "Next Lesson →"
+            : "Course Completion →"}
         </p>
 
         <p className="mt-2 font-extrabold text-slate-900">
           {nextLesson?.title ||
-            "No next lesson"}
+            (onCourseCompletion
+              ? "Review progress and certificate eligibility"
+              : "No next lesson")}
         </p>
       </button>
     </nav>

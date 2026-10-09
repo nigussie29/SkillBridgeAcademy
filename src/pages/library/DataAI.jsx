@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   Sparkles,
   Target,
+  Award,
   Workflow,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -331,6 +332,28 @@ export default function DataAI() {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="mt-6 flex flex-col gap-5 rounded-3xl bg-gradient-to-r from-indigo-950 to-blue-950 p-7 text-white md:flex-row md:items-center md:justify-between">
+          <div className="flex items-start gap-4">
+            <div className="rounded-2xl bg-amber-400 p-3 text-slate-950">
+              <Award size={27} />
+            </div>
+            <div>
+              <h3 className="text-xl font-black">Completion and certificate center</h3>
+              <p className="mt-2 max-w-3xl leading-7 text-blue-100">
+                Track all 70 lessons, verify ten portfolio projects, record the
+                final assessment, and review certificate eligibility.
+              </p>
+            </div>
+          </div>
+          <Link
+            to="/library/data-ai/completion"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-amber-400 px-5 py-3 font-black text-slate-950 transition hover:bg-amber-300"
+          >
+            Open completion center
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
     </main>

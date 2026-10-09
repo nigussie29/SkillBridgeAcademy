@@ -49,6 +49,10 @@ export default function DataAILesson() {
     );
   }
 
+  function handleCourseCompletion() {
+    navigate(`${coursePath}/completion`);
+  }
+
   if (!lesson) {
     return (
       <main className="min-h-screen bg-slate-50 px-5 py-12">
@@ -91,6 +95,7 @@ export default function DataAILesson() {
         progressCourseId="data-ai-foundations"
         onPrevious={handlePrevious}
         onNext={handleNext}
+        onCourseCompletion={handleCourseCompletion}
         onBackToModule={handleBackToModule}
       />
     </>
