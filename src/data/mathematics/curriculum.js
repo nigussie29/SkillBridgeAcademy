@@ -48,7 +48,7 @@ function createLesson(course, module, title, lessonIndex) {
       "Represent the mathematics in at least two ways.",
       "Complete a worked calculation with justified steps.",
       "Check a result using substitution, estimation, a graph, data, or technology.",
-      `Apply the lesson to the ${module.project} portfolio project.`,
+      `Apply the lesson to the ${module.project} project.`,
     ],
     vocabulary,
     formulas: [formula, ...module.formulas.filter((item) => item !== formula)].slice(0, 6),
