@@ -9,6 +9,13 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 
 import Mathematics from "./pages/library/Mathematics";
+import CollegeMath from "./pages/library/CollegeMath.jsx";
+import AIMathematics from "./pages/library/AIMathematics.jsx";
+import MathematicsPathway from "./pages/library/mathematics/MathematicsPathway.jsx";
+import MathematicsCourse from "./pages/library/mathematics/MathematicsCourse.jsx";
+import MathematicsModule from "./pages/library/mathematics/MathematicsModule.jsx";
+import MathematicsLesson from "./pages/library/mathematics/MathematicsLesson.jsx";
+import MathematicsCompletion from "./pages/library/mathematics/MathematicsCompletion.jsx";
 import Schools from "./pages/schools/Schools.jsx";
 import MathematicsSchool from "./pages/schools/Mathematics";
 import AlgebraTwo from "./pages/library/highschool/AlgebraTwo.jsx";
@@ -147,6 +154,10 @@ path="/schools/mathematics"
   path="/library/college/linear-algebra/module/:moduleNumber"
   element={<LinearAlgebraModule />}
 />
+<Route
+  path="/library/college/linear-algebra/completion"
+  element={<MathematicsCompletion fixedCourseSlug="linear-algebra" />}
+/>
  <Route
   path="/library/python"
   element={<PythonSchool />}
@@ -275,6 +286,34 @@ element={<LibraryHome />}
   path="/library/mathematics"
   element={<Mathematics />}
 />
+<Route
+  path="/library/mathematics/pathway/:pathwaySlug"
+  element={<MathematicsPathway />}
+/>
+<Route
+  path="/library/mathematics/college"
+  element={<CollegeMath />}
+/>
+<Route
+  path="/library/mathematics/ai"
+  element={<AIMathematics />}
+/>
+<Route
+  path="/library/mathematics/course/:courseSlug"
+  element={<MathematicsCourse />}
+/>
+<Route
+  path="/library/mathematics/course/:courseSlug/module/:moduleNumber"
+  element={<MathematicsModule />}
+/>
+<Route
+  path="/library/mathematics/course/:courseSlug/module/:moduleNumber/lesson/:lessonSlug"
+  element={<MathematicsLesson />}
+/>
+<Route
+  path="/library/mathematics/course/:courseSlug/completion"
+  element={<MathematicsCompletion />}
+/>
   
 <Route
   path="/test/linear-algebra-lessons"
@@ -293,8 +332,16 @@ element={<LibraryHome />}
   element={<AlgebraOne />}
 />
 <Route
+  path="/library/high-school/algebra-1/completion"
+  element={<MathematicsCompletion fixedCourseSlug="algebra-1" />}
+/>
+<Route
   path="/library/high-school/algebra-2"
   element={<AlgebraTwo />}
+/>
+<Route
+  path="/library/high-school/algebra-2/completion"
+  element={<MathematicsCompletion fixedCourseSlug="algebra-2" />}
 />
 <Route
   path="/library/high-school/algebra-2/module/:moduleNumber"
@@ -331,6 +378,10 @@ element={<LibraryHome />}
   path="/library/mathematics/probability-foundations"
   element={<ProbabilityFoundations />}
   
+/>
+<Route
+  path="/library/mathematics/probability-foundations/completion"
+  element={<MathematicsCompletion fixedCourseSlug="probability-statistics" />}
 />
 <Route
   path="/library/mathematics/probability-foundations/module/:moduleNumber"
