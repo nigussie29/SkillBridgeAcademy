@@ -1,6 +1,5 @@
-import CourseTemplate from "../../../components/course/CourseTemplate";
-import { pythonFoundationsCourse } from "../../../data/courses/pythonFoundationsCourse";
+import ComputerScienceCourse from "../computerScience/ComputerScienceCourse";
 
 export default function PythonFoundations() {
-  return <CourseTemplate course={pythonFoundationsCourse} />;
+  return <ComputerScienceCourse fixedCourseSlug="python-foundations" />;
 }

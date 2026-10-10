@@ -60,6 +60,10 @@ import Algebra1CoursePage from "./pages/Algebra1CoursePage.jsx";
 import AlgebraOneModule from "./pages/library/highschool/AlgebraOneModule.jsx";
 import AlgebraOneLesson from "./pages/library/highschool/AlgebraOneLesson.jsx";
 import ComputerScience from "./pages/library/ComputerScience.jsx";
+import ComputerScienceCourse from "./pages/library/computerScience/ComputerScienceCourse.jsx";
+import ComputerScienceModule from "./pages/library/computerScience/ComputerScienceModule.jsx";
+import ComputerScienceLesson from "./pages/library/computerScience/ComputerScienceLesson.jsx";
+import ComputerScienceCompletion from "./pages/library/computerScience/ComputerScienceCompletion.jsx";
 import DataAI from "./pages/library/DataAI.jsx";
 import DataAILesson from "./pages/library/dataAi/DataAILesson.jsx";
 import DataAICompletion from "./pages/library/dataAi/DataAICompletion.jsx";
@@ -109,6 +113,22 @@ path="/schools/mathematics"
   path="/library/computer-science"
   element={<ComputerScience />}
 />
+<Route
+  path="/library/computer-science/:courseSlug"
+  element={<ComputerScienceCourse />}
+/>
+<Route
+  path="/library/computer-science/:courseSlug/module/:moduleNumber"
+  element={<ComputerScienceModule />}
+/>
+<Route
+  path="/library/computer-science/:courseSlug/module/:moduleNumber/lesson/:lessonSlug"
+  element={<ComputerScienceLesson />}
+/>
+<Route
+  path="/library/computer-science/:courseSlug/completion"
+  element={<ComputerScienceCompletion />}
+/>
 
 <Route
   path="/library/data-ai"
@@ -142,6 +162,10 @@ path="/schools/mathematics"
 <Route
   path="/library/python/python-foundations/module/:moduleNumber/lesson/:lessonSlug"
   element={<PythonLesson />}
+/>
+<Route
+  path="/library/python/python-foundations/completion"
+  element={<ComputerScienceCompletion fixedCourseSlug="python-foundations" />}
 />
   <Route
   path="/dashboard"

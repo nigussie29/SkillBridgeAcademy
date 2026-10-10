@@ -1,190 +1,53 @@
 import { Link } from "react-router-dom";
-
-const computerScienceCourses = [
-  {
-    id: "python-foundations",
-    title: "Python Foundations",
-    description:
-      "Learn programming fundamentals, problem solving, variables, conditions, loops, functions, collections, debugging, and beginner projects.",
-    level: "Beginner",
-    duration: "8 weeks",
-    status: "available",
-    path: "/library/python/python-foundations",
-    accent:
-      "from-blue-700 via-indigo-700 to-slate-900",
-  },
-  {
-    id: "web-development-foundations",
-    title: "Web Development Foundations",
-    description:
-      "Learn HTML, CSS, JavaScript, responsive design, and modern web application development.",
-    level: "Beginner",
-    duration: "Planned",
-    status: "planned",
-    path: null,
-    accent:
-      "from-emerald-800 via-teal-800 to-slate-900",
-  },
-  {
-    id: "database-foundations",
-    title: "Database Foundations",
-    description:
-      "Learn relational databases, data modeling, SQL, PostgreSQL, and practical database development.",
-    level: "Beginner",
-    duration: "Planned",
-    status: "planned",
-    path: null,
-    accent:
-      "from-violet-800 via-purple-800 to-slate-900",
-  },
-];
+import { computerScienceCourses } from "../../data/computerScience/courses";
 
 export default function ComputerScience() {
+  const totalModules = computerScienceCourses.reduce((sum, course) => sum + course.moduleCount, 0);
+  const totalLessons = computerScienceCourses.reduce((sum, course) => sum + course.lessonCount, 0);
+
   return (
-    <main className="min-h-screen bg-slate-50 pb-20">
-      {/* School hero */}
+    <main className="min-h-screen bg-slate-50 pb-20 text-[17px] text-slate-700">
       <section className="bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white">
-        <div className="mx-auto max-w-7xl px-6 py-14 md:py-18">
-          <Link
-            to="/library"
-            className="text-sm font-bold text-blue-200 transition hover:text-white"
-          >
-            ← Back to Knowledge Library
-          </Link>
-
-          <p className="mt-8 text-sm font-bold uppercase tracking-[0.24em] text-blue-300">
-            SkillBridge Academy
-          </p>
-
-          <h1 className="mt-3 max-w-4xl text-4xl font-black leading-tight md:text-6xl">
-            School of Computer Science
-          </h1>
-
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-200">
-            Learn programming, software development, web technologies,
-            databases, algorithms, and problem solving through structured
-            courses and practical projects.
-          </p>
+        <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+          <Link to="/library" className="font-bold text-blue-200 hover:text-white">← Knowledge Library</Link>
+          <p className="mt-8 text-sm font-black uppercase tracking-[0.24em] text-cyan-300">KingNigus Academy</p>
+          <h1 className="mt-3 max-w-5xl text-4xl font-black leading-tight md:text-6xl">School of Computer Science</h1>
+          <p className="mt-5 max-w-4xl text-xl leading-9 text-slate-200">Build practical software skills through complete pathways in Python, modern web development, and relational databases. Every course includes guided labs, assessments, projects, and a capstone.</p>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm font-black">
+            <Pill>3 available courses</Pill><Pill>{totalModules} modules</Pill><Pill>{totalLessons} lessons</Pill><Pill>24 portfolio projects</Pill>
+          </div>
         </div>
       </section>
 
-      {/* Course catalog */}
       <section className="mx-auto max-w-7xl px-6 py-12">
         <div className="flex flex-wrap items-end justify-between gap-5">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-widest text-blue-600">
-              Course catalog
-            </p>
-
-            <h2 className="mt-2 text-3xl font-black text-slate-950">
-              Choose your course
-            </h2>
-
-            <p className="mt-3 max-w-3xl leading-7 text-slate-600">
-              Begin with Python Foundations and continue into web development,
-              databases, algorithms, and software engineering.
-            </p>
-          </div>
-
-          <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-bold text-blue-700">
-            1 available course
-          </span>
+          <div><p className="text-sm font-black uppercase tracking-widest text-blue-700">Complete course catalog</p><h2 className="mt-2 text-3xl font-black text-slate-950">Choose your pathway</h2><p className="mt-3 max-w-3xl leading-8">Begin with one specialization or combine all three to build a full-stack software portfolio.</p></div>
+          <span className="rounded-full bg-emerald-100 px-4 py-2 text-sm font-black text-emerald-800">All courses available</span>
         </div>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-7 lg:grid-cols-3">
           {computerScienceCourses.map((course) => (
-            <CourseCard
-              key={course.id}
-              course={course}
-            />
+            <Link key={course.id} to={course.basePath} className="group flex min-h-[500px] flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <div className={`bg-gradient-to-br ${course.accent} p-7 text-white`}>
+                <div className="flex items-center justify-between gap-3"><p className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Computer Science</p><span className="rounded-full bg-emerald-300/20 px-3 py-1 text-xs font-black text-emerald-100">AVAILABLE</span></div>
+                <h3 className="mt-6 text-3xl font-black leading-tight">{course.title}</h3>
+                <p className="mt-4 leading-8 text-white/80">{course.description}</p>
+              </div>
+              <div className="flex flex-1 flex-col p-7">
+                <div className="grid grid-cols-2 gap-3 text-sm font-bold"><Stat value="8" label="Modules" /><Stat value="64" label="Lessons" /><Stat value="8" label="Projects" /><Stat value={course.duration} label="Duration" /></div>
+                <div className="mt-6 rounded-2xl bg-slate-50 p-4"><p className="text-sm font-black uppercase tracking-widest text-slate-500">Final capstone</p><p className="mt-2 font-black text-slate-950">{course.capstone}</p></div>
+                <div className="mt-auto flex items-center justify-between pt-7 font-black text-blue-700"><span>Explore full course</span><span className="transition group-hover:translate-x-1">→</span></div>
+              </div>
+            </Link>
           ))}
         </div>
+
+        <section className="mt-10 rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200"><p className="text-sm font-black uppercase tracking-widest text-blue-700">Recommended sequence</p><h2 className="mt-2 text-3xl font-black text-slate-950">A practical full-stack route</h2><div className="mt-6 grid gap-4 md:grid-cols-3"><Step number="1" title="Python Foundations" text="Build programming logic, automation, testing, and a complete information system." /><Step number="2" title="Database Foundations" text="Design the reliable data layer and query it confidently with PostgreSQL." /><Step number="3" title="Web Development" text="Create the accessible user interface and connect it to real data and APIs." /></div></section>
       </section>
     </main>
   );
 }
 
-function CourseCard({ course }) {
-  const isAvailable = course.status === "available";
-
-  const content = (
-    <>
-      <div
-        className={`bg-gradient-to-br ${course.accent} p-7 text-white`}
-      >
-        <div className="flex items-start justify-between gap-4">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/70">
-            Computer Science
-          </p>
-
-          <span
-            className={`rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide ${
-              isAvailable
-                ? "bg-emerald-400/20 text-emerald-100"
-                : "bg-white/10 text-white/70"
-            }`}
-          >
-            {isAvailable ? "Available" : "Planned"}
-          </span>
-        </div>
-
-        <h3 className="mt-5 text-2xl font-black">
-          {course.title}
-        </h3>
-
-        <p className="mt-3 leading-7 text-white/80">
-          {course.description}
-        </p>
-      </div>
-
-      <div className="flex flex-1 flex-col p-7">
-        <div className="flex flex-wrap gap-2">
-          <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">
-            {course.level}
-          </span>
-
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-700">
-            {course.duration}
-          </span>
-        </div>
-
-        <div
-          className={`mt-auto flex items-center justify-between pt-8 font-bold ${
-            isAvailable
-              ? "text-blue-700"
-              : "text-slate-400"
-          }`}
-        >
-          <span>
-            {isAvailable
-              ? "Explore Course"
-              : "Coming Soon"}
-          </span>
-
-          {isAvailable && (
-            <span className="transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          )}
-        </div>
-      </div>
-    </>
-  );
-
-  if (isAvailable && course.path) {
-    return (
-      <Link
-        to={course.path}
-        className="group flex min-h-[390px] flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-      >
-        {content}
-      </Link>
-    );
-  }
-
-  return (
-    <article className="flex min-h-[390px] flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white opacity-80 shadow-sm">
-      {content}
-    </article>
-  );
-}
+function Pill({ children }) { return <span className="rounded-full bg-white/10 px-4 py-2 ring-1 ring-white/20">{children}</span>; }
+function Stat({ value, label }) { return <div className="rounded-2xl bg-blue-50 p-3"><p className="font-black text-blue-800">{value}</p><p className="text-xs uppercase tracking-wide text-slate-500">{label}</p></div>; }
+function Step({ number, title, text }) { return <div className="rounded-2xl bg-slate-50 p-5"><span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-700 font-black text-white">{number}</span><h3 className="mt-4 text-xl font-black text-slate-950">{title}</h3><p className="mt-2 leading-7">{text}</p></div>; }
