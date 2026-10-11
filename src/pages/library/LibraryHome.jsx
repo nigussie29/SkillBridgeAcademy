@@ -49,6 +49,22 @@ const libraries = [
     path: "/library/data-ai",
     available: true,
   },
+  {
+    title: "Robotics",
+    icon: "⚙️",
+    description:
+      "Build intelligent machines by combining electronics, sensors, Python, control systems, computer vision, and artificial intelligence.",
+    topics: [
+      "Electronics",
+      "Sensors & Motors",
+      "Raspberry Pi",
+      "Robot Programming",
+      "Computer Vision",
+      "AI Robotics",
+    ],
+    path: "/library/robotics",
+    available: true,
+  },
 ];
 export default function LibraryHome() {
   return (
@@ -65,8 +81,8 @@ export default function LibraryHome() {
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-blue-100">
-            Explore mathematics, computer science, data, and artificial
-            intelligence through structured learning pathways.
+            Explore mathematics, computer science, data, artificial
+            intelligence, and robotics through structured learning pathways.
           </p>
 
           <div className="mt-8 rounded-2xl bg-white/10 p-5 backdrop-blur">

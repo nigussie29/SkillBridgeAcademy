@@ -72,6 +72,7 @@ import ComputerScienceModule from "./pages/library/computerScience/ComputerScien
 import ComputerScienceLesson from "./pages/library/computerScience/ComputerScienceLesson.jsx";
 import ComputerScienceCompletion from "./pages/library/computerScience/ComputerScienceCompletion.jsx";
 import DataAI from "./pages/library/DataAI.jsx";
+import Robotics from "./pages/library/Robotics.jsx";
 import DataAILesson from "./pages/library/dataAi/DataAILesson.jsx";
 import DataAICompletion from "./pages/library/dataAi/DataAICompletion.jsx";
 import Pricing from "./pages/Pricing.jsx";
@@ -140,6 +141,10 @@ path="/schools/mathematics"
 <Route
   path="/library/data-ai"
   element={<DataAI />}
+/>
+<Route
+  path="/library/robotics"
+  element={<Robotics />}
 />
 <Route
   path="/library/data-ai/module/:moduleNumber/lesson/:lessonSlug"
