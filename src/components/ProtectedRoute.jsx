@@ -5,9 +5,9 @@ export default function ProtectedRoute({
   children,
   allowedRoles = [],
 }) {
-  const { user, profile, loading } = useAuth();
+  const { user, profile, loading, profileError, signOut } = useAuth();
 
-  if (loading || (user && !profile)) {
+  if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <h2 className="text-xl font-bold">
@@ -19,6 +19,14 @@ export default function ProtectedRoute({
 
   if (!user) {
     return <Navigate to="/login" replace />;
+  }
+
+  if (!profile || !["student", "instructor", "admin"].includes(profile.role)) {
+    return <section className="mx-auto max-w-xl p-10" role="alert">
+      <h1 className="text-2xl font-bold">Account access unavailable</h1>
+      <p className="mt-4">{profileError || "Your account role could not be verified. Please contact the academy."}</p>
+      <button className="mt-6 rounded-xl bg-blue-600 px-5 py-3 text-white" onClick={signOut}>Sign out and try again</button>
+    </section>;
   }
 
   if (

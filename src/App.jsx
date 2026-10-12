@@ -97,6 +97,7 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Auth />} />
+          <Route path="/auth" element={<Navigate to="/login" replace />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/lesson-engine" element={<LessonEnginePage />} />
           <Route
@@ -194,7 +195,7 @@ path="/schools/mathematics"
           <Route
             path="/admin"
             element={
-              <ProtectedRoute requireAdmin>
+              <ProtectedRoute allowedRoles={["admin"]}>
                 <Admin />
               </ProtectedRoute>
             }
@@ -235,35 +236,35 @@ path="/schools/mathematics"
 
 <Route
   path="/instructor/create-course"
-  element={<CreateCoursePage />}
+  element={<ProtectedRoute allowedRoles={["admin", "instructor"]}><CreateCoursePage /></ProtectedRoute>}
 />
 
 <Route
   path="/instructor/courses"
-  element={<CourseBuilderPage />}
+  element={<ProtectedRoute allowedRoles={["admin", "instructor"]}><CourseBuilderPage /></ProtectedRoute>}
 />
 
 <Route
   path="/instructor/modules"
-  element={<ModuleBuilderPage />}
+  element={<ProtectedRoute allowedRoles={["admin", "instructor"]}><ModuleBuilderPage /></ProtectedRoute>}
 />
 
 <Route
   path="/instructor/lessons"
-  element={<LessonBuilderPage />}
+  element={<ProtectedRoute allowedRoles={["admin", "instructor"]}><LessonBuilderPage /></ProtectedRoute>}
 />
 <Route
   path="/instructor/lesson-blueprint"
-  element={<LessonBlueprintPage />}
+  element={<ProtectedRoute allowedRoles={["admin", "instructor"]}><LessonBlueprintPage /></ProtectedRoute>}
 />
 <Route
   path="/instructor/assessments"
-  element={<AssessmentBuilderPage />}
+  element={<ProtectedRoute allowedRoles={["admin", "instructor"]}><AssessmentBuilderPage /></ProtectedRoute>}
 />
 
 <Route
   path="/instructor/research"
-  element={<ResearchBuilderPage />}
+  element={<ProtectedRoute allowedRoles={["admin", "instructor"]}><ResearchBuilderPage /></ProtectedRoute>}
 />
 <Route
   path="/library/college/linear-algebra"
@@ -272,12 +273,12 @@ path="/schools/mathematics"
 
 <Route
   path="/instructor/portfolio"
-  element={<PortfolioBuilderPage />}
+  element={<ProtectedRoute allowedRoles={["admin", "instructor"]}><PortfolioBuilderPage /></ProtectedRoute>}
 />
 
 <Route
   path="/instructor/publish"
-  element={<PublishCoursePage />}
+  element={<ProtectedRoute allowedRoles={["admin", "instructor"]}><PublishCoursePage /></ProtectedRoute>}
 />
 <Route
   path="/test-supabase"

@@ -36,7 +36,7 @@ export default function Auth() {
       .eq("id", userId)
       .single();
 
-    if (error) {
+    if (error || !profile || !["student", "instructor", "admin"].includes(profile.role)) {
       throw new Error(
         "Your account was authenticated, but your profile could not be loaded."
       );
@@ -81,7 +81,7 @@ export default function Auth() {
           data: {
             full_name: fullName.trim(),
           },
-          emailRedirectTo: `${window.location.origin}/auth`,
+          emailRedirectTo: `${window.location.origin}/login`,
         },
       });
 
@@ -142,6 +142,8 @@ export default function Auth() {
   </p>
 </div>
         
+
+        {message && <div role="status" className="mt-6 rounded-xl bg-green-50 p-4 text-green-800">{message}</div>}
 
         {errorMessage && (
           <div className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-700">
