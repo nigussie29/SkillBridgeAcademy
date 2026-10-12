@@ -170,7 +170,7 @@ export default function Robotics() {
                 <Stat label="Learning tracks" value="4" />
                 <Stat label="Portfolio projects" value="3" />
                 <Stat label="Core platform" value="Raspberry Pi" />
-                <Stat label="Course status" value="Foundations available" />
+                <Stat label="Course status" value="2 courses available" />
               </div>
 
               <p className="mt-6 border-t border-white/15 pt-5 text-sm leading-6 text-amber-50/80">
@@ -196,7 +196,7 @@ export default function Robotics() {
                 {title}
               </h2>
               <p className="mt-3 leading-7 text-slate-600">{description}</p>
-              {title === "Robotics Foundations" ? <Link to="/library/robotics/robotics-foundations" className="mt-5 inline-flex font-bold text-amber-800 underline">Start 8-lesson course →</Link> : <p className="mt-5 text-sm font-bold text-slate-500">In development</p>}
+              {title === "Robotics Foundations" ? <Link to="/library/robotics/robotics-foundations" className="mt-5 inline-flex font-bold text-amber-800 underline">Start 8-lesson course →</Link> : title === "Electronics and Sensors" ? <Link to="/library/robotics/electronics-and-sensors" className="mt-5 inline-flex font-bold text-amber-800 underline">Start 8-lesson sensor course →</Link> : <p className="mt-5 text-sm font-bold text-slate-500">In development</p>}
             </article>
           ))}
         </div>
@@ -302,7 +302,7 @@ export default function Robotics() {
               </h3>
               <p className="mt-3 leading-7 text-slate-600">{description}</p>
               <div className="mt-auto pt-7 text-sm font-bold text-amber-700">
-                Hardware project materials in development
+                {title === "Sensor Measurement Station" ? <Link to="/library/robotics/electronics-and-sensors/lesson/portfolio-sensor-measurement-station" className="underline">Open design and simulation project →</Link> : "Hardware project materials in development"}
               </div>
             </article>
           ))}
