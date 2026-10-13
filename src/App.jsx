@@ -75,6 +75,7 @@ import DataAI from "./pages/library/DataAI.jsx";
 import Robotics from "./pages/library/Robotics.jsx";
 import RoboticsFoundations from "./pages/library/RoboticsFoundations.jsx";
 import ElectronicsSensors from "./pages/library/ElectronicsSensors.jsx";
+import PythonRaspberryPi from "./pages/library/PythonRaspberryPi.jsx";
 import DataAILesson from "./pages/library/dataAi/DataAILesson.jsx";
 import DataAICompletion from "./pages/library/dataAi/DataAICompletion.jsx";
 import Pricing from "./pages/Pricing.jsx";
@@ -155,6 +156,9 @@ path="/schools/mathematics"
 <Route path="/library/robotics/electronics-and-sensors" element={<ElectronicsSensors />} />
 <Route path="/library/robotics/electronics-and-sensors/lesson/:lessonSlug" element={<ElectronicsSensors />} />
 <Route path="/library/robotics/electronics-and-sensors/:lessonSlug" element={<ElectronicsSensors />} />
+<Route path="/library/robotics/python-and-raspberry-pi" element={<PythonRaspberryPi />} />
+<Route path="/library/robotics/python-and-raspberry-pi/lesson/:lessonSlug" element={<PythonRaspberryPi />} />
+<Route path="/library/robotics/python-and-raspberry-pi/:lessonSlug" element={<PythonRaspberryPi />} />
 <Route
   path="/library/data-ai/module/:moduleNumber/lesson/:lessonSlug"
   element={<DataAILesson />}
