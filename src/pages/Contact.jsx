@@ -1,4 +1,5 @@
 import { Mail, MapPin, Clock, Send, MessageCircle } from "lucide-react";
+import TutoringInquiryLink from "../components/TutoringInquiryLink.jsx";
 
 export default function Contact() {
   return (
@@ -16,6 +17,7 @@ export default function Contact() {
           Have questions about courses, career paths, tutoring, partnerships, or
           technical support? Send a message and we’ll respond as soon as possible.
         </p>
+        <TutoringInquiryLink />
       </div>
 
       <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.4fr]">
