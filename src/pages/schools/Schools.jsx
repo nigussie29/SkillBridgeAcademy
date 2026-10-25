@@ -24,6 +24,7 @@ const schoolIcons = {
 
 const availableSchools = new Set([
   "mathematics",
+  "artificial-intelligence",
 ]);
 
 export default function Schools() {
@@ -145,7 +146,7 @@ export default function Schools() {
                         }`}
                       >
                         {isAvailable
-                          ? "Open"
+                          ? (school.id === "artificial-intelligence" ? "Explore Programs" : "Open")
                           : "Coming Soon"}
                       </span>
                     </div>
