@@ -17,6 +17,7 @@ import MathematicsModule from "./pages/library/mathematics/MathematicsModule.jsx
 import MathematicsLesson from "./pages/library/mathematics/MathematicsLesson.jsx";
 import MathematicsCompletion from "./pages/library/mathematics/MathematicsCompletion.jsx";
 import Schools from "./pages/schools/Schools.jsx";
+import ArtificialIntelligenceSchool from "./pages/schools/ArtificialIntelligence.jsx";
 import MathematicsSchool from "./pages/schools/Mathematics";
 import AlgebraTwo from "./pages/library/highschool/AlgebraTwo.jsx";
 import AlgebraTwoModule from "./pages/library/highschool/AlgebraTwoModule.jsx";
@@ -117,6 +118,7 @@ export default function App() {
   path="/schools/mathematics"
   element={<MathematicsSchool />}
 />
+<Route path="/schools/artificial-intelligence" element={<ArtificialIntelligenceSchool />} />
           <Route
 path="/schools/mathematics"
   element={<MathematicsSchool />}
