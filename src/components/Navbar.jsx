@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabase";
 const links = [
   { to: "/", label: "Home" },
   { to: "/courses", label: "Courses" },
+  { to: "/schools/artificial-intelligence", label: "School of AI" },
   { to: "/pricing", label: "Pricing" },
   { to: "/library", label: "Library" },
   { to: "/projects", label: "Projects" },
