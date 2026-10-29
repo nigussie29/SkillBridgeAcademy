@@ -45,7 +45,7 @@ export default function ArtificialIntelligenceSchool() {
               <h3 className="mt-6 text-xl font-extrabold">{program.name}</h3>
               <p className="mt-2 text-sm font-bold text-indigo-700">{program.level}</p>
               <p className="mt-4 text-sm leading-6 text-slate-600">{program.skills}</p>
-              <div className="mt-auto border-t border-slate-100 pt-5"><p className="text-xs font-bold uppercase tracking-wide text-slate-500">Portfolio project</p><p className="mt-2 text-sm font-semibold">{program.project}</p></div>
+              <div className="mt-auto border-t border-slate-100 pt-5"><p className="text-xs font-bold uppercase tracking-wide text-slate-500">Portfolio project</p><p className="mt-2 text-sm font-semibold">{program.project}</p>{index === 0 && <Link to="/schools/artificial-intelligence/ai-foundations/module-1/lesson-1" className="mt-5 inline-flex items-center gap-2 rounded-lg bg-indigo-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-indigo-600">Start Lesson 1 <ArrowRight size={16}/></Link>}</div>
             </article>
           ))}
         </div>
