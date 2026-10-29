@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { getAiLessonProgress } from "../services/aiLessonProgress.js";
 import DashboardLayout from "../components/dashboard/DashboardLayout";
 import WelcomeCard from "../components/dashboard/WelcomeCard";
 import {
@@ -18,7 +20,14 @@ import { useAuth } from "../context/AuthContext";
 import { studentLearningState } from "../data/studentLearningState";
 
 export default function Dashboard() {
-  const { profile } = useAuth();
+  const { profile, user } = useAuth();
+  const [aiProgress, setAiProgress] = useState(null);
+  useEffect(() => {
+    let active = true;
+    if (!user?.id) {setAiProgress(null);return;}
+    getAiLessonProgress(user.id).then(data => {if(active)setAiProgress(data)}).catch(() => {if(active)setAiProgress(null)});
+    return () => {active = false};
+  }, [user?.id]);
 
   const firstName =
     profile?.full_name?.split(" ")[0] || "Student";
@@ -63,6 +72,8 @@ export default function Dashboard() {
   return (
     <DashboardLayout>
       <div className="space-y-10">
+
+        {aiProgress && <section className="rounded-3xl border border-indigo-200 bg-indigo-50 p-6"><p className="text-xs font-extrabold uppercase tracking-widest text-indigo-700">School of Artificial Intelligence</p><h2 className="mt-2 text-xl font-black text-indigo-950">AI Foundations · Lesson 1</h2><p className="mt-2 text-indigo-900">Saved quiz score: {aiProgress.score}/{aiProgress.total_questions} · {aiProgress.completed ? "Knowledge check completed" : "Needs review"}</p><Link className="mt-4 inline-flex items-center gap-2 font-bold text-indigo-700" to="/schools/artificial-intelligence/ai-foundations/module-1/lesson-1">Review Lesson <ArrowRight size={17}/></Link></section>}
 
         {/* ==================================================
             HERO — KEEP UNCHANGED
