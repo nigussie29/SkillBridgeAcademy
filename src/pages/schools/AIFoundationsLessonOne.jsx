@@ -16,6 +16,8 @@ const questions = [
 export default function AIFoundationsLessonOne(){
  const { user, loading: authLoading } = useAuth();
  const [answers,setAnswers] = useState({});
+ const [studyHours,setStudyHours] = useState(4);
+ const [practiceScore,setPracticeScore] = useState(7);
  const [saved,setSaved] = useState(null);
  const [saveStatus,setSaveStatus] = useState("idle");
  const [saveError,setSaveError] = useState("");
@@ -52,7 +54,7 @@ export default function AIFoundationsLessonOne(){
   <div className="mx-auto max-w-5xl space-y-8 px-6 py-12">
    <section className="rounded-3xl border border-slate-200 bg-white p-7">
     <h2 className="text-2xl font-black">Learning objectives</h2>
-    <ul className="mt-4 list-inside list-disc space-y-2 leading-7 text-slate-700"><li>Explain AI in your own words.</li><li>Distinguish rule-based programs, machine learning, and generative AI.</li><li>Identify benefits, limitations, and responsible-use considerations.</li></ul>
+    <ul className="mt-4 list-inside list-disc space-y-2 leading-7 text-slate-700"><li>Explain AI in your own words.</li><li>Distinguish rule-based programs, machine learning, and generative AI.</li><li>Identify benefits, limitations, and responsible-use considerations.</li><li>Represent features as vectors, calculate a weighted score, and interpret probability and absolute error.</li></ul>
    </section>
    <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">1. Understand</h2>
     <p className="mt-4 leading-8 text-slate-700">Artificial intelligence (AI) is a field of computing concerned with building systems that perform tasks associated with human intelligence, such as recognizing patterns, understanding language, making predictions, and planning actions. AI does not necessarily think or understand the world as a person does.</p>
@@ -64,11 +66,53 @@ export default function AIFoundationsLessonOne(){
     <p className="mt-4 leading-8 text-slate-700">Imagine a tutoring center receiving hundreds of inquiries. A rule-based system can assign messages containing the exact word “algebra” to a mathematics queue. A trained language classifier may identify requests about solving equations even when the word “algebra” is absent. A generative model can draft a polite reply for staff approval. None of these systems should automatically promise availability or invent pricing.</p>
     <div className="mt-5 rounded-xl border-l-4 border-cyan-500 bg-cyan-50 p-5"><strong>Think:</strong> Which part of this workflow needs human verification? What could happen if a model misreads the message?</div>
    </section>
-   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">3. Practice: categorize the system</h2>
+   <section className="rounded-3xl border border-indigo-200 bg-white p-7" aria-labelledby="ai-mathematics-title">
+    <p className="text-xs font-extrabold uppercase tracking-widest text-indigo-700">Mathematics behind AI</p>
+    <h2 id="ai-mathematics-title" className="mt-2 text-2xl font-black">3. How AI uses mathematics</h2>
+    <p className="mt-4 leading-8 text-slate-700">Numbers are the language of many AI models. We represent information as numbers, combine it with mathematical operations, and compare predictions against evidence. These simple examples prepare you for the deeper linear algebra, statistics, and calculus studied in later courses.</p>
+    <div className="mt-6 grid gap-4 md:grid-cols-2">
+     <div className="rounded-2xl bg-slate-50 p-5">
+      <h3 className="font-bold text-slate-950">1. Vectors: describe information</h3>
+      <p className="mt-3 leading-7 text-slate-700">A student can be represented by a feature vector x = [4, 7], where 4 is hours spent studying and 7 is a practice score out of 10. The model operates on numerical features, not on the student's identity.</p>
+      <p className="mt-3 rounded-xl bg-white p-3 font-mono text-sm text-indigo-800">x = [hours, practice]</p>
+     </div>
+     <div className="rounded-2xl bg-slate-50 p-5">
+      <h3 className="font-bold text-slate-950">2. Weighted sums: combine evidence</h3>
+      <p className="mt-3 leading-7 text-slate-700">A simple illustrative model combines two features with weights. The weights determine how strongly each feature contributes to its numerical score.</p>
+      <p className="mt-3 rounded-xl bg-white p-3 font-mono text-sm text-indigo-800">z = 0.5 × hours + 0.8 × practice</p>
+     </div>
+     <div className="rounded-2xl bg-slate-50 p-5">
+      <h3 className="font-bold text-slate-950">3. Probability: express uncertainty</h3>
+      <p className="mt-3 leading-7 text-slate-700">Some models estimate probabilities. For example, a probability of 0.75 represents 75% estimated likelihood under a model—not a guarantee that an event will happen.</p>
+      <p className="mt-3 rounded-xl bg-white p-3 font-mono text-sm text-indigo-800">P(event) = 0.75 = 75%</p>
+     </div>
+     <div className="rounded-2xl bg-slate-50 p-5">
+      <h3 className="font-bold text-slate-950">4. Error: learn from differences</h3>
+      <p className="mt-3 leading-7 text-slate-700">A model's prediction can be compared with the actual result. If the prediction is 8 and the true result is 6, the absolute error is 2. Training seeks to reduce suitable error measures on representative data.</p>
+      <p className="mt-3 rounded-xl bg-white p-3 font-mono text-sm text-indigo-800">Absolute error = |8 − 6| = 2</p>
+     </div>
+    </div>
+    <div className="mt-7 rounded-2xl border border-indigo-200 bg-indigo-50 p-6">
+     <h3 className="text-lg font-black text-indigo-950">Interactive mathematics lab: build a weighted score</h3>
+     <p className="mt-2 text-sm leading-6 text-indigo-900">Move the sliders to see how a linear model combines two features. This is a teaching example, not a real grading or admission decision tool.</p>
+     <div className="mt-5 grid gap-5 sm:grid-cols-2">
+      <label className="block text-sm font-semibold text-indigo-950">Study hours: {studyHours}<input aria-label="Study hours" className="mt-3 w-full accent-indigo-700" type="range" min="0" max="10" step="1" value={studyHours} onChange={event=>setStudyHours(Number(event.target.value))}/></label>
+      <label className="block text-sm font-semibold text-indigo-950">Practice score: {practiceScore}/10<input aria-label="Practice score" className="mt-3 w-full accent-indigo-700" type="range" min="0" max="10" step="1" value={practiceScore} onChange={event=>setPracticeScore(Number(event.target.value))}/></label>
+     </div>
+     <div className="mt-5 rounded-xl bg-white p-5" aria-live="polite">
+      <p className="text-sm font-bold text-indigo-800">Linear model calculation</p>
+      <p className="mt-2 font-mono text-sm text-slate-800">z = 0.5 × {studyHours} + 0.8 × {practiceScore}</p>
+      <p className="mt-3 text-3xl font-black text-indigo-800">{(0.5*studyHours+0.8*practiceScore).toFixed(1)} <span className="text-sm font-medium text-slate-500">model-score units</span></p>
+     </div>
+     <p className="mt-4 text-sm leading-6 text-indigo-950"><strong>Try it:</strong> Set hours to 4 and practice to 7. Calculate 0.5 × 4 + 0.8 × 7 = 7.6. Then increase one feature. Which weight creates a larger change for each one-point increase?</p>
+    </div>
+    <p className="mt-6 text-sm leading-7 text-slate-600"><strong>Think critically:</strong> The weights here are chosen to teach arithmetic; they are not learned from real student data. Real AI development requires representative data, testing, and checks for fairness and privacy.</p>
+   </section>
+   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">4. Practice: categorize the system</h2>
     <p className="mt-4 leading-8 text-slate-700">Write down a reason for each classification: (a) a timer alerts exactly 10 minutes after a start button is pressed; (b) an image model learns to identify cats from labeled photos; (c) a chatbot drafts a new explanation of fractions. Suggested classifications: (a) fixed-rule automation; (b) machine learning; (c) generative AI.</p>
     <p className="mt-4 leading-8 text-slate-700"><strong>Responsible AI checklist:</strong> Ask whether training data is appropriate, whether outputs can be wrong or biased, whose personal information is involved, and who reviews consequential decisions.</p>
    </section>
-   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">4. Check your understanding</h2>
+   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">5. Check your understanding</h2>
     <p className="mt-3 text-slate-600">Answer all four questions, then select Check Answers. A score of at least 3 out of 4 meets this lesson's knowledge-check target.</p>
     <div className="mt-8 space-y-8">{questions.map((q,i)=><fieldset key={i} className="border-b border-slate-100 pb-7"><legend className="font-bold">{i+1}. {q.question}</legend><div className="mt-4 space-y-3">{q.options.map((opt,j)=><label key={j} className={`flex cursor-pointer gap-3 rounded-xl border p-4 text-sm leading-6 ${answers[i]===j?"border-indigo-600 bg-indigo-50":"border-slate-200"}`}><input type="radio" name={`question-${i}`} checked={answers[i]===j} onChange={()=>{setAnswers(prev=>({...prev,[i]:j}));setSubmitted(false);setSaveStatus("idle");}} className="mt-1 accent-indigo-600"/><span>{opt}</span></label>)}</div>{submitted&&<p className={`mt-3 text-sm font-semibold ${answers[i]===q.answer?"text-emerald-700":"text-amber-800"}`}>{answers[i]===q.answer?"Correct. ":"Review this answer. "}{q.why}</p>}</fieldset>)}</div>
     <div className="mt-7 flex flex-wrap gap-3"><button type="button" disabled={!complete} onClick={()=>setSubmitted(true)} className="rounded-xl bg-indigo-700 px-6 py-3 font-bold text-white hover:bg-indigo-600 disabled:cursor-not-allowed disabled:opacity-40">Check Answers</button><button type="button" onClick={()=>{setAnswers({});setSubmitted(false);setSaveStatus("idle")}} className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-6 py-3 font-bold"><RotateCcw size={17}/>Try Again</button></div>
@@ -84,7 +128,7 @@ export default function AIFoundationsLessonOne(){
      {saveError && <p role="alert" className="mt-2 text-sm font-semibold text-red-700">{saveError}</p>}
     </div>
    </section>
-   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">5. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence/ai-foundations" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI Foundations <ArrowRight size={18}/></Link></section>
+   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">6. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence/ai-foundations" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI Foundations <ArrowRight size={18}/></Link></section>
   </div>
  </main>;
 }
