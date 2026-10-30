@@ -46,3 +46,49 @@ body {
 .lesson-reader .text-sm {
   font-size: 0.9375rem;
 }
+
+/* SkillBridge modern academic design primitives — shared, responsive and accessible. */
+:root {
+  --academy-ink: #111c35;
+  --academy-surface: #ffffff;
+  --academy-border: #dde5f1;
+  --academy-blue: #2458d3;
+  --academy-violet: #6545d7;
+}
+html { scroll-padding-top: 5rem; }
+:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+.academy-modern {
+  background:
+    radial-gradient(ellipse 65% 25% at 90% 0%, rgba(105,87,235,.075), transparent 85%),
+    linear-gradient(180deg,#f7faff,#f2f6fc 55%,#f7faff);
+}
+.academy-modern .academy-lesson-section {
+  background: var(--academy-surface);
+  border: 1px solid var(--academy-border);
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 28px rgba(20,40,90,.035);
+}
+.academy-modern .academy-section-kicker { color: #244ec5; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
+.academy-modern .academy-mini-nav a {
+  border: 1px solid #dce5fa;
+  background: #fff;
+  border-radius: .875rem;
+  padding: .55rem .875rem;
+  color: #223b7f;
+  font-size: .85rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.academy-modern .academy-mini-nav a:hover,
+.academy-modern .academy-mini-nav a:focus-visible { background: #edf3ff; border-color: #a3b8f4; }
+.academy-modern pre { max-width: 100%; }
+.academy-modern a, .academy-modern button { touch-action: manipulation; }
+@media (max-width: 640px) {
+  .academy-modern .academy-lesson-section { border-radius: 1.15rem; }
+  .academy-modern .academy-mini-nav { gap: .5rem; }
+  .academy-modern .academy-mini-nav a { font-size: .78rem; padding: .5rem .625rem; }
+}
