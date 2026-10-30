@@ -13,6 +13,7 @@ export const aiFoundationsCourse = {
   level: "Beginner",
   duration: "7 planned modules",
   prerequisites: ["Basic computer literacy"],
+  certificateAvailable: false,
   progress: 0, // Do not confuse a lesson quiz result with overall course completion.
   backPath: "/schools/artificial-intelligence",
   backLabel: "Back to School of Artificial Intelligence",
