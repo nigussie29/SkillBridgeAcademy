@@ -37,3 +37,22 @@ Every lesson must teach its topic in sufficient depth to support independent wor
 **Discipline-appropriate mathematics:** In Mathematics and AI, quantitative explanations should be thorough (algebra, functions, statistics, vectors, calculus, or other appropriate content). Computer Science should include mathematical reasoning about algorithms, complexity, logic, data, or numerical computing when applicable. Robotics and Engineering should include measurements, units, models, and calculations. Research should explain quantitative methodology where relevant, or rigorous logical/qualitative reasoning when mathematics is not appropriate. Do not force irrelevant equations into humanities-style or qualitative lessons.
 
 Use the reusable `src/components/learning/MathematicalDeepDive.jsx` for step-by-step worked mathematics and revealable practice solutions when appropriate. This component is content-only: it must not automatically mark lessons complete, overwrite quiz records, or claim verified mastery. Existing working courses should be enriched incrementally, with individual production testing before bulk rollout.
+
+## Foundational purpose — Mathematics × AI × Robotics (UCS v1.2)
+SkillBridge Learning OS exists to deepen a person's knowledge by revealing connections among mathematical reasoning, coding, AI, sensors, physical systems, and real-world evidence. It must not become a disconnected catalog of courses or merely a quiz-and-certificate site.
+
+**Core learning cycle:** Observe a meaningful problem → Model it mathematically → Visualize and explain → Implement it in code → Extend it using AI when relevant → Test it in simulation or safe robotics → Analyze errors and limitations → Refine → Communicate evidence. No student should be asked to build a physical system before appropriate preparation and safety review.
+
+### Required cross-disciplinary bridge
+Each STEM lesson must contain an explicit **Connection Lab** describing (a) the underlying mathematics, (b) the computation or code model, (c) an AI connection where genuinely relevant, (d) a robotics or physical-world connection where genuinely relevant, (e) a mini-experiment or simulation, and (f) questions requiring transfer and reflection. Foundational topics may use conceptual bridges rather than full hardware builds. Do not represent ordinary deterministic thresholds or algorithms as AI.
+
+**Model example: obstacle avoidance.** A distance sensor measures an estimated distance d in centimeters. A deterministic rule might be "stop if d < 20 cm"; this is not machine learning. Students can explore measurement uncertainty, compare repeated readings, derive a safe threshold, and then consider how a learned classifier could combine multiple sensor features. Use simulation or disconnected motors first. Require explicit attention to sensors' blind spots, hardware constraints, and safe operating conditions.
+
+### Notes and student experience
+Learning materials should be rigorous, inviting, and accessible: clear narratives, vocabulary and definitions, equations with units and assumptions, multiple representations (words, tables, graphs, formulas, code, physical systems), detailed worked solutions, animated/interactive manipulatives when they teach something, inquiry prompts, differentiated challenges, misconceptions, and authentic projects. Use consistent headers, card hierarchy, typography and mobile accessibility across schools. Interactive content must work with keyboard controls, meaningful labels and reduced-motion preferences.
+
+### Capability evidence
+Assess more than answer correctness. For the selected concept, ask learners to: (1) explain it, (2) solve it or model it, (3) implement or simulate it, (4) test predictions, (5) analyze failure or error, and (6) communicate the limitations of their work. Preserve separate statuses for practice scores, saved quiz completion, project evidence, and reviewed mastery. Luminery AI should provide hints and questions that build independent thinking; Pyravanta capability claims require evidence and meaningful human judgment.
+
+### Incremental delivery and acceptance
+Apply these requirements to **AI Foundations Lesson 1 first**, verify its existing quiz and Supabase progress have not regressed, and only then reuse the Connection Lab in other subjects. Do not mark any future lab as working until the user validates it on the live website. Future courses should be built from the shared standard instead of copying bespoke page layouts.
