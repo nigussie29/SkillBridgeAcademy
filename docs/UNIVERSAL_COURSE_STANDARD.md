@@ -80,3 +80,10 @@ A coherent, modern 21st-century academic experience is required across every pag
 - Keep reading comfortable: responsive typography, adequate line spacing, consistent cards, visible glossary and formulas, and in-page activity navigation for long lessons.
 - Never equate a visually impressive interface with academic depth. Every polished lesson must retain detailed mathematical reasoning, interdisciplinary transfer, coding and Luminery mentorship.
 - Modernization must be incremental: adapt one real lesson, verify production and assessment persistence, then generalize through reusable components. Existing pages are not implicitly redesigned simply because shared tokens were introduced.
+
+## Python-first coding policy (UCS v1.5)
+**Python is the mandatory instructional programming language for SkillBridge coding labs across Mathematics, Artificial Intelligence, Robotics, Data Science, and related STEM lessons.** Each coding lab should use valid, age-appropriate Python 3 with explained variables, links to the underlying mathematics, expected output, debugging questions, and extensions. Use Python libraries where relevant (e.g., math, statistics, NumPy, pandas, scikit-learn, Matplotlib, and safe robotics libraries) only when the environment supports them. Label pseudocode explicitly and follow it with Python whenever appropriate. Do not substitute JavaScript code for student Python instruction.
+
+**Implementation distinction:** The website itself can continue using React, JavaScript, Tailwind and Supabase for its frontend and infrastructure. This policy governs the language learners are taught, not the technology required to render the learning interface. Interactive Python execution must only be advertised after a working, sandboxed Python runtime and grading setup has been implemented and tested; otherwise provide accurate Python examples and expected output.
+
+**Migration:** Keep previously validated lessons intact. Audit and update student-facing coding labs gradually to Python before claiming academy-wide compliance. Protect existing progress data and run regression tests on each migrated lesson.
