@@ -281,7 +281,7 @@ for distance_cm in readings_cm:
      {saveError && <p role="alert" className="mt-2 text-sm font-semibold text-red-700">{saveError}</p>}
     </div>
    </section>
-   <section id="portfolio-evidence" className="academy-lesson-section p-7 scroll-mt-24"><h2 className="text-2xl font-black">6. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence/ai-foundations" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI Foundations <ArrowRight size={18}/></Link></section>
+   <section id="portfolio-evidence" className="academy-lesson-section p-7 scroll-mt-24"><h2 className="text-2xl font-black">6. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence/ai-foundations" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI Foundations <ArrowRight size={18}/></Link><Link to="/schools/artificial-intelligence/ai-foundations/module-1/lesson-2" className="mt-4 inline-flex items-center gap-2 rounded-xl bg-indigo-700 px-5 py-3 font-bold text-white hover:bg-indigo-600">Next: Data, Features, and Patterns <ArrowRight size={18}/></Link></section>
     </div>
    </div>
   </div>
