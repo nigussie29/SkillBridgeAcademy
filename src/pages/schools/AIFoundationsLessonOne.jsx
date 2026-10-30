@@ -42,7 +42,7 @@ export default function AIFoundationsLessonOne(){
  const [submitted,setSubmitted] = useState(false);
  const score = questions.reduce((sum,q,i)=>sum+(answers[i]===q.answer?1:0),0);
  const complete = Object.keys(answers).length===questions.length;
- return <main className="min-h-screen bg-slate-50 pb-20 text-[17px] leading-8 text-slate-700">
+ return <main className="academy-modern min-h-screen pb-20 text-[17px] leading-8 text-slate-700">
   <div className="h-1 bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-950" />
   <div className="mx-auto max-w-7xl px-5 py-8 md:px-6">
    <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm font-bold text-slate-500">
@@ -68,6 +68,13 @@ export default function AIFoundationsLessonOne(){
      <Link to="/schools/artificial-intelligence/ai-foundations" className="inline-flex shrink-0 items-center gap-2 self-start rounded-xl bg-white/10 px-4 py-3 text-sm font-black text-white ring-1 ring-white/20 hover:bg-white/20"><ArrowLeft size={16}/> Module</Link>
     </div>
    </section>
+   <nav className="academy-mini-nav mt-6 flex flex-wrap gap-2" aria-label="Jump to lesson activities">
+    <a href="#lesson-notes">Deep notes</a>
+    <a href="#math-lab">Mathematics</a>
+    <a href="#code-mentor">Code + Luminery</a>
+    <a href="#quiz-check">Knowledge check</a>
+    <a href="#portfolio-evidence">Evidence</a>
+   </nav>
    <div className="mt-8 grid items-start gap-7 lg:grid-cols-[300px_minmax(0,1fr)]">
     <aside className="space-y-6 lg:sticky lg:top-24" aria-label="Lesson reference">
      <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
@@ -115,7 +122,7 @@ export default function AIFoundationsLessonOne(){
       <h2 className="mt-2 text-2xl font-black text-slate-950">Why this matters</h2>
       <p className="mt-4 leading-8">Understanding features, weighted scores, probabilities, and error prepares you to question AI outputs rather than accept them without evidence.</p>
      </section>
-   <section className="rounded-3xl border border-slate-200 bg-white p-7">
+   <section id="lesson-notes" className="academy-lesson-section p-7 scroll-mt-24">
     <h2 className="text-2xl font-black">Learning objectives</h2>
     <ul className="mt-4 list-inside list-disc space-y-2 leading-7 text-slate-700"><li>Explain AI in your own words.</li><li>Distinguish rule-based programs, machine learning, and generative AI.</li><li>Identify benefits, limitations, and responsible-use considerations.</li><li>Represent features as vectors, calculate a weighted score, and interpret probability and absolute error.</li></ul>
    </section>
@@ -129,7 +136,7 @@ export default function AIFoundationsLessonOne(){
     <p className="mt-4 leading-8 text-slate-700">Imagine a tutoring center receiving hundreds of inquiries. A rule-based system can assign messages containing the exact word “algebra” to a mathematics queue. A trained language classifier may identify requests about solving equations even when the word “algebra” is absent. A generative model can draft a polite reply for staff approval. None of these systems should automatically promise availability or invent pricing.</p>
     <div className="mt-5 rounded-xl border-l-4 border-cyan-500 bg-cyan-50 p-5"><strong>Think:</strong> Which part of this workflow needs human verification? What could happen if a model misreads the message?</div>
    </section>
-   <section className="rounded-3xl border border-indigo-200 bg-white p-7" aria-labelledby="ai-mathematics-title">
+   <section id="math-lab" className="academy-lesson-section p-7 scroll-mt-24" aria-labelledby="ai-mathematics-title">
     <p className="text-xs font-extrabold uppercase tracking-widest text-indigo-700">Mathematics behind AI</p>
     <h2 id="ai-mathematics-title" className="mt-2 text-2xl font-black">3. How AI uses mathematics</h2>
     <p className="mt-4 leading-8 text-slate-700">Numbers are the language of many AI models. We represent information as numbers, combine it with mathematical operations, and compare predictions against evidence. These simple examples prepare you for the deeper linear algebra, statistics, and calculus studied in later courses.</p>
@@ -216,7 +223,7 @@ else:
      </div>
     </div>
    </section>
-   <CodingAndLumineryLab
+   <div id="code-mentor" className="scroll-mt-24"><CodingAndLumineryLab
     title="Use Python to model sensor decisions"
     introduction="Connect mathematics, Boolean comparisons, and robot-control logic. This simulation uses sample numbers only: do not connect motors or use the illustrative threshold as a safety setting."
     code={`# Simulated obstacle readings in centimeters
@@ -245,11 +252,12 @@ for distance_cm in readings_cm:
       "Consider calibration, repeated measurements, noise, and the distance needed to stop at a particular speed before trusting a physical robot.",
     ]}
    />
+   </div>
    <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">4. Practice: categorize the system</h2>
     <p className="mt-4 leading-8 text-slate-700">Write down a reason for each classification: (a) a timer alerts exactly 10 minutes after a start button is pressed; (b) an image model learns to identify cats from labeled photos; (c) a chatbot drafts a new explanation of fractions. Suggested classifications: (a) fixed-rule automation; (b) machine learning; (c) generative AI.</p>
     <p className="mt-4 leading-8 text-slate-700"><strong>Responsible AI checklist:</strong> Ask whether training data is appropriate, whether outputs can be wrong or biased, whose personal information is involved, and who reviews consequential decisions.</p>
    </section>
-   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">5. Check your understanding</h2>
+   <section id="quiz-check" className="academy-lesson-section p-7 scroll-mt-24"><h2 className="text-2xl font-black">5. Check your understanding</h2>
     <p className="mt-3 text-slate-600">Answer all four questions, then select Check Answers. A score of at least 3 out of 4 meets this lesson's knowledge-check target.</p>
     <div className="mt-8 space-y-8">{questions.map((q,i)=><fieldset key={i} className="border-b border-slate-100 pb-7"><legend className="font-bold">{i+1}. {q.question}</legend><div className="mt-4 space-y-3">{q.options.map((opt,j)=><label key={j} className={`flex cursor-pointer gap-3 rounded-xl border p-4 text-sm leading-6 ${answers[i]===j?"border-indigo-600 bg-indigo-50":"border-slate-200"}`}><input type="radio" name={`question-${i}`} checked={answers[i]===j} onChange={()=>{setAnswers(prev=>({...prev,[i]:j}));setSubmitted(false);setSaveStatus("idle");}} className="mt-1 accent-indigo-600"/><span>{opt}</span></label>)}</div>{submitted&&<p className={`mt-3 text-sm font-semibold ${answers[i]===q.answer?"text-emerald-700":"text-amber-800"}`}>{answers[i]===q.answer?"Correct. ":"Review this answer. "}{q.why}</p>}</fieldset>)}</div>
     <div className="mt-7 flex flex-wrap gap-3"><button type="button" disabled={!complete} onClick={()=>setSubmitted(true)} className="rounded-xl bg-indigo-700 px-6 py-3 font-bold text-white hover:bg-indigo-600 disabled:cursor-not-allowed disabled:opacity-40">Check Answers</button><button type="button" onClick={()=>{setAnswers({});setSubmitted(false);setSaveStatus("idle")}} className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-6 py-3 font-bold"><RotateCcw size={17}/>Try Again</button></div>
@@ -265,7 +273,7 @@ for distance_cm in readings_cm:
      {saveError && <p role="alert" className="mt-2 text-sm font-semibold text-red-700">{saveError}</p>}
     </div>
    </section>
-   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">6. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence/ai-foundations" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI Foundations <ArrowRight size={18}/></Link></section>
+   <section id="portfolio-evidence" className="academy-lesson-section p-7 scroll-mt-24"><h2 className="text-2xl font-black">6. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence/ai-foundations" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI Foundations <ArrowRight size={18}/></Link></section>
     </div>
    </div>
   </div>
