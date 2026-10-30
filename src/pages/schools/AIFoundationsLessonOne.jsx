@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Breadcrumbs from "../../components/navigation/Breadcrumbs.jsx";
 import { ArrowLeft, ArrowRight, BrainCircuit, CheckCircle2, RotateCcw } from "lucide-react";
 import MathematicalDeepDive from "../../components/learning/MathematicalDeepDive.jsx";
+import CodingAndLumineryLab from "../../components/learning/CodingAndLumineryLab.jsx";
 
 const questions = [
  {question:"Which description best defines artificial intelligence?", options:["Software that can perform tasks requiring capabilities such as perception, language, or reasoning","Any website connected to the internet","Only physical robots"], answer:0, why:"AI systems can recognize patterns, interpret language, make predictions, and perform other tasks."},
@@ -215,6 +216,35 @@ else:
      </div>
     </div>
    </section>
+   <CodingAndLumineryLab
+    title="Use Python to model sensor decisions"
+    introduction="Connect mathematics, Boolean comparisons, and robot-control logic. This simulation uses sample numbers only: do not connect motors or use the illustrative threshold as a safety setting."
+    code={`# Simulated obstacle readings in centimeters
+threshold_cm = 20
+readings_cm = [12, 20, 35]
+
+for distance_cm in readings_cm:
+    if distance_cm < threshold_cm:
+        action = "STOP"
+    else:
+        action = "CONTINUE"
+    print(f"{distance_cm} cm -> {action}")`}
+    expectedOutput={`12 cm -> STOP
+20 cm -> CONTINUE
+35 cm -> CONTINUE`}
+    challenges={[
+      "Predict the printed output before revealing it; trace each comparison.",
+      "Change the threshold to 25 cm. Which outputs change, and why?",
+      "Add a fourth simulated reading of 18 cm. Explain its result.",
+      "Explain why this conditional program is automation rather than a trained AI model.",
+    ]}
+    reflection="If a sensor reports 25 cm when an object is actually 15 cm away, what mathematical and engineering assumptions have failed?"
+    hints={[
+      "Separate the sensor measurement from the decision rule. Is the reading itself guaranteed to be accurate?",
+      "Compare each sample reading with the threshold using a strict less-than sign. Equality does not trigger STOP.",
+      "Consider calibration, repeated measurements, noise, and the distance needed to stop at a particular speed before trusting a physical robot.",
+    ]}
+   />
    <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">4. Practice: categorize the system</h2>
     <p className="mt-4 leading-8 text-slate-700">Write down a reason for each classification: (a) a timer alerts exactly 10 minutes after a start button is pressed; (b) an image model learns to identify cats from labeled photos; (c) a chatbot drafts a new explanation of fractions. Suggested classifications: (a) fixed-rule automation; (b) machine learning; (c) generative AI.</p>
     <p className="mt-4 leading-8 text-slate-700"><strong>Responsible AI checklist:</strong> Ask whether training data is appropriate, whether outputs can be wrong or biased, whose personal information is involved, and who reviews consequential decisions.</p>
