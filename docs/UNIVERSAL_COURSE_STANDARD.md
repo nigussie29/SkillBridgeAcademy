@@ -30,3 +30,10 @@ Reuse the project's Tailwind design tokens, responsive grids, typography scale, 
 
 ## Definition of done
 A course is done only when its links, lessons, navigation, assessments, evidence tasks, save/restore flow (where enabled), responsive behavior, accessibility, and production deployment have been tested. Existing courses should be adapted without regressions.
+
+## Required rich academic notes for every lesson (UCS v1.1)
+Every lesson must teach its topic in sufficient depth to support independent work, not just present a brief summary. Each published lesson should contain: (1) an essential question and key concepts, (2) foundational definitions and notation, (3) concept explanations and reasoning, (4) relevant mathematics with variables and units explained, (5) at least one fully worked example showing intermediate steps and verification, (6) guided and independent practice with accessible answer explanations, (7) a real-world application or subject-specific investigation, (8) common mistakes and reflection, and (9) meaningful evidence or assessment.
+
+**Discipline-appropriate mathematics:** In Mathematics and AI, quantitative explanations should be thorough (algebra, functions, statistics, vectors, calculus, or other appropriate content). Computer Science should include mathematical reasoning about algorithms, complexity, logic, data, or numerical computing when applicable. Robotics and Engineering should include measurements, units, models, and calculations. Research should explain quantitative methodology where relevant, or rigorous logical/qualitative reasoning when mathematics is not appropriate. Do not force irrelevant equations into humanities-style or qualitative lessons.
+
+Use the reusable `src/components/learning/MathematicalDeepDive.jsx` for step-by-step worked mathematics and revealable practice solutions when appropriate. This component is content-only: it must not automatically mark lessons complete, overwrite quiz records, or claim verified mastery. Existing working courses should be enriched incrementally, with individual production testing before bulk rollout.
