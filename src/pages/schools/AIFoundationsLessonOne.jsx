@@ -3,6 +3,7 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { getAiLessonProgress, saveAiLessonProgress } from "../../services/aiLessonProgress.js";
 import { markLessonComplete } from "../../services/lessonProgress.js";
 import { Link } from "react-router-dom";
+import Breadcrumbs from "../../components/navigation/Breadcrumbs.jsx";
 import { ArrowLeft, ArrowRight, BrainCircuit, CheckCircle2, RotateCcw } from "lucide-react";
 
 const questions = [
@@ -38,9 +39,10 @@ export default function AIFoundationsLessonOne(){
  const score = questions.reduce((sum,q,i)=>sum+(answers[i]===q.answer?1:0),0);
  const complete = Object.keys(answers).length===questions.length;
  return <main className="min-h-screen bg-slate-50 text-slate-900">
+  <Breadcrumbs items={[{ label:"Home",to:"/" },{ label:"Academic Schools",to:"/schools" },{ label:"School of AI",to:"/schools/artificial-intelligence" },{ label:"AI Foundations",to:"/schools/artificial-intelligence/ai-foundations" },{ label:"Lesson 1: What Is Artificial Intelligence?" }]} />
   <section className="bg-gradient-to-br from-slate-950 via-indigo-950 to-violet-950 px-6 py-16 text-white">
    <div className="mx-auto max-w-5xl">
-    <Link to="/schools/artificial-intelligence" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-white"><ArrowLeft size={16}/> School of Artificial Intelligence</Link>
+    <Link to="/schools/artificial-intelligence/ai-foundations" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-white"><ArrowLeft size={16}/> Back to AI Foundations course</Link>
     <div className="mt-8 flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-cyan-300"><BrainCircuit size={22}/> AI Foundations · Module 1 · Lesson 1</div>
     <h1 className="mt-4 text-4xl font-black sm:text-5xl">What Is Artificial Intelligence?</h1>
     <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-200">Discover what AI does, how learning from data differs from fixed rules, where AI is used, and why human judgment still matters.</p>
@@ -81,7 +83,7 @@ export default function AIFoundationsLessonOne(){
      {saveError && <p role="alert" className="mt-2 text-sm font-semibold text-red-700">{saveError}</p>}
     </div>
    </section>
-   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">5. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI school <ArrowRight size={18}/></Link></section>
+   <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">5. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence/ai-foundations" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI Foundations <ArrowRight size={18}/></Link></section>
   </div>
  </main>;
 }
