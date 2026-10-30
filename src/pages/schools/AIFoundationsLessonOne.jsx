@@ -224,6 +224,7 @@ else:
     </div>
    </section>
    <div id="code-mentor" className="scroll-mt-24"><CodingAndLumineryLab
+    simulation={{initialThreshold:20,initialReading:20}}
     title="Use Python to model sensor decisions"
     introduction="Connect mathematics, Boolean comparisons, and robot-control logic. This simulation uses sample numbers only: do not connect motors or use the illustrative threshold as a safety setting."
     code={`# Simulated obstacle readings in centimeters
