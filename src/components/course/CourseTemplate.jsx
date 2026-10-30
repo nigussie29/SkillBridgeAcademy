@@ -252,8 +252,9 @@ const backLabel = course.backLabel ?? "Back to Knowledge Library";
               </h2>
 
               <p className="mt-4 leading-7 text-slate-600">
-                Complete all lessons and the final project to earn your
-                SkillBridge Academy certificate.
+                {course.certificateAvailable === false
+                  ? "Certificate issuance is not yet available for this course. A lesson quiz alone does not establish course completion."
+                  : "Complete all lessons and the final project to earn your SkillBridge Academy certificate."}
               </p>
 
               <p className="mt-5 font-bold text-slate-800">
