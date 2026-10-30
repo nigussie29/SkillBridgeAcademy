@@ -77,7 +77,8 @@ export default function AIFoundationsLessonOne(){
      <h3 className="font-bold text-indigo-950">Account progress</h3>
      {saved && <p className="mt-2 text-sm text-indigo-900">Last saved result: {saved.score}/{saved.total_questions} · {saved.completed?"Knowledge check completed":"Needs review"}</p>}
      {!user && !authLoading && <p className="mt-2 text-sm text-indigo-900">Sign in to save and restore your progress after logging out.</p>}
-     {user && <button type="button" onClick={handleSave} disabled={!submitted || saveStatus==="saving"} className="mt-3 rounded-xl bg-indigo-700 px-5 py-3 font-bold text-white disabled:opacity-50">{saveStatus==="saving"?"Saving...":"Save Result to My Account"}</button>}
+     {user && !submitted && <p className="mt-3 text-sm font-medium text-indigo-900" role="status">{saved ? "Your previously saved score is safe. To save a new attempt, answer all four questions and select Check Answers." : "To enable saving, answer all four questions above and select Check Answers."} {complete ? "All questions answered — select Check Answers above." : `Questions answered: ${Object.keys(answers).length} of ${questions.length}.`}</p>}
+     {user && submitted && <button type="button" onClick={handleSave} disabled={saveStatus==="saving" || saveStatus==="saved"} className="mt-3 rounded-xl bg-indigo-700 px-5 py-3 font-bold text-white disabled:opacity-50">{saveStatus==="saving"?"Saving...":saveStatus==="saved"?"Result Saved":"Save Result to My Account"}</button>}
      {!user && <Link className="mt-3 inline-block font-bold text-indigo-700 underline" to="/login">Sign in to save</Link>}
      {saveStatus==="saved" && <p role="status" className="mt-2 text-sm font-semibold text-emerald-800">Saved securely to your account.</p>}
      {saveError && <p role="alert" className="mt-2 text-sm font-semibold text-red-700">{saveError}</p>}
