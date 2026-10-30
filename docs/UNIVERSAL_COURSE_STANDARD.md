@@ -70,3 +70,13 @@ Apply these requirements to **AI Foundations Lesson 1 first**, verify its existi
 - Students can use keyboard controls, readable code blocks, labels, and contrast-appropriate hint controls.
 - Shared component: `src/components/learning/CodingAndLumineryLab.jsx`. Roll it out gradually; do not automatically mark other courses compliant.
 - Existing assessment and Supabase progress are unchanged by lesson coding/mentor components. Retest production after the implementation.
+
+## Modern student experience — responsive design baseline (UCS v1.4)
+A coherent, modern 21st-century academic experience is required across every page, not only the homepage. Keep a consistent visual hierarchy (clear course title, context, learning outcomes, attractive subject accents, readable notes, lab cards, guided practice, assessment and evidence). Students should be able to move between deep notes, interactive mathematics, coding, Luminery guidance and mastery checks without losing their place.
+
+- Use shared styling and accessible focus states from `src/styles/index.css`; extend the existing design system rather than replacing working subject pages with unrelated templates.
+- Prioritize mobile-first layouts, keyboard use, useful contrast, short scannable sections, persistent information architecture and reduced-motion support.
+- Add meaningful interactivity: runnable code only when an actual safe runtime exists; simulations and quizzes must give real feedback and retain accurate progress semantics.
+- Keep reading comfortable: responsive typography, adequate line spacing, consistent cards, visible glossary and formulas, and in-page activity navigation for long lessons.
+- Never equate a visually impressive interface with academic depth. Every polished lesson must retain detailed mathematical reasoning, interdisciplinary transfer, coding and Luminery mentorship.
+- Modernization must be incremental: adapt one real lesson, verify production and assessment persistence, then generalize through reusable components. Existing pages are not implicitly redesigned simply because shared tokens were introduced.
