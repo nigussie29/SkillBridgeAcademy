@@ -239,6 +239,12 @@ for distance_cm in readings_cm:
     expectedOutput={`12 cm -> STOP
 20 cm -> CONTINUE
 35 cm -> CONTINUE`}
+    prediction={{
+      question: "What action does the Python program print for the middle reading of 20 cm?",
+      options: ["STOP, because the distance equals the threshold", "CONTINUE, because 20 < 20 is false", "Both STOP and CONTINUE", "The program raises an error"],
+      correctIndex: 1,
+      explanation: "The conditional uses strict less-than. For 20 cm, 20 < 20 is false, so Python selects the else branch and prints CONTINUE.",
+    }}
     challenges={[
       "Predict the printed output before revealing it; trace each comparison.",
       "Change the threshold to 25 cm. Which outputs change, and why?",
