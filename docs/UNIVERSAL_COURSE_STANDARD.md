@@ -56,3 +56,17 @@ Assess more than answer correctness. For the selected concept, ask learners to: 
 
 ### Incremental delivery and acceptance
 Apply these requirements to **AI Foundations Lesson 1 first**, verify its existing quiz and Supabase progress have not regressed, and only then reuse the Connection Lab in other subjects. Do not mark any future lab as working until the user validates it on the live website. Future courses should be built from the shared standard instead of copying bespoke page layouts.
+
+## Coding + Luminery in every lesson (UCS v1.3)
+
+**Coding is a core SkillBridge practice, not an optional marketing label.** Every STEM lesson must include a relevant, age-appropriate coding or computational-thinking activity that directly models the lesson concept. For beginning learners, this may be pseudocode, a guided trace, a block-based program, or a visual simulator. For advanced learners, it may involve executable Python, JavaScript, data analysis, machine-learning training, or robotics code. Always explain inputs, outputs, variables, mathematical assumptions, sample runs, debugging questions, and a small extension task. Never describe a displayed code sample as executed or automatically assessed unless an actual runtime or grader exists. Do not require physical hardware for ordinary practice.
+
+**Luminery belongs in every lesson as a learning-mentor experience.** Each lesson must provide an explicit Luminery guidance section with a conceptual question, progressively revealed hints, a prompt connecting mathematics to code and real-world application, a reflection question, and guidance on how to verify evidence. Keep students thinking rather than giving immediate answers. Luminery guidance must accurately distinguish authored/static prompts from a genuine connected AI mentor; do not fabricate personalization, live conversations, grading, or account analysis. Respect accessibility and privacy.
+
+### Minimum acceptance checks
+- The coding task is directly grounded in the mathematical or logical concept and includes a reproducible expected outcome.
+- Luminery supports inquiry, mathematical explanation, debugging, transfer, and student independence.
+- Lesson design continues to follow the Algebra I visual reference and existing academic structure.
+- Students can use keyboard controls, readable code blocks, labels, and contrast-appropriate hint controls.
+- Shared component: `src/components/learning/CodingAndLumineryLab.jsx`. Roll it out gradually; do not automatically mark other courses compliant.
+- Existing assessment and Supabase progress are unchanged by lesson coding/mentor components. Retest production after the implementation.
