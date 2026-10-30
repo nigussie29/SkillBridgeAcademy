@@ -12,6 +12,7 @@ export default function CodingAndLumineryLab({
   code,
   expectedOutput,
   prediction = null,
+  simulation = null,
   challenges = [],
   hints = [],
   reflection,
@@ -21,6 +22,8 @@ export default function CodingAndLumineryLab({
   const [showOutput, setShowOutput] = useState(false);
   const [predictionChoice, setPredictionChoice] = useState(null);
   const [predictionChecked, setPredictionChecked] = useState(false);
+  const [simThreshold, setSimThreshold] = useState(simulation?.initialThreshold ?? 20);
+  const [simReading, setSimReading] = useState(simulation?.initialReading ?? 20);
 
   return (
     <section className="space-y-6" aria-label="Coding practice and Luminery mentor">
@@ -49,6 +52,31 @@ export default function CodingAndLumineryLab({
             </div>
             {predictionChecked && <p role="status" className={`mt-4 rounded-xl p-3 text-sm font-semibold leading-7 ${predictionChoice === prediction.correctIndex ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-amber-900"}`}>{predictionChoice === prediction.correctIndex ? `Correct prediction. ${prediction.explanation}` : (prediction.retryHint || "Not quite. Trace the conditional carefully and compare the values before trying again.")}</p>}
             <p className="mt-3 text-xs leading-6 text-slate-600">This checks your reasoning against an authored answer; it does not run Python or record a grade.</p>
+          </div>}
+          {simulation && <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5" aria-labelledby="python-rule-simulator">
+            <p className="text-xs font-black uppercase tracking-widest text-emerald-800">Visual rule simulator</p>
+            <h3 id="python-rule-simulator" className="mt-1 text-lg font-black text-emerald-950">Change the inputs, trace the Python condition</h3>
+            <p className="mt-2 text-sm leading-7 text-emerald-950">This visualization evaluates a simple comparison in the interface. It does not execute the Python code or control real hardware.</p>
+            <div className="mt-5 grid gap-5 sm:grid-cols-2">
+              <label className="block text-sm font-bold text-emerald-950">Sensor distance: {simReading} cm
+                <input className="mt-3 w-full accent-emerald-700" type="range" min="0" max="60" value={simReading} onChange={event => setSimReading(Number(event.target.value))}/>
+              </label>
+              <label className="block text-sm font-bold text-emerald-950">Threshold: {simThreshold} cm
+                <input className="mt-3 w-full accent-emerald-700" type="range" min="0" max="60" value={simThreshold} onChange={event => setSimThreshold(Number(event.target.value))}/>
+              </label>
+            </div>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2" aria-live="polite">
+              <div className="rounded-xl bg-white p-4">
+                <p className="text-xs font-black uppercase tracking-wider text-slate-500">Condition</p>
+                <p className="mt-2 font-mono text-base font-bold text-slate-900">{simReading} &lt; {simThreshold} → {String(simReading < simThreshold)}</p>
+              </div>
+              <div className="rounded-xl bg-white p-4">
+                <p className="text-xs font-black uppercase tracking-wider text-slate-500">Simulated output</p>
+                <p className={`mt-2 text-xl font-black ${simReading < simThreshold ? "text-rose-700" : "text-emerald-800"}`}>{simReading < simThreshold ? "STOP" : "CONTINUE"}</p>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-7 text-emerald-950"><strong>Investigate:</strong> What happens when distance equals the threshold? Can noisy or delayed sensor readings make a correct program behave unsafely?</p>
+            <button type="button" onClick={() => {setSimThreshold(simulation.initialThreshold ?? 20);setSimReading(simulation.initialReading ?? 20);}} className="mt-4 rounded-xl border border-emerald-500 bg-white px-4 py-2 text-sm font-bold text-emerald-900">Reset simulator</button>
           </div>}
           {expectedOutput && <div>
             <button type="button" onClick={() => setShowOutput(value => !value)} aria-expanded={showOutput} className="rounded-xl border border-indigo-300 px-4 py-2 text-sm font-bold text-indigo-800 hover:bg-indigo-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{showOutput ? "Hide expected output" : "Show expected output"}</button>
