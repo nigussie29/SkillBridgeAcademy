@@ -243,6 +243,7 @@ for distance_cm in readings_cm:
       question: "What action does the Python program print for the middle reading of 20 cm?",
       options: ["STOP, because the distance equals the threshold", "CONTINUE, because 20 < 20 is false", "Both STOP and CONTINUE", "The program raises an error"],
       correctIndex: 1,
+      retryHint: "Look at the comparison operator: does the program use < or <=? Evaluate the condition for 20 and 20 before choosing a branch.",
       explanation: "The conditional uses strict less-than. For 20 cm, 20 < 20 is false, so Python selects the else branch and prints CONTINUE.",
     }}
     challenges={[
