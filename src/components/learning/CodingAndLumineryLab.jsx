@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 
 /**
  * Reusable lesson-level code example and guided Luminery learning prompts.
@@ -16,6 +16,7 @@ export default function CodingAndLumineryLab({
   hints = [],
   reflection,
 }) {
+  const predictionName = useId();
   const [hintLevel, setHintLevel] = useState(0);
   const [showOutput, setShowOutput] = useState(false);
   const [predictionChoice, setPredictionChoice] = useState(null);
@@ -38,7 +39,7 @@ export default function CodingAndLumineryLab({
             <fieldset className="mt-4">
               <legend className="sr-only">Choose a prediction before checking it</legend>
               <div className="space-y-2">{prediction.options.map((option,index) => <label key={index} className={`flex cursor-pointer items-start gap-3 rounded-xl border p-3 text-sm leading-6 ${predictionChoice === index ? "border-indigo-600 bg-white" : "border-indigo-100 bg-indigo-50"}`}>
-                <input type="radio" className="mt-1 accent-indigo-700" name="python-prediction" checked={predictionChoice === index} onChange={() => {setPredictionChoice(index);setPredictionChecked(false);}} />
+                <input type="radio" className="mt-1 accent-indigo-700" name={predictionName} checked={predictionChoice === index} onChange={() => {setPredictionChoice(index);setPredictionChecked(false);}} />
                 <span>{option}</span>
               </label>)}</div>
             </fieldset>
@@ -46,7 +47,7 @@ export default function CodingAndLumineryLab({
               <button type="button" disabled={predictionChoice === null} onClick={() => setPredictionChecked(true)} className="rounded-xl bg-indigo-700 px-4 py-2 text-sm font-bold text-white hover:bg-indigo-600 disabled:opacity-50">Check my prediction</button>
               <button type="button" onClick={() => {setPredictionChoice(null);setPredictionChecked(false);}} className="rounded-xl border border-indigo-300 px-4 py-2 text-sm font-bold text-indigo-800">Try again</button>
             </div>
-            {predictionChecked && <p role="status" className={`mt-4 rounded-xl p-3 text-sm font-semibold leading-7 ${predictionChoice === prediction.correctIndex ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-amber-900"}`}>{predictionChoice === prediction.correctIndex ? "Correct prediction. " : "Not quite. Trace each comparison and try again. "}{prediction.explanation}</p>}
+            {predictionChecked && <p role="status" className={`mt-4 rounded-xl p-3 text-sm font-semibold leading-7 ${predictionChoice === prediction.correctIndex ? "bg-emerald-50 text-emerald-900" : "bg-amber-50 text-amber-900"}`}>{predictionChoice === prediction.correctIndex ? `Correct prediction. ${prediction.explanation}` : (prediction.retryHint || "Not quite. Trace the conditional carefully and compare the values before trying again.")}</p>}
             <p className="mt-3 text-xs leading-6 text-slate-600">This checks your reasoning against an authored answer; it does not run Python or record a grade.</p>
           </div>}
           {expectedOutput && <div>
