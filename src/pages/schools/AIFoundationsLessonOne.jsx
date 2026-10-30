@@ -40,18 +40,79 @@ export default function AIFoundationsLessonOne(){
  const [submitted,setSubmitted] = useState(false);
  const score = questions.reduce((sum,q,i)=>sum+(answers[i]===q.answer?1:0),0);
  const complete = Object.keys(answers).length===questions.length;
- return <main className="min-h-screen bg-slate-50 text-slate-900">
-  <Breadcrumbs items={[{ label:"Home",to:"/" },{ label:"Academic Schools",to:"/schools" },{ label:"School of AI",to:"/schools/artificial-intelligence" },{ label:"AI Foundations",to:"/schools/artificial-intelligence/ai-foundations" },{ label:"Lesson 1: What Is Artificial Intelligence?" }]} />
-  <section className="bg-gradient-to-br from-slate-950 via-indigo-950 to-violet-950 px-6 py-16 text-white">
-   <div className="mx-auto max-w-5xl">
-    <Link to="/schools/artificial-intelligence/ai-foundations" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-white"><ArrowLeft size={16}/> Back to AI Foundations course</Link>
-    <div className="mt-8 flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-cyan-300"><BrainCircuit size={22}/> AI Foundations · Module 1 · Lesson 1</div>
-    <h1 className="mt-4 text-4xl font-black sm:text-5xl">What Is Artificial Intelligence?</h1>
-    <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-200">Discover what AI does, how learning from data differs from fixed rules, where AI is used, and why human judgment still matters.</p>
-    <p className="mt-4 text-sm text-slate-300">Estimated reading and practice: 25–35 minutes · No prerequisites</p>
-   </div>
-  </section>
-  <div className="mx-auto max-w-5xl space-y-8 px-6 py-12">
+ return <main className="min-h-screen bg-slate-50 pb-20 text-[17px] leading-8 text-slate-700">
+  <div className="h-1 bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-950" />
+  <div className="mx-auto max-w-7xl px-5 py-8 md:px-6">
+   <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm font-bold text-slate-500">
+    <Link to="/schools">Academic Schools</Link><span aria-hidden="true">/</span>
+    <Link to="/schools/artificial-intelligence">Artificial Intelligence</Link><span aria-hidden="true">/</span>
+    <Link to="/schools/artificial-intelligence/ai-foundations">AI Foundations</Link><span aria-hidden="true">/</span>
+    <span className="text-slate-900" aria-current="page">Module 1 / Lesson 1</span>
+   </nav>
+   <section className="mt-6 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-800 via-indigo-800 to-slate-950 p-7 text-white shadow-xl md:p-10">
+    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+     <div>
+      <p className="text-sm font-black uppercase tracking-[0.2em] text-cyan-200">AI Foundations</p>
+      <p className="mt-4 text-sm font-bold text-white/80">Module 1 · Lesson 1</p>
+      <h1 className="mt-3 text-4xl font-black leading-tight md:text-5xl">What Is Artificial Intelligence?</h1>
+      <p className="mt-5 max-w-4xl text-lg leading-9 text-white/85">Discover how AI uses data, mathematical models, and human judgment to solve problems responsibly.</p>
+      <div className="mt-7 flex flex-wrap gap-2 text-xs font-black">
+       <span className="rounded-full bg-white/15 px-4 py-2">25–35 minutes</span>
+       <span className="rounded-full bg-white/15 px-4 py-2">Foundation</span>
+       <span className="rounded-full bg-white/15 px-4 py-2">4-question knowledge check</span>
+       <span className="rounded-full bg-white/15 px-4 py-2">Mathematics lab</span>
+      </div>
+     </div>
+     <Link to="/schools/artificial-intelligence/ai-foundations" className="inline-flex shrink-0 items-center gap-2 self-start rounded-xl bg-white/10 px-4 py-3 text-sm font-black text-white ring-1 ring-white/20 hover:bg-white/20"><ArrowLeft size={16}/> Module</Link>
+    </div>
+   </section>
+   <div className="mt-8 grid items-start gap-7 lg:grid-cols-[300px_minmax(0,1fr)]">
+    <aside className="space-y-6 lg:sticky lg:top-24" aria-label="Lesson reference">
+     <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+      <h2 className="bg-emerald-800 px-5 py-4 text-sm font-black text-white">Essential Vocabulary</h2>
+      <dl className="space-y-4 p-5">
+       {[
+         ["Artificial Intelligence","Computing systems designed to perform tasks such as pattern recognition, prediction, and language processing."],
+         ["Feature","A measurable property used as an input to a model."],
+         ["Vector","An ordered list of numbers representing features."],
+         ["Weight","A numerical coefficient determining a feature's contribution to a calculation."],
+         ["Probability","A number between 0 and 1 expressing model-estimated uncertainty."],
+         ["Prediction Error","The difference between a predicted result and an observed value."],
+         ["Generative AI","Systems that generate text, images, or other content from learned patterns."]
+       ].map(([term,definition])=><div key={term}><dt className="font-black text-slate-950">{term}</dt><dd className="mt-1 text-sm leading-6 text-slate-600">{definition}</dd></div>)}
+      </dl>
+     </section>
+     <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+      <h2 className="bg-blue-800 px-5 py-4 text-sm font-black text-white">Key Formulas</h2>
+      <div className="space-y-3 p-5 text-sm">
+       <p className="overflow-x-auto rounded-xl bg-slate-950 p-3 font-mono font-bold text-cyan-200">x = [x₁, x₂]</p>
+       <p className="overflow-x-auto rounded-xl bg-slate-950 p-3 font-mono font-bold text-cyan-200">z = w₁x₁ + w₂x₂</p>
+       <p className="overflow-x-auto rounded-xl bg-slate-950 p-3 font-mono font-bold text-cyan-200">Error = |ŷ − y|</p>
+      </div>
+     </section>
+     <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+      <h2 className="text-sm font-black uppercase tracking-widest text-slate-500">Lesson status</h2>
+      <p className="mt-3 text-sm leading-6 text-slate-700">{saved ? `Saved score: ${saved.score}/${saved.total_questions}` : "No account score loaded yet."}</p>
+      <p className="mt-1 text-sm font-bold text-indigo-800">{saved?.completed ? "Knowledge check completed" : "Complete the quiz and save your score below."}</p>
+      <p className="mt-3 text-xs leading-5 text-slate-500">Progress is confirmed by your saved assessment, not by opening the page.</p>
+     </section>
+    </aside>
+    <div className="min-w-0 space-y-7">
+     <div className="grid gap-4 md:grid-cols-2">
+      <section className="rounded-3xl border-l-4 border-blue-500 bg-white p-6 shadow-sm">
+       <p className="text-xs font-black uppercase tracking-widest text-blue-700">Essential Question</p>
+       <p className="mt-3 font-bold text-slate-950">How can mathematics and data help a computer make useful predictions?</p>
+      </section>
+      <section className="rounded-3xl border-l-4 border-emerald-500 bg-white p-6 shadow-sm">
+       <p className="text-xs font-black uppercase tracking-widest text-emerald-700">Big Idea</p>
+       <p className="mt-3 font-bold text-slate-950">AI models represent information numerically, combine features, and evaluate results while requiring human oversight.</p>
+      </section>
+     </div>
+     <section className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+      <p className="text-xs font-black uppercase tracking-widest text-blue-700">Context</p>
+      <h2 className="mt-2 text-2xl font-black text-slate-950">Why this matters</h2>
+      <p className="mt-4 leading-8">Understanding features, weighted scores, probabilities, and error prepares you to question AI outputs rather than accept them without evidence.</p>
+     </section>
    <section className="rounded-3xl border border-slate-200 bg-white p-7">
     <h2 className="text-2xl font-black">Learning objectives</h2>
     <ul className="mt-4 list-inside list-disc space-y-2 leading-7 text-slate-700"><li>Explain AI in your own words.</li><li>Distinguish rule-based programs, machine learning, and generative AI.</li><li>Identify benefits, limitations, and responsible-use considerations.</li><li>Represent features as vectors, calculate a weighted score, and interpret probability and absolute error.</li></ul>
@@ -129,6 +190,8 @@ export default function AIFoundationsLessonOne(){
     </div>
    </section>
    <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">6. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence/ai-foundations" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI Foundations <ArrowRight size={18}/></Link></section>
+    </div>
+   </div>
   </div>
  </main>;
 }
