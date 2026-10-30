@@ -182,6 +182,17 @@ const backLabel = course.backLabel ?? "Back to Knowledge Library";
                   {module.description}
                 </p>
 
+                {Array.isArray(module.lessons) && module.lessons.length > 0 && (
+                  <div className="mt-4 space-y-2" aria-label={`Lessons in Module ${module.id}`}>
+                    {module.lessons.map((lesson,index) => (
+                      <Link key={lesson.path} to={lesson.path} className="flex items-center gap-3 rounded-xl border border-indigo-100 bg-indigo-50 px-4 py-3 text-sm font-semibold text-indigo-900 hover:bg-indigo-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-600">
+                        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-700 text-xs font-black text-white">{index + 1}</span>
+                        <span>{lesson.title}</span>
+                        <span className="ml-auto" aria-hidden="true">→</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-700">
                     {module.level}
