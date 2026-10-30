@@ -5,6 +5,7 @@ import { markLessonComplete } from "../../services/lessonProgress.js";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "../../components/navigation/Breadcrumbs.jsx";
 import { ArrowLeft, ArrowRight, BrainCircuit, CheckCircle2, RotateCcw } from "lucide-react";
+import MathematicalDeepDive from "../../components/learning/MathematicalDeepDive.jsx";
 
 const questions = [
  {question:"Which description best defines artificial intelligence?", options:["Software that can perform tasks requiring capabilities such as perception, language, or reasoning","Any website connected to the internet","Only physical robots"], answer:0, why:"AI systems can recognize patterns, interpret language, make predictions, and perform other tasks."},
@@ -169,6 +170,22 @@ export default function AIFoundationsLessonOne(){
     </div>
     <p className="mt-6 text-sm leading-7 text-slate-600"><strong>Think critically:</strong> The weights here are chosen to teach arithmetic; they are not learned from real student data. Real AI development requires representative data, testing, and checks for fairness and privacy.</p>
    </section>
+     <MathematicalDeepDive
+      title="Mathematics behind AI — worked notes"
+      introduction="Follow each calculation from representation to interpretation. AI relies on accurate arithmetic, algebra, vectors, statistics, and optimization. These are introductory mathematical models for learning, not verified student performance predictions."
+      examples={[
+       {title:"Representing data as a vector",question:"A learner studies 4 hours and completes 7 of 10 practice tasks. Write the feature vector and explain its entries.",formula:"x = [x₁, x₂] = [4, 7]",steps:["Define x₁ as study hours and x₂ as completed practice tasks.","Place both numeric features in a fixed order.","Keep the definition and units attached to each entry; switching the order changes the meaning."],answer:"x = [4, 7].",interpretation:"A vector encodes measurements in a consistent order. It does not by itself evaluate a person."},
+       {title:"The dot product and weighted prediction",question:"Calculate a simple linear score from x = [4, 7] and weights w = [0.5, 0.8].",formula:"z = w · x = (0.5 × 4) + (0.8 × 7)",steps:["Multiply the first weight and feature: 0.5 × 4 = 2.","Multiply the second weight and feature: 0.8 × 7 = 5.6.","Add the weighted contributions: z = 2 + 5.6 = 7.6."],answer:"The weighted score is 7.6 model-score units.",interpretation:"Changing the first feature by 1 changes z by 0.5; changing the second by 1 changes z by 0.8, with weights held fixed."},
+       {title:"Mean absolute error",question:"A toy model predicts [8, 6, 9] while observed values are [7, 8, 8]. Calculate mean absolute error (MAE).",formula:"MAE = (|8 − 7| + |6 − 8| + |9 − 8|) / 3",steps:["Find the three absolute errors: 1, 2, and 1.","Add them to get 4.","Divide by 3 predictions: MAE = 4 / 3 ≈ 1.33."],answer:"MAE ≈ 1.33 in the same units as the target variable.",interpretation:"Lower MAE indicates smaller typical absolute prediction errors on this sample, but the model must also be tested on new data."},
+       {title:"Probability is not certainty",question:"A model estimates an event probability of 0.75. Express it as a percentage and interpret it.",formula:"0.75 × 100% = 75%",steps:["Recall that probability is between 0 and 1.","Multiply 0.75 by 100 to convert it to a percentage.","Distinguish an estimated likelihood from a guaranteed outcome."],answer:"The estimated probability is 75%, not a guarantee.",interpretation:"Whether the probability is trustworthy depends on calibration, evaluation, and the data used."}
+      ]}
+      practice={[
+       {question:"For x = [3, 5] and w = [2, 0.4], calculate w · x.",solution:"(2 × 3) + (0.4 × 5) = 6 + 2 = 8."},
+       {question:"A model predicts 12, and the actual result is 9. Find the absolute error.",solution:"|12 − 9| = 3."},
+       {question:"Convert a model probability of 0.2 into a percentage.",solution:"0.2 × 100% = 20%."},
+       {question:"Using z = 0.5x₁ + 0.8x₂, what happens when x₂ rises from 6 to 8 while x₁ is unchanged?",solution:"The increase is 0.8 × (8 − 6) = 1.6 model-score units."}
+      ]}
+     />
    <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">4. Practice: categorize the system</h2>
     <p className="mt-4 leading-8 text-slate-700">Write down a reason for each classification: (a) a timer alerts exactly 10 minutes after a start button is pressed; (b) an image model learns to identify cats from labeled photos; (c) a chatbot drafts a new explanation of fractions. Suggested classifications: (a) fixed-rule automation; (b) machine learning; (c) generative AI.</p>
     <p className="mt-4 leading-8 text-slate-700"><strong>Responsible AI checklist:</strong> Ask whether training data is appropriate, whether outputs can be wrong or biased, whose personal information is involved, and who reviews consequential decisions.</p>
