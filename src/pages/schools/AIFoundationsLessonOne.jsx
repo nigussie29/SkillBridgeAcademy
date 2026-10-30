@@ -186,6 +186,35 @@ export default function AIFoundationsLessonOne(){
        {question:"Using z = 0.5x₁ + 0.8x₂, what happens when x₂ rises from 6 to 8 while x₁ is unchanged?",solution:"The increase is 0.8 × (8 − 6) = 1.6 model-score units."}
       ]}
      />
+   <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm" aria-labelledby="connection-lab-title">
+    <div className="bg-gradient-to-r from-indigo-950 to-blue-800 px-7 py-6 text-white">
+     <p className="text-xs font-black uppercase tracking-widest text-cyan-200">SkillBridge Connection Lab · Mathematics × AI × Robotics</p>
+     <h2 id="connection-lab-title" className="mt-2 text-2xl font-black">From a mathematical rule to a safer robot</h2>
+     <p className="mt-3 text-sm leading-7 text-blue-100">See how a distance measurement becomes a mathematical model, a program, and an investigation. A simple stopping rule is automation—not AI.</p>
+    </div>
+    <div className="space-y-6 p-7">
+     <div className="grid gap-4 md:grid-cols-3">
+      <article className="rounded-2xl bg-slate-50 p-5"><h3 className="font-black text-indigo-900">1. Mathematics</h3><p className="mt-2 text-sm leading-7">Let d be the measured obstacle distance in centimeters. A toy threshold is T = 20 cm. Define the decision as stop when d is less than T.</p><p className="mt-3 rounded-lg bg-white p-3 font-mono text-sm text-slate-900">stop = (d &lt; 20 cm)</p></article>
+      <article className="rounded-2xl bg-slate-50 p-5"><h3 className="font-black text-indigo-900">2. Programming</h3><p className="mt-2 text-sm leading-7">Express the decision with a conditional. Test inputs before connecting a real motor.</p><pre className="mt-3 overflow-x-auto rounded-lg bg-slate-950 p-3 text-xs leading-6 text-cyan-200">{`if distance_cm < 20:
+    action = "STOP"
+else:
+    action = "CONTINUE"`}</pre></article>
+      <article className="rounded-2xl bg-slate-50 p-5"><h3 className="font-black text-indigo-900">3. AI extension</h3><p className="mt-2 text-sm leading-7">A future model could use multiple sensor measurements to estimate obstacle risk. That requires suitable training examples, evaluation, and meaningful safety checks. The rule here remains deterministic.</p></article>
+     </div>
+     <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+      <h3 className="font-black text-blue-950">Thought experiment: test the rule</h3>
+      <p className="mt-2 text-sm leading-7 text-slate-800">Predict the action for d = 12 cm, 20 cm, and 35 cm. Then consider a sensor that sometimes reads 25 cm when an obstacle is actually at 15 cm. Why is one threshold insufficient to guarantee safety?</p>
+      <div className="mt-4 grid gap-2 sm:grid-cols-3">
+       {[{d:12,result:"STOP"},{d:20,result:"CONTINUE"},{d:35,result:"CONTINUE"}].map(item=><div key={item.d} className="rounded-xl bg-white p-3 text-sm"><strong>{item.d} cm</strong><span className="ml-2 text-slate-600">→ {item.result}</span></div>)}
+      </div>
+      <p className="mt-4 text-sm leading-7 text-slate-700"><strong>Important:</strong> 20 cm is an illustrative threshold, not a real-world safety setting. Actual stopping distances depend on speed, latency, braking, surface, sensor errors, and hardware. Keep motors disconnected for this conceptual exercise.</p>
+     </div>
+     <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+      <h3 className="font-black text-emerald-950">Your evidence challenge</h3>
+      <p className="mt-2 text-sm leading-7">Create a three-column table (measured distance, predicted action, reason), test at least five inputs, and explain one limitation. Then describe how collecting repeated readings might help estimate measurement error. Show your reasoning, not just the final action.</p>
+     </div>
+    </div>
+   </section>
    <section className="rounded-3xl border border-slate-200 bg-white p-7"><h2 className="text-2xl font-black">4. Practice: categorize the system</h2>
     <p className="mt-4 leading-8 text-slate-700">Write down a reason for each classification: (a) a timer alerts exactly 10 minutes after a start button is pressed; (b) an image model learns to identify cats from labeled photos; (c) a chatbot drafts a new explanation of fractions. Suggested classifications: (a) fixed-rule automation; (b) machine learning; (c) generative AI.</p>
     <p className="mt-4 leading-8 text-slate-700"><strong>Responsible AI checklist:</strong> Ask whether training data is appropriate, whether outputs can be wrong or biased, whose personal information is involved, and who reviews consequential decisions.</p>
