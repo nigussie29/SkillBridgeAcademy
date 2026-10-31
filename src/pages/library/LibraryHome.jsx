@@ -149,6 +149,9 @@ export default function LibraryHome() {
                       Coming Soon
                     </span>
                   )}
+                  {library.title === "Data & AI" && (
+                    <Link to="/schools/artificial-intelligence" className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-indigo-700 underline-offset-4 hover:underline">Or enter the School of AI <span aria-hidden="true">→</span></Link>
+                  )}
                 </div>
               </article>
             ))}
