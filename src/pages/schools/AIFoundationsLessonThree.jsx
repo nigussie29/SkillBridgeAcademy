@@ -73,18 +73,64 @@ export default function AIFoundationsLessonThree() {
       <p className="mt-4 leading-8">In robotics, an ultrasonic sensor might report a distance. A rule may stop the robot when the reading is below a threshold. A machine-learning model could instead use features such as distance, speed, and earlier measurements to estimate an obstacle risk. A learned estimate does not eliminate the need for safety engineering or human evaluation.</p>
       <div className="mt-5 rounded-2xl bg-indigo-50 p-5"><h3 className="font-black text-indigo-950">Learning objectives</h3><ul className="mt-3 list-inside list-disc space-y-2 text-sm leading-7"><li>Distinguish deterministic rules from learned models.</li><li>Compute linear weighted scores and absolute prediction error.</li><li>Trace a Python condition and test boundary cases.</li><li>Describe train/test evaluation and possible generalization failure.</li><li>Explain safe applications and limitations in robotics.</li></ul></div>
      </section>
+     <section className="academy-lesson-section p-7" aria-labelledby="math-foundations-explained">
+      <p className="academy-section-kicker">Mathematical Concepts · Explained from First Principles</p>
+      <h2 id="math-foundations-explained" className="mt-2 text-2xl font-black text-slate-950">From measurements to vectors, functions, errors, and learning</h2>
+      <p className="mt-4 leading-8">Artificial intelligence does not replace mathematics. It uses mathematical representations to turn observations into numbers, combine those numbers into predictions, measure how far predictions are from reality, and adjust model parameters. Follow these connections in order before examining the worked problems.</p>
+      <div className="mt-6 space-y-5">
+       <article className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+        <h3 className="text-lg font-black text-blue-950">1. Features and vectors: representing the physical world</h3>
+        <p className="mt-3 leading-8">A feature is one measurable property. Suppose a robot records distance = 30 cm and speed = 5 cm/s. In an agreed order, the feature vector is <strong>x = [30, 5]</strong>. The first position means distance and the second means speed. Swapping positions changes the meaning, even if the numbers are unchanged.</p>
+        <div className="mt-3 rounded-xl bg-slate-950 p-4 font-mono text-sm text-cyan-200">x = [distance_cm, speed_cm_per_s] = [30, 5]</div>
+        <p className="mt-3 text-sm leading-7"><strong>Units matter:</strong> distance and speed are different quantities. Adding raw values without interpretation can be misleading; real ML systems often transform or scale features. For example, 30 cm = 0.30 m, so changing units without converting model coefficients can change a prediction incorrectly.</p>
+       </article>
+       <article className="rounded-2xl border border-indigo-200 bg-indigo-50 p-5">
+        <h3 className="text-lg font-black text-indigo-950">2. Functions and the dot product: combining information</h3>
+        <p className="mt-3 leading-8">A linear model combines features using a weighted sum. Each weight tells us how strongly a feature contributes to the score, and the bias is a constant offset. With two features, z = w₁x₁ + w₂x₂ + b. Vector notation expresses the same calculation as z = w · x + b.</p>
+        <div className="mt-3 rounded-xl bg-slate-950 p-4 font-mono text-sm text-cyan-200">w = [0.6, 0.4], x = [5, 10], b = 0</div>
+        <p className="mt-3 leading-8">The dot product is <strong>(0.6 × 5) + (0.4 × 10) = 7</strong>. In this teaching example the weights are chosen by us, not learned. A numerical output of 7 is simply a <em>score</em>; it is not automatically a probability, classification, physical distance, or proof that a system learned anything.</p>
+        <p className="mt-3 text-sm leading-7"><strong>Important distinction:</strong> if a programmer chooses the weights, the formula is a fixed model. In supervised learning, an algorithm estimates weights using training examples and a defined objective.</p>
+       </article>
+       <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+        <h3 className="text-lg font-black text-emerald-950">3. Error, absolute value, and average loss</h3>
+        <p className="mt-3 leading-8">A prediction must be compared against a reference value. For a single distance prediction, the <strong>absolute error</strong> is |prediction − actual|. Absolute value removes the sign so a 3 cm overestimate and a 3 cm underestimate both contribute an error of 3 cm.</p>
+        <div className="mt-3 rounded-xl bg-slate-950 p-4 font-mono text-sm text-cyan-200">MAE = (|ŷ₁ − y₁| + ... + |ŷₙ − yₙ|) / n</div>
+        <p className="mt-3 leading-8">For predictions [13, 18, 25] cm and reference values [10, 20, 24] cm, the errors are [3, 2, 1] cm. Their mean absolute error (MAE) is <strong>(3 + 2 + 1) / 3 = 2 cm</strong>. This summarizes average error on these three examples, not necessarily on all future data.</p>
+        <p className="mt-3 text-sm leading-7">MAE measures magnitude in the same units as the target. It does not reveal whether errors are concentrated near dangerous boundaries. Always inspect individual failures as well.</p>
+       </article>
+       <article className="rounded-2xl border border-violet-200 bg-violet-50 p-5">
+        <h3 className="text-lg font-black text-violet-950">4. Training, testing, and generalization</h3>
+        <p className="mt-3 leading-8">Learning is the process of adjusting model parameters using examples. Consider the simple model ŷ = wx and a training pair x = 2, y = 6. If w = 2, the prediction is 4, so the squared error is (4 − 6)² = 4. Choosing w = 3 gives prediction 6 and squared error 0 for that example.</p>
+        <div className="mt-3 rounded-xl bg-slate-950 p-4 font-mono text-sm text-cyan-200">L(w) = (wx − y)²; at x = 2, y = 6, minimum is w = 3</div>
+        <p className="mt-3 leading-8">Training aims to reduce a chosen loss over a set of examples; it does not guarantee correct behavior for new observations. Keep evaluation examples separate from the data used to fit weights, and compare performance with a simple baseline. A perfect result on one training example is not evidence of generalization.</p>
+       </article>
+       <article className="rounded-2xl border border-amber-200 bg-amber-50 p-5">
+        <h3 className="text-lg font-black text-amber-950">5. Inequalities, boundaries, and uncertainty in robotics</h3>
+        <p className="mt-3 leading-8">The comparison <strong>d &lt; T</strong> splits readings into two cases. With threshold T = 20 cm, a reading of 19 cm satisfies the inequality, while 20 cm does not. Changing the operator to d ≤ T changes the boundary case. This is mathematical logic implemented in Python, not machine learning.</p>
+        <p className="mt-3 leading-8">Suppose a sensor's reported reading is 20 cm but the actual distance could differ by ±2 cm. The unknown distance could lie between 18 and 22 cm. A threshold comparison on the reported value alone cannot resolve that uncertainty. Real moving robots need validated stopping distances, hardware protections, and independent safety tests.</p>
+       </article>
+      </div>
+      <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+       <h3 className="font-black text-slate-950">Common mathematical mistakes to avoid</h3>
+       <ul className="mt-3 list-inside list-disc space-y-2 text-sm leading-7"><li>Calling a hand-written threshold a trained AI model.</li><li>Treating a weighted score as a probability without calibration.</li><li>Mixing centimeters and meters without changing coefficients.</li><li>Confusing a small training loss with verified test performance.</li><li>Using average error without investigating high-risk individual failures.</li></ul>
+      </div>
+     </section>
      <div id="mathematics" className="scroll-mt-24"><MathematicalDeepDive
       title="Mathematics of predictions"
       introduction="Calculate carefully before deciding whether a numerical score is meaningful. Coefficients are chosen here for explanation, not trained on real robot data."
       examples={[
        {title:"Linear weighted model",question:"Given x = [5,10], w = [0.6,0.4], and b = 0, calculate z.",formula:"z = 0.6(5) + 0.4(10) + 0",steps:["Multiply 0.6 × 5 = 3.","Multiply 0.4 × 10 = 4.","Add contributions and bias: 3 + 4 + 0 = 7."],answer:"The illustrative model score is 7.",interpretation:"A score is not automatically a calibrated probability or a safe decision."},
        {title:"Absolute error",question:"A model predicts 13 cm but a reference measurement is 10 cm. Find absolute error.",formula:"|13 − 10|",steps:["Identify the predicted value: 13 cm.","Identify the reference value: 10 cm.","Subtract and take the absolute value."],answer:"Absolute error = 3 cm.",interpretation:"Compare prediction accuracy over representative cases, including difficult cases."},
-       {title:"Boundary condition",question:"A rule says STOP when distance is less than 20 cm. What happens at 20 cm?",formula:"20 < 20 is false",steps:["Write the comparison distance < threshold.","Substitute 20 for both values.","Because 20 is not strictly less than 20, the else branch runs."],answer:"The rule returns CONTINUE.",interpretation:"The sample rule is an instructional example, not a validated robot stopping policy."}
+       {title:"Boundary condition",question:"A rule says STOP when distance is less than 20 cm. What happens at 20 cm?",formula:"20 < 20 is false",steps:["Write the comparison distance < threshold.","Substitute 20 for both values.","Because 20 is not strictly less than 20, the else branch runs."],answer:"The rule returns CONTINUE.",interpretation:"The sample rule is an instructional example, not a validated robot stopping policy."},
+       {title:"Mean absolute error across predictions",question:"Predictions are [13,18,25] cm and reference values are [10,20,24] cm. Calculate MAE.",formula:"MAE = (|13 − 10| + |18 − 20| + |25 − 24|) / 3",steps:["Find each absolute error: 3 cm, 2 cm, and 1 cm.","Add the absolute errors: 3 + 2 + 1 = 6 cm.","Divide by the three predictions: 6 / 3 = 2 cm."],answer:"Mean absolute error = 2 cm.",interpretation:"This is the average error on the three evaluated observations, not a guarantee for future robot readings."},
+       {title:"A first look at learning a parameter",question:"For model y-hat = wx, let x = 2 and observed y = 6. Compare w = 2 with w = 3 using squared loss.",formula:"L(w) = (2w − 6)²",steps:["At w = 2, predict 4. The squared loss is (4 − 6)² = 4.","At w = 3, predict 6. The squared loss is (6 − 6)² = 0.","The second weight fits this one training example better."],answer:"For this example, w = 3 has lower loss.",interpretation:"A fitted value on a single example is not proof of reliable performance on unseen data."}
       ]}
       practice={[
        {question:"Compute z = 0.3(10) + 0.7(4).",solution:"3 + 2.8 = 5.8."},
        {question:"Find |17 − 12| in centimeters.",solution:"5 cm."},
-       {question:"With threshold 25 cm, what happens at 24 cm and 25 cm?",solution:"24 < 25: STOP. 25 < 25: false, so CONTINUE."}
+       {question:"With threshold 25 cm, what happens at 24 cm and 25 cm?",solution:"24 < 25: STOP. 25 < 25: false, so CONTINUE."},
+       {question:"Find MAE for predictions [8, 12, 16] and actual values [10, 11, 14].",solution:"Absolute errors: [2, 1, 2]. MAE = (2 + 1 + 2)/3 = 5/3 ≈ 1.67 units."},
+       {question:"A robot sensor reports 20 cm with measurement uncertainty ±2 cm. What interval of distances is consistent with that reading?",solution:"20 − 2 = 18 cm; 20 + 2 = 22 cm. The interval is [18,22] cm; this alone does not establish a safe stopping decision."}
       ]}
      /></div>
      <section id="experiment" className="academy-lesson-section scroll-mt-24 p-7">
