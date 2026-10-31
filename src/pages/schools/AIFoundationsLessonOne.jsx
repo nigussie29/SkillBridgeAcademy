@@ -7,6 +7,7 @@ import Breadcrumbs from "../../components/navigation/Breadcrumbs.jsx";
 import { ArrowLeft, ArrowRight, BrainCircuit, CheckCircle2, RotateCcw } from "lucide-react";
 import MathematicalDeepDive from "../../components/learning/MathematicalDeepDive.jsx";
 import CodingAndLumineryLab from "../../components/learning/CodingAndLumineryLab.jsx";
+import RelatedLibraryResources from "../../components/learning/RelatedLibraryResources.jsx";
 
 const questions = [
  {question:"Which description best defines artificial intelligence?", options:["Software that can perform tasks requiring capabilities such as perception, language, or reasoning","Any website connected to the internet","Only physical robots"], answer:0, why:"AI systems can recognize patterns, interpret language, make predictions, and perform other tasks."},
@@ -281,6 +282,14 @@ for distance_cm in readings_cm:
      {saveError && <p role="alert" className="mt-2 text-sm font-semibold text-red-700">{saveError}</p>}
     </div>
    </section>
+   <RelatedLibraryResources
+    title="Connect AI concepts to deeper library notes"
+    description="Read a complementary treatment of AI and its data lifecycle, then return here to apply mathematical reasoning and Python. These are supporting lessons, not replacements for your School of AI assessment."
+    resources={[
+      {topic:"AI foundations",title:"Data, information, analytics, machine learning, and AI",why:"Compare rules, analytics, statistical learning, and AI with clear definitions.",path:"/library/data-ai/module/1/lesson/data-information-analytics-machine-learning-and-ai"},
+      {topic:"AI systems",title:"The end-to-end data and AI lifecycle",why:"Explore how data moves from a real problem through development, evaluation, and responsible use.",path:"/library/data-ai/module/1/lesson/the-end-to-end-data-and-ai-lifecycle"},
+    ]}
+   />
    <section id="portfolio-evidence" className="academy-lesson-section p-7 scroll-mt-24"><h2 className="text-2xl font-black">6. Create evidence</h2><p className="mt-3 leading-8 text-slate-700">In 100–150 words, describe one problem that AI might help solve in your community. Explain the data needed, one possible error, and which decision should remain with a person. Save your response for your future portfolio.</p><Link to="/schools/artificial-intelligence/ai-foundations" className="mt-6 inline-flex items-center gap-2 font-bold text-indigo-700">Back to AI Foundations <ArrowRight size={18}/></Link><Link to="/schools/artificial-intelligence/ai-foundations/module-1/lesson-2" className="mt-4 inline-flex items-center gap-2 rounded-xl bg-indigo-700 px-5 py-3 font-bold text-white hover:bg-indigo-600">Next: Data, Features, and Patterns <ArrowRight size={18}/></Link></section>
     </div>
    </div>
