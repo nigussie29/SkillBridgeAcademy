@@ -28,6 +28,13 @@ export default function ArtificialIntelligenceSchool() {
             <a href="#programs" className="inline-flex items-center gap-2 rounded-xl bg-cyan-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-cyan-300">Explore AI programs <ArrowRight size={18} /></a>
             <Link to="/login" className="inline-flex items-center rounded-xl border border-white/25 bg-white/10 px-7 py-4 font-bold text-white transition hover:bg-white/20">Student login</Link>
           </div>
+          <div className="mt-7 rounded-2xl border border-cyan-300/30 bg-white/10 p-5 backdrop-blur-sm">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-cyan-200">Connected Knowledge Library</p>
+            <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="max-w-2xl text-sm leading-7 text-slate-100">The School of AI provides structured learning pathways. The Data &amp; AI Library adds detailed notes, Python, statistics, analytics, data engineering, and project references. Use both as one connected learning journey.</p>
+              <Link to="/library/data-ai" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-cyan-400 px-5 py-3 text-sm font-black text-slate-950 hover:bg-cyan-300">Open Data &amp; AI Library <ArrowRight size={17}/></Link>
+            </div>
+          </div>
           <div className="mt-10 flex flex-wrap gap-2">{stages.map(stage => <span key={stage} className="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-bold text-slate-100">{stage}</span>)}</div>
         </div>
       </section>
