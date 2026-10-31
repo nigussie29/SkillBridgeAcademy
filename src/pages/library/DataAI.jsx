@@ -146,6 +146,17 @@ export default function DataAI() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-6 pt-10">
+        <div className="flex flex-col gap-5 rounded-3xl border border-indigo-200 bg-gradient-to-r from-indigo-50 via-white to-cyan-50 p-6 shadow-sm md:flex-row md:items-center md:justify-between md:p-8">
+          <div>
+            <p className="text-xs font-black uppercase tracking-widest text-indigo-700">Connected Academic School</p>
+            <h2 className="mt-2 text-2xl font-black text-slate-950">Continue into the School of Artificial Intelligence</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700">Use this library for deeper notes and reference materials, then follow structured AI Foundations lessons with mathematics, Python, robotics connections, Luminery guidance, and assessments. The two areas complement each other and keep their original content.</p>
+          </div>
+          <Link to="/schools/artificial-intelligence" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-indigo-700 px-5 py-3 font-bold text-white hover:bg-indigo-600">Enter School of AI <ArrowRight size={18}/></Link>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-6 py-12">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {trackCards.map(({ title, description, icon: Icon }) => (
