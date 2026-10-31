@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext.jsx";
 import { getAiLessonProgress, saveAiLessonProgress } from "../../services/aiLessonProgress.js";
 import MathematicalDeepDive from "../../components/learning/MathematicalDeepDive.jsx";
 import CodingAndLumineryLab from "../../components/learning/CodingAndLumineryLab.jsx";
+import RelatedLibraryResources from "../../components/learning/RelatedLibraryResources.jsx";
 
 const LESSON_ID = "ai-foundations-m1-l2";
 const quiz = [
@@ -137,6 +138,15 @@ Range: 4 cm`}
               hints={["Describe the observed data before deciding what it means.","Compare repeated measurements, units, and sensor positioning.","Use statistics to characterize variability; do not delete a reading without investigating its cause."]}
             />
           </div>
+          <RelatedLibraryResources
+            title="Deepen your understanding of data and features"
+            description="Connect the mathematics of robot sensor readings to data preparation and statistical reasoning from the Data & AI Knowledge Library."
+            resources={[
+              {topic:"Data features",title:"Units of analysis, features, targets, and actions",why:"Understand what each record measures, how features differ from prediction targets, and why units matter.",path:"/library/data-ai/module/1/lesson/units-of-analysis-features-targets-and-actions"},
+              {topic:"Statistics",title:"Center, spread, shape, and unusual observations",why:"Study mean, spread, and unusual values to better reason about sensor measurement quality.",path:"/library/data-ai/module/2/lesson/center-spread-shape-and-unusual-observations"},
+              {topic:"Data quality",title:"Structured, semi-structured, and unstructured data",why:"Compare how observations are represented and prepared for analysis.",path:"/library/data-ai/module/1/lesson/structured-semi-structured-and-unstructured-data"},
+            ]}
+          />
           <section id="assessment" className="academy-lesson-section scroll-mt-24 p-7">
             <p className="academy-section-kicker">Formative Assessment</p>
             <h2 className="mt-2 text-2xl font-black text-slate-950">Check your understanding</h2>
