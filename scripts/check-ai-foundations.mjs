@@ -13,6 +13,8 @@ const sqlExpanded = read("supabase/migrations/20261030_ai_lessons_expand.sql");
 const libraryResources = read("src/components/learning/RelatedLibraryResources.jsx");
 const seenIds = new Set();
 const published = aiFoundationsCourse.lessons.filter((lesson) => lesson.status === "available");
+const lessonWords = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve"];
+assert.ok(published.length <= lessonWords.length, "Extend integrity test lesson filename mapping before publishing additional lessons");
 
 assert.equal(aiFoundationsCourse.certificateAvailable, false, "No unverified course certificates");
 assert.ok(published.length >= 3, "AI Foundations has at least three published lessons");
@@ -31,7 +33,7 @@ for (const [index, lesson] of published.entries()) {
   seenIds.add(id);
   assert.equal(lesson.path, `${AI_FOUNDATIONS_BASE}/module-1/lesson-${n}`, `Lesson ${n} route must be sequential`);
   assert.ok(app.includes(`path="${lesson.path}"`), `App route for Lesson ${n} is registered`);
-  const file = read(`src/pages/schools/AIFoundationsLesson${["One","Two","Three"][index]}.jsx`);
+  const file = read(`src/pages/schools/AIFoundationsLesson${lessonWords[index]}.jsx`);
   assert.match(file, /MathematicalDeepDive/, `Lesson ${n}: worked mathematics`);
   assert.match(file, /CodingAndLumineryLab/, `Lesson ${n}: Python and Luminery`);
   assert.match(file, /RelatedLibraryResources/, `Lesson ${n}: library connection`);
