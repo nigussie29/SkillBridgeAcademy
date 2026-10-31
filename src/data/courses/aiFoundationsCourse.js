@@ -1,9 +1,10 @@
 export const AI_FOUNDATIONS_BASE = "/schools/artificial-intelligence/ai-foundations";
 export const AI_FOUNDATIONS_LESSON_ONE = `${AI_FOUNDATIONS_BASE}/module-1/lesson-1`;
 export const AI_FOUNDATIONS_LESSON_TWO = `${AI_FOUNDATIONS_BASE}/module-1/lesson-2`;
+export const AI_FOUNDATIONS_LESSON_THREE = `${AI_FOUNDATIONS_BASE}/module-1/lesson-3`;
 
 // Course metadata follows the existing shared CourseTemplate contract.
-// Module 1 has two lessons available for study; the remaining curriculum is planned.
+// Module 1 has three lessons available for study; the remaining curriculum is planned.
 export const aiFoundationsCourse = {
   id: "ai-foundations",
   slug: "ai-foundations",
@@ -27,10 +28,11 @@ export const aiFoundationsCourse = {
   ],
   lessons: [
     { id: "what-is-artificial-intelligence", title: "What Is Artificial Intelligence?", status: "available", path: AI_FOUNDATIONS_LESSON_ONE },
-    { id: "data-features-patterns", title: "Data, Features, and Patterns", status: "available", path: AI_FOUNDATIONS_LESSON_TWO }
+    { id: "data-features-patterns", title: "Data, Features, and Patterns", status: "available", path: AI_FOUNDATIONS_LESSON_TWO },
+    { id: "rules-learning-predictions", title: "Rules, Learning, and Predictions", status: "available", path: AI_FOUNDATIONS_LESSON_THREE }
   ],
   modules: [
-    {id: 1, title: "Introduction to Artificial Intelligence", description: "Begin with AI concepts, practical examples, and responsible use. Lessons 1 and 2 introduce AI concepts, numerical features, data quality, and sensor mathematics. Additional lessons are planned.", level: "Beginner", duration: "In development", lessonCount: 2, status: "available", path: AI_FOUNDATIONS_LESSON_ONE, lessons: [{ title: "What Is Artificial Intelligence?", path: AI_FOUNDATIONS_LESSON_ONE }, { title: "Data, Features, and Patterns", path: AI_FOUNDATIONS_LESSON_TWO }]},
+    {id: 1, title: "Introduction to Artificial Intelligence", description: "Begin with AI concepts, practical examples, and responsible use. Lessons 1–3 cover AI concepts, numerical features, sensor data, rules, and predictions. Additional lessons are planned.", level: "Beginner", duration: "In development", lessonCount: 3, status: "available", path: AI_FOUNDATIONS_LESSON_ONE, lessons: [{ title: "What Is Artificial Intelligence?", path: AI_FOUNDATIONS_LESSON_ONE }, { title: "Data, Features, and Patterns", path: AI_FOUNDATIONS_LESSON_TWO }, { title: "Rules, Learning, and Predictions", path: AI_FOUNDATIONS_LESSON_THREE }]},
     {id: 2, title: "How Machines Learn", description: "Training data, prediction, and evaluation.", level: "Beginner", duration: "Planned", lessonCount: 0, status: "planned"},
     {id: 3, title: "Python and Data Foundations", description: "Python basics and data preparation.", level: "Beginner", duration: "Planned", lessonCount: 0, status: "planned"},
     {id: 4, title: "Machine Learning Basics", description: "Classification, regression, and assessment.", level: "Beginner", duration: "Planned", lessonCount: 0, status: "planned"},
