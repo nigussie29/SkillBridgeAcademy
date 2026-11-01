@@ -160,7 +160,7 @@ print("prediction:", neighbors[0][2])
 print("actual:", iris.target_names[labels[test_row]])`}
       expectedOutput={`versicolor: 0.632 cm (row 50)
 virginica: 1.503 cm (row 100)
-setosa: 3.361 cm (row 0)
+setosa: 3.362 cm (row 0)
 prediction: versicolor
 actual: versicolor`}
       prediction={{question:"The query's distance to versicolor row 50 is about 0.632 cm and to virginica row 100 about 1.503 cm. Which label does 1-NN choose from these two candidates?",options:["Versicolor","Virginica","Neither, because a probability is missing"],correctIndex:0,retryHint:"Compare 0.632 and 1.503: the smallest nonnegative distance is the nearest.",explanation:"1-NN takes the label of the closest reference. The smaller distance is 0.632 cm, which belongs to versicolor."}}
