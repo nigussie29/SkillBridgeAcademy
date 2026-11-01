@@ -34,7 +34,7 @@ export default function AIFoundationsLessonSeven() {
   const min = Math.min(...readings);
   const max = Math.max(...readings);
   const xAxis = value => 56+(value/100)*510;
-  const yAxis = value => 280-(value/10)*195;
+  const yAxis = value => 280-(value/100)*195;
   const points = readings.map((value,index)=>({value,index,x:xAxis(index*100/(Math.max(readings.length-1,1))),y:yAxis(value)}));
   const pathLine = points.map((point,i)=>`${i===0?"M":"L"}${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(" ");
   const complete = questions.every((_,i)=>answers[i]!==undefined);
