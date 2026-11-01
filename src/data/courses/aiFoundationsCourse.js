@@ -5,9 +5,10 @@ export const AI_FOUNDATIONS_LESSON_THREE = `${AI_FOUNDATIONS_BASE}/module-1/less
 export const AI_FOUNDATIONS_LESSON_FOUR = `${AI_FOUNDATIONS_BASE}/module-1/lesson-4`;
 export const AI_FOUNDATIONS_LESSON_FIVE = `${AI_FOUNDATIONS_BASE}/module-1/lesson-5`;
 export const AI_FOUNDATIONS_LESSON_SIX = `${AI_FOUNDATIONS_BASE}/module-1/lesson-6`;
+export const AI_FOUNDATIONS_LESSON_SEVEN = `${AI_FOUNDATIONS_BASE}/module-1/lesson-7`;
 
 // Course metadata follows the existing shared CourseTemplate contract.
-// Module 1 has six lessons available for study; the remaining curriculum is planned.
+// Module 1 has seven lessons available for study; the remaining curriculum is planned.
 export const aiFoundationsCourse = {
   id: "ai-foundations",
   slug: "ai-foundations",
@@ -35,10 +36,11 @@ export const aiFoundationsCourse = {
     { id: "rules-learning-predictions", title: "Rules, Learning, and Predictions", status: "available", path: AI_FOUNDATIONS_LESSON_THREE },
     { id: "training-data-labels-evaluation", title: "Training Data, Labels, and Model Evaluation", status: "available", path: AI_FOUNDATIONS_LESSON_FOUR },
     { id: "learning-loss-gradient-descent", title: "Learning from Errors: Loss Functions and Gradient Descent", status: "available", path: AI_FOUNDATIONS_LESSON_FIVE },
-    { id: "probability-classification-thresholds", title: "Probability, Classification, and Decision Thresholds", status: "available", path: AI_FOUNDATIONS_LESSON_SIX }
+    { id: "probability-classification-thresholds", title: "Probability, Classification, and Decision Thresholds", status: "available", path: AI_FOUNDATIONS_LESSON_SIX },
+    { id: "distributions-variability-outliers", title: "Data Distributions, Variability, and Outliers", status: "available", path: AI_FOUNDATIONS_LESSON_SEVEN }
   ],
   modules: [
-    {id: 1, title: "Introduction to Artificial Intelligence", description: "Begin with AI concepts, practical examples, and responsible use. Lessons 1–6 cover AI concepts, sensor data, rules, evaluation, linear regression, gradient descent, probability, and classification. Additional lessons are planned.", level: "Beginner", duration: "In development", lessonCount: 6, status: "available", path: AI_FOUNDATIONS_LESSON_ONE, lessons: [{ title: "What Is Artificial Intelligence?", path: AI_FOUNDATIONS_LESSON_ONE }, { title: "Data, Features, and Patterns", path: AI_FOUNDATIONS_LESSON_TWO }, { title: "Rules, Learning, and Predictions", path: AI_FOUNDATIONS_LESSON_THREE }, { title: "Training Data, Labels, and Model Evaluation", path: AI_FOUNDATIONS_LESSON_FOUR }, { title: "Learning from Errors: Loss Functions and Gradient Descent", path: AI_FOUNDATIONS_LESSON_FIVE }, { title: "Probability, Classification, and Decision Thresholds", path: AI_FOUNDATIONS_LESSON_SIX }]},
+    {id: 1, title: "Introduction to Artificial Intelligence", description: "Begin with AI concepts, practical examples, and responsible use. Lessons 1–7 cover AI concepts, sensor data, rules, regression, probability, classification, statistics, and outlier analysis. Additional lessons are planned.", level: "Beginner", duration: "In development", lessonCount: 7, status: "available", path: AI_FOUNDATIONS_LESSON_ONE, lessons: [{ title: "What Is Artificial Intelligence?", path: AI_FOUNDATIONS_LESSON_ONE }, { title: "Data, Features, and Patterns", path: AI_FOUNDATIONS_LESSON_TWO }, { title: "Rules, Learning, and Predictions", path: AI_FOUNDATIONS_LESSON_THREE }, { title: "Training Data, Labels, and Model Evaluation", path: AI_FOUNDATIONS_LESSON_FOUR }, { title: "Learning from Errors: Loss Functions and Gradient Descent", path: AI_FOUNDATIONS_LESSON_FIVE }, { title: "Probability, Classification, and Decision Thresholds", path: AI_FOUNDATIONS_LESSON_SIX }, { title: "Data Distributions, Variability, and Outliers", path: AI_FOUNDATIONS_LESSON_SEVEN }]},
     {id: 2, title: "How Machines Learn", description: "Training data, prediction, and evaluation.", level: "Beginner", duration: "Planned", lessonCount: 0, status: "planned"},
     {id: 3, title: "Python and Data Foundations", description: "Python basics and data preparation.", level: "Beginner", duration: "Planned", lessonCount: 0, status: "planned"},
     {id: 4, title: "Machine Learning Basics", description: "Classification, regression, and assessment.", level: "Beginner", duration: "Planned", lessonCount: 0, status: "planned"},
