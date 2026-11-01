@@ -8,9 +8,10 @@ export const AI_FOUNDATIONS_LESSON_SIX = `${AI_FOUNDATIONS_BASE}/module-1/lesson
 export const AI_FOUNDATIONS_LESSON_SEVEN = `${AI_FOUNDATIONS_BASE}/module-1/lesson-7`;
 export const AI_FOUNDATIONS_LESSON_EIGHT = `${AI_FOUNDATIONS_BASE}/module-1/lesson-8`;
 export const AI_FOUNDATIONS_LESSON_NINE = `${AI_FOUNDATIONS_BASE}/module-1/lesson-9`;
+export const AI_FOUNDATIONS_LESSON_TEN = `${AI_FOUNDATIONS_BASE}/module-1/lesson-10`;
 
 // Course metadata follows the existing shared CourseTemplate contract.
-// Module 1 has nine lessons available for study; the remaining curriculum is planned.
+// Module 1 has ten lessons available for study; the remaining curriculum is planned.
 export const aiFoundationsCourse = {
   id: "ai-foundations",
   slug: "ai-foundations",
@@ -41,10 +42,11 @@ export const aiFoundationsCourse = {
     { id: "probability-classification-thresholds", title: "Probability, Classification, and Decision Thresholds", status: "available", path: AI_FOUNDATIONS_LESSON_SIX },
     { id: "distributions-variability-outliers", title: "Data Distributions, Variability, and Outliers", status: "available", path: AI_FOUNDATIONS_LESSON_SEVEN },
     { id: "real-iris-feature-scaling", title: "Feature Scaling with Real Iris Measurements", status: "available", path: AI_FOUNDATIONS_LESSON_EIGHT },
-    { id: "real-iris-nearest-neighbor", title: "Distance, Similarity, and Nearest-Neighbor AI", status: "available", path: AI_FOUNDATIONS_LESSON_NINE }
+    { id: "real-iris-nearest-neighbor", title: "Distance, Similarity, and Nearest-Neighbor AI", status: "available", path: AI_FOUNDATIONS_LESSON_NINE },
+    { id: "real-iris-confusion-matrix", title: "Evaluating AI: Accuracy, Precision, Recall, and Confusion Matrices", status: "available", path: AI_FOUNDATIONS_LESSON_TEN }
   ],
   modules: [
-    {id: 1, title: "Introduction to Artificial Intelligence", description: "Begin with AI concepts, practical examples, and responsible use. Lessons 1–9 cover AI concepts, regression, classification, statistics, scaling, and nearest-neighbor learning with real Iris observations. Additional lessons are planned.", level: "Beginner", duration: "In development", lessonCount: 9, status: "available", path: AI_FOUNDATIONS_LESSON_ONE, lessons: [{ title: "What Is Artificial Intelligence?", path: AI_FOUNDATIONS_LESSON_ONE }, { title: "Data, Features, and Patterns", path: AI_FOUNDATIONS_LESSON_TWO }, { title: "Rules, Learning, and Predictions", path: AI_FOUNDATIONS_LESSON_THREE }, { title: "Training Data, Labels, and Model Evaluation", path: AI_FOUNDATIONS_LESSON_FOUR }, { title: "Learning from Errors: Loss Functions and Gradient Descent", path: AI_FOUNDATIONS_LESSON_FIVE }, { title: "Probability, Classification, and Decision Thresholds", path: AI_FOUNDATIONS_LESSON_SIX }, { title: "Data Distributions, Variability, and Outliers", path: AI_FOUNDATIONS_LESSON_SEVEN }, { title: "Feature Scaling with Real Iris Measurements", path: AI_FOUNDATIONS_LESSON_EIGHT }, { title: "Distance, Similarity, and Nearest-Neighbor AI", path: AI_FOUNDATIONS_LESSON_NINE }]},
+    {id: 1, title: "Introduction to Artificial Intelligence", description: "Begin with AI concepts, practical examples, and responsible use. Lessons 1–10 cover AI concepts, regression, classification, statistics, scaling, nearest-neighbor learning, and held-out evaluation on real Iris data. Additional lessons are planned.", level: "Beginner", duration: "In development", lessonCount: 10, status: "available", path: AI_FOUNDATIONS_LESSON_ONE, lessons: [{ title: "What Is Artificial Intelligence?", path: AI_FOUNDATIONS_LESSON_ONE }, { title: "Data, Features, and Patterns", path: AI_FOUNDATIONS_LESSON_TWO }, { title: "Rules, Learning, and Predictions", path: AI_FOUNDATIONS_LESSON_THREE }, { title: "Training Data, Labels, and Model Evaluation", path: AI_FOUNDATIONS_LESSON_FOUR }, { title: "Learning from Errors: Loss Functions and Gradient Descent", path: AI_FOUNDATIONS_LESSON_FIVE }, { title: "Probability, Classification, and Decision Thresholds", path: AI_FOUNDATIONS_LESSON_SIX }, { title: "Data Distributions, Variability, and Outliers", path: AI_FOUNDATIONS_LESSON_SEVEN }, { title: "Feature Scaling with Real Iris Measurements", path: AI_FOUNDATIONS_LESSON_EIGHT }, { title: "Distance, Similarity, and Nearest-Neighbor AI", path: AI_FOUNDATIONS_LESSON_NINE }, { title: "Evaluating AI: Accuracy, Precision, Recall, and Confusion Matrices", path: AI_FOUNDATIONS_LESSON_TEN }]},
     {id: 2, title: "How Machines Learn", description: "Training data, prediction, and evaluation.", level: "Beginner", duration: "Planned", lessonCount: 0, status: "planned"},
     {id: 3, title: "Python and Data Foundations", description: "Python basics and data preparation.", level: "Beginner", duration: "Planned", lessonCount: 0, status: "planned"},
     {id: 4, title: "Machine Learning Basics", description: "Classification, regression, and assessment.", level: "Beginner", duration: "Planned", lessonCount: 0, status: "planned"},
