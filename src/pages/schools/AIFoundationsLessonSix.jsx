@@ -46,6 +46,15 @@ export default function AIFoundationsLessonSix() {
   const accuracy = (counts.tp+counts.tn)/scored.length;
   const precision = counts.tp+counts.fp ? counts.tp/(counts.tp+counts.fp) : null;
   const recall = counts.tp+counts.fn ? counts.tp/(counts.tp+counts.fn) : null;
+  // Chart of sigmoid(z), with a horizontal decision threshold and observed samples.
+  const graphX = z => 62 + (z + 6) * 42;
+  const graphY = p => 278 - p * 216;
+  const curvePath = Array.from({length: 121}, (_,i)=>{
+    const z = -6 + i * 0.1;
+    return `${i===0?"M":"L"}${graphX(z).toFixed(2)} ${graphY(sigmoid(z)).toFixed(2)}`;
+  }).join(" ");
+  const cutoffLogit = Math.log(classificationThreshold / (1 - classificationThreshold));
+
 
   useEffect(() => {
     let active = true;
@@ -151,6 +160,31 @@ export default function AIFoundationsLessonSix() {
             <label className="mt-3 block rounded-2xl bg-violet-50 p-5 text-sm font-bold text-violet-950">Classification threshold t: {classificationThreshold.toFixed(2)}
               <input aria-label="Classification threshold" className="mt-4 w-full accent-violet-700" type="range" min="0.1" max="0.9" step="0.05" value={classificationThreshold} onChange={e=>setClassificationThreshold(Number(e.target.value))}/>
             </label>
+            <figure className="mt-6 overflow-hidden rounded-2xl border border-indigo-200 bg-white p-4 sm:p-6">
+              <figcaption className="text-lg font-black text-slate-950">Live graph: sigmoid probability and decision threshold</figcaption>
+              <p className="mt-2 text-sm leading-7 text-slate-700">The blue S-curve shows p = 1/(1+e^(−z)). The dashed purple line is your selected decision threshold. The colored dots represent the four example observations; change either slider to update the picture.</p>
+              <svg viewBox="0 0 640 338" className="mt-4 h-auto w-full" role="img" aria-labelledby="sigmoid-graph-title sigmoid-graph-desc">
+                <title id="sigmoid-graph-title">Interactive sigmoid probability curve</title>
+                <desc id="sigmoid-graph-desc">An S-shaped probability curve with a horizontal classification threshold at {classificationThreshold.toFixed(2)}, a vertical threshold intersection at logit {cutoffLogit.toFixed(2)}, and four colored example points that change as the score offset changes.</desc>
+                <rect x="62" y="62" width="504" height="216" fill="#f8fafc" rx="3"/>
+                {[0,0.25,0.5,0.75,1].map(p=><g key={p}><line x1="62" y1={graphY(p)} x2="566" y2={graphY(p)} stroke="#cbd5e1" strokeWidth="1"/><text x="50" y={graphY(p)+5} fontSize="13" fill="#475569" textAnchor="end">{p.toFixed(2)}</text></g>)}
+                {[-6,-4,-2,0,2,4,6].map(z=><g key={z}><line x1={graphX(z)} y1="62" x2={graphX(z)} y2="278" stroke="#e2e8f0" strokeWidth="1"/><text x={graphX(z)} y="298" fontSize="13" fill="#475569" textAnchor="middle">{z}</text></g>)}
+                <path d={curvePath} stroke="#1d4ed8" strokeWidth="4" fill="none" strokeLinecap="round"/>
+                <line x1="62" y1={graphY(classificationThreshold)} x2="566" y2={graphY(classificationThreshold)} stroke="#7c3aed" strokeWidth="3" strokeDasharray="8 6"/>
+                <line x1={graphX(cutoffLogit)} y1={graphY(classificationThreshold)} x2={graphX(cutoffLogit)} y2="278" stroke="#7c3aed" strokeWidth="2" strokeDasharray="4 5" opacity="0.8"/>
+                {scored.map(row=><circle key={row.distance} cx={graphX(row.z)} cy={graphY(row.probability)} r="8" stroke="white" strokeWidth="2" fill={row.predicted===1?"#047857":"#dc2626"}/>)}
+                <text x="314" y="325" fontSize="15" fontWeight="bold" fill="#0f172a" textAnchor="middle">Model score z</text>
+                <text x="16" y="175" fontSize="14" fontWeight="bold" fill="#0f172a" textAnchor="middle" transform="rotate(-90 16 175)">Probability p</text>
+                <text x="558" y={Math.max(76,graphY(classificationThreshold)-10)} fontSize="13" fill="#6d28d9" textAnchor="end">threshold = {classificationThreshold.toFixed(2)}</text>
+              </svg>
+              <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
+                <span className="text-blue-800">━ Sigmoid curve</span>
+                <span className="text-violet-800">┄ Decision threshold</span>
+                <span className="text-emerald-800">● Predicted positive</span>
+                <span className="text-red-700">● Predicted negative</span>
+              </div>
+              <p className="mt-3 text-sm leading-7 text-slate-700"><strong>Read the graph:</strong> The horizontal line meets the curve at z ≈ {cutoffLogit.toFixed(2)}. Scores above this intersection predict positive. Moving the threshold changes the classification boundary but does not alter the blue sigmoid function.</p>
+            </figure>
             <div className="mt-5 overflow-x-auto"><table className="w-full border-collapse text-left text-sm"><thead><tr className="bg-slate-900 text-white"><th className="p-3">Distance</th><th className="p-3">True label</th><th className="p-3">Estimated p</th><th className="p-3">Predicted</th></tr></thead><tbody>{scored.map(row=><tr key={row.distance} className="border-b border-slate-200 bg-white"><td className="p-3">{row.distance} cm</td><td className="p-3">{row.actual?"Yes":"No"}</td><td className="p-3">{row.probability.toFixed(3)}</td><td className="p-3">{row.predicted?"Yes":"No"}</td></tr>)}</tbody></table></div>
             <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4" aria-live="polite">{Object.entries(counts).map(([name,value])=><div key={name} className="rounded-xl bg-slate-100 p-4 text-center"><p className="text-xs font-black uppercase text-slate-600">{name}</p><p className="mt-1 text-2xl font-black text-slate-950">{value}</p></div>)}</div>
             <div className="mt-3 grid gap-3 sm:grid-cols-3" aria-live="polite">{[["Accuracy",accuracy],["Precision",precision],["Recall",recall]].map(([name,value])=><div key={name} className="rounded-xl bg-emerald-50 p-4"><p className="text-xs font-black uppercase text-emerald-900">{name}</p><p className="mt-2 text-xl font-black">{value===null?"Undefined":(value*100).toFixed(1)+"%"}</p></div>)}</div>
