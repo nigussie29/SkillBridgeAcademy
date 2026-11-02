@@ -64,7 +64,7 @@ export default function AIFoundationsLessonEleven(){
     <p className="mt-5 max-w-3xl text-lg leading-9 text-blue-100">Why can a model remember training examples yet struggle with unfamiliar data? Explore authentic Iris results and discover how model complexity, validation, and honest testing work together.</p>
     <p className="mt-4 text-sm font-bold text-cyan-100">Real Iris dataset · 120 training flowers · 30 held-out test flowers · 14 measured model settings</p>
    </header>
-   <nav aria-label="Lesson sections" className="academy-mini-nav mt-6 flex flex-wrap gap-2"><a href="#why">What and why</a><a href="#mathematics">Worked mathematics</a><a href="#graph">Interactive graph</a><a href="#coding">Python &amp; Luminery</a><a href="#assessment">Assessment</a></nav>
+   <nav aria-label="Lesson sections" className="academy-mini-nav mt-6 flex flex-wrap gap-2"><a href="#why">What and why</a><a href="#mathematics">Worked mathematics</a><a href="#graph">Interactive graph</a><a href="#connection-lab">Connection Lab</a><a href="#coding">Python &amp; Luminery</a><a href="#assessment">Assessment</a></nav>
    <div className="mt-8 grid items-start gap-7 lg:grid-cols-[280px_minmax(0,1fr)]">
     <aside className="space-y-5 lg:sticky lg:top-24">
      <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white"><h2 className="bg-emerald-800 px-5 py-4 font-black text-white">Essential Vocabulary</h2><dl className="space-y-4 p-5 text-sm leading-7">{[
