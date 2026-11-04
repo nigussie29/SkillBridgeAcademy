@@ -151,7 +151,7 @@ export default function AIFoundationsLessonEleven(){
      </section>
      <div id="coding" className="scroll-mt-24"><CodingAndLumineryLab
        title="Reproduce the real Iris learning curves in Python"
-       introduction="This runnable Python program generates the exact observations in the graph using scikit-learn. It deliberately prints held-out test scores for teaching; do not use the displayed test-score ranking to choose a production hyperparameter."
+       introduction="Run this Python 3 example in your own environment with scikit-learn installed; the lesson does not execute Python in the browser or automatically grade code. It reproduces the displayed Iris results. The held-out test scores are shown for teaching only: choose a production hyperparameter using training-only validation, not the displayed test ranking."
        code={`from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split, StratifiedKFold, cross_val_score
 from sklearn.pipeline import make_pipeline
