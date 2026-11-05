@@ -21,9 +21,9 @@ const results=[
 ];
 const questions=[
  {question:"A 1-nearest-neighbor model scores 99.2% on training data but 86.7% on held-out data. What should you investigate?",options:["Possible overfitting","Guaranteed generalization","Missing test labels"],answer:0,why:"A large train/test performance gap is a warning sign that fit to training examples may not generalize. It is not definitive proof by itself."},
- {question:"When k becomes very large in a nearest-neighbor classifier, what can happen?",options:["The model may become too simple to capture class boundaries","The model always achieves perfect accuracy","All training labels disappear"],answer:0,why:"A large neighborhood mixes distant examples, potentially smoothing over genuine distinctions and causing underfitting."},
- {question:"Which data should be used to choose k while protecting a final unbiased evaluation?",options:["A training-derived validation set or cross-validation","The final test set repeatedly","The complete dataset before splitting"],answer:0,why:"Use validation or cross-validation for model selection and preserve the final test set for one final evaluation."},
- {question:"For 28 correct predictions out of 30 held-out samples, what is the accuracy rounded to one decimal place?",options:["93.3%","90.0%","96.7%"],answer:0,why:"28/30 = 0.93333..., so accuracy is 93.3% to one decimal place."}
+ {question:"When k becomes very large in a nearest-neighbor classifier, what can happen?",options:["The model always achieves perfect accuracy","The model may become too simple to capture class boundaries","All training labels disappear"],answer:1,why:"A large neighborhood mixes distant examples, potentially smoothing over genuine distinctions and causing underfitting."},
+ {question:"Which data should be used to choose k while protecting a final unbiased evaluation?",options:["The final test set repeatedly","The complete dataset before splitting","A training-derived validation set or cross-validation"],answer:2,why:"Use validation or cross-validation for model selection and preserve the final test set for one final evaluation."},
+ {question:"For 28 correct predictions out of 30 held-out samples, what is the accuracy rounded to one decimal place?",options:["90.0%","93.3%","96.7%"],answer:1,why:"28/30 = 0.93333..., so accuracy is 93.3% to one decimal place."}
 ];
 
 export default function AIFoundationsLessonEleven(){
