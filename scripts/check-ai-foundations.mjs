@@ -42,5 +42,22 @@ for (const [index, lesson] of published.entries()) {
   else assert.ok(file.includes(`"${id}"`), `Lesson ${n}: unique Supabase progress ID`);
   console.log(`PASS: Lesson ${n} route, content, library bridge and save contract`);
 }
+// Lesson 11 regression guard: static source contracts only, not a browser or DB test.
+const lesson11 = read("src/pages/schools/AIFoundationsLessonEleven.jsx");
+const quizStart = lesson11.indexOf("const questions=[");
+const quizEnd = lesson11.indexOf("];", quizStart);
+assert.ok(quizStart >= 0 && quizEnd > quizStart, "Lesson 11 quiz definitions exist");
+const quizDefinitions = lesson11.slice(quizStart, quizEnd);
+const answerIndices = [...quizDefinitions.matchAll(/answer:(\d+)/g)].map((match) => Number(match[1]));
+assert.equal(answerIndices.length, 4, "Lesson 11 retains four assessment questions");
+assert.ok(new Set(answerIndices).size >= 2, "Lesson 11 answer keys are not all in one position");
+assert.match(lesson11, /id="connection-lab"/, "Lesson 11 Connection Lab exists");
+assert.match(lesson11, /href="#connection-lab"/, "Lesson 11 navigation reaches Connection Lab");
+assert.match(lesson11, /id="graph"/, "Lesson 11 graph exists");
+assert.match(lesson11, /setK\(Number\(e\.target\.value\)\)/, "Lesson 11 graph selection remains interactive");
+assert.match(lesson11, /getAiLessonProgress\(user\.id,"ai-foundations-m1-l11"\)/, "Lesson 11 restores its own progress");
+assert.match(lesson11, /saveAiLessonProgress\(user\.id,score,questions\.length,"ai-foundations-m1-l11"\)/, "Lesson 11 saves its own progress");
+console.log("PASS: Lesson 11 quiz, navigation, graph and progress source contracts");
+
 console.log("PASS: Course metadata, legacy progress API, and migration presence");
 console.log("NOTE: Source checks only. They do not verify Supabase migration execution, live quiz saves, or production browser behavior.");
