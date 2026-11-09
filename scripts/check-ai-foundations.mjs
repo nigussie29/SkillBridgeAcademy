@@ -51,6 +51,8 @@ const quizDefinitions = lesson11.slice(quizStart, quizEnd);
 const answerIndices = [...quizDefinitions.matchAll(/answer:(\d+)/g)].map((match) => Number(match[1]));
 assert.equal(answerIndices.length, 4, "Lesson 11 retains four assessment questions");
 assert.ok(new Set(answerIndices).size >= 2, "Lesson 11 answer keys are not all in one position");
+assert.match(lesson11, /answers\[i\]===q\.answer\?"Correct":"Incorrect"/, "Lesson 11 per-question correctness feedback remains visible");
+assert.match(lesson11, /disabled=\{!checked\|\|saveStatus==="saving"\|\|saveStatus==="saved"\}/, "Lesson 11 cannot save before checking answers");
 assert.match(lesson11, /id="connection-lab"/, "Lesson 11 Connection Lab exists");
 assert.match(lesson11, /href="#connection-lab"/, "Lesson 11 navigation reaches Connection Lab");
 assert.match(lesson11, /id="graph"/, "Lesson 11 graph exists");
