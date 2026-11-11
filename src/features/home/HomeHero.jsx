@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import TutoringInquiryLink from "../../components/TutoringInquiryLink.jsx";
 
 const heroHighlights = [
   "Learn with clear pathways",
@@ -51,6 +52,8 @@ export default function HomeHero() {
   Open My Learning OS
 </button>
           </div>
+
+          <TutoringInquiryLink dark />
 
           <div className="mt-10 grid gap-3 sm:grid-cols-2">
             {heroHighlights.map((item) => (
