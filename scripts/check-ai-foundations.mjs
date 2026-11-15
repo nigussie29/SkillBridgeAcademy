@@ -63,7 +63,7 @@ assert.match(lesson11, /setAnswers\(old=>\(\{\.\.\.old,\[i\]:j\}\)\);setChecked\
 assert.match(lesson11, /setAnswers\(\{\}\);setChecked\(false\);setSaveStatus\("idle"\)/, "Retry clears answers and invalidates prior check and save state");
 assert.match(lesson11, /if\(!user\?\.id\|\|!checked\|\|!allAnswered\)return;/, "Save handler rejects unsigned-in or unchecked/incomplete attempts");
 assert.match(lesson11, /\{checked&&<p role="status"[^>]*>Score:/, "Score feedback appears only after checking");
-assert.match(lesson11, /\{checked&&<p role="status"[^>]*\{answers\[i\]===q\.answer/, "Per-question feedback appears only after checking");
+assert.match(lesson11, /\{checked&&<p role="status"[^>]*answers\[i\]===q\.answer/, "Per-question feedback appears only after checking");
 
 assert.match(lesson11, /id="connection-lab"/, "Lesson 11 Connection Lab exists");
 assert.match(lesson11, /href="#connection-lab"/, "Lesson 11 navigation reaches Connection Lab");
