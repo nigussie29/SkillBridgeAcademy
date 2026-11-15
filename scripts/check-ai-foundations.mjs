@@ -53,6 +53,18 @@ assert.equal(answerIndices.length, 4, "Lesson 11 retains four assessment questio
 assert.ok(new Set(answerIndices).size >= 2, "Lesson 11 answer keys are not all in one position");
 assert.match(lesson11, /answers\[i\]===q\.answer\?"Correct\. ":"Not quite\. "/, "Lesson 11 per-question correctness feedback remains visible");
 assert.match(lesson11, /disabled=\{!checked\|\|saveStatus==="saving"\|\|saveStatus==="saved"\}/, "Lesson 11 cannot save before checking answers");
+
+// Guard the full assessment state transition, not just the button label.
+// Editing an answer or retrying must invalidate the previous check and save state.
+assert.match(lesson11, /const allAnswered=questions\.every\(\(_,i\)=>answers\[i\]!==undefined\)/, "Lesson 11 requires an answer to every question");
+assert.match(lesson11, /const score=questions\.reduce\(\(a,q,i\)=>a\+\(answers\[i\]===q\.answer\?1:0\),0\)/, "Lesson 11 score uses the answer keys");
+assert.match(lesson11, /disabled=\{!allAnswered\} onClick=\{\(\)=>setChecked\(true\)\}/, "Lesson 11 checks only fully answered quizzes");
+assert.match(lesson11, /setAnswers\(old=>\(\{\.\.\.old,\[i\]:j\}\)\);setChecked\(false\);setSaveStatus\("idle"\)/, "Changing an answer invalidates prior check and save state");
+assert.match(lesson11, /setAnswers\(\{\}\);setChecked\(false\);setSaveStatus\("idle"\)/, "Retry clears answers and invalidates prior check and save state");
+assert.match(lesson11, /if\(!user\?\.id\|\|!checked\|\|!allAnswered\)return;/, "Save handler rejects unsigned-in or unchecked/incomplete attempts");
+assert.match(lesson11, /\{checked&&<p role="status"[^>]*>Score:/, "Score feedback appears only after checking");
+assert.match(lesson11, /\{checked&&<p role="status"[^>]*\{answers\[i\]===q\.answer/, "Per-question feedback appears only after checking");
+
 assert.match(lesson11, /id="connection-lab"/, "Lesson 11 Connection Lab exists");
 assert.match(lesson11, /href="#connection-lab"/, "Lesson 11 navigation reaches Connection Lab");
 assert.match(lesson11, /id="graph"/, "Lesson 11 graph exists");
