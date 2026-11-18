@@ -73,5 +73,24 @@ assert.match(lesson11, /getAiLessonProgress\(user\.id,"ai-foundations-m1-l11"\)/
 assert.match(lesson11, /saveAiLessonProgress\(user\.id,score,questions\.length,"ai-foundations-m1-l11"\)/, "Lesson 11 saves its own progress");
 console.log("PASS: Lesson 11 quiz, navigation, graph and progress source contracts");
 
+// Lesson 12 is intentionally unpublished until route, database and browser gates pass.
+const lesson12 = read("src/pages/schools/AIFoundationsLessonTwelve.jsx");
+assert.ok(!published.some((lesson) => lesson.path.endsWith("/lesson-12")), "Lesson 12 must remain unpublished");
+assert.ok(!app.includes('path="${AI_FOUNDATIONS_BASE}/module-1/lesson-12"'), "Lesson 12 route must not be enabled prematurely");
+assert.match(lesson12, /const folds = \[0, 1, 2, 3, 4\]/, "Lesson 12 has five validation folds");
+assert.match(lesson12, /aria-pressed=\{fold === i\}/, "Lesson 12 fold selector communicates selection");
+assert.match(lesson12, /onClick=\{\(\) => setFold\(i\)\}/, "Lesson 12 fold selection is interactive");
+assert.match(lesson12, /Separate final test partition/, "Lesson 12 distinguishes the held-out test set");
+assert.match(lesson12, /These five scores are an arithmetic teaching example/, "Lesson 12 does not misrepresent illustrative scores");
+assert.match(lesson12, /StratifiedKFold\(n_splits=5, shuffle=True, random_state=42\)/, "Lesson 12 Python uses stratified cross-validation");
+assert.match(lesson12, /make_pipeline\(StandardScaler\(\), KNeighborsClassifier\(n_neighbors=k\)\)/, "Lesson 12 fits scaling within CV folds");
+assert.match(lesson12, /const complete = questions\.every\(\(_, i\) => answers\[i\] !== undefined\)/, "Lesson 12 checks quiz completeness");
+assert.match(lesson12, /disabled=\{!complete\} onClick=\{\(\) => setChecked\(true\)\}/, "Lesson 12 blocks incomplete quiz checks");
+assert.match(lesson12, /setChecked\(false\)/, "Lesson 12 invalidates checked feedback on answer changes");
+assert.match(lesson12, /This unpublished draft does not save account progress/, "Lesson 12 labels progress as unsaved");
+assert.doesNotMatch(lesson12, /saveAiLessonProgress/, "Lesson 12 must not imply account saving before migration verification");
+assert.match(lesson12, /CodingAndLumineryLab/, "Lesson 12 includes Python and Luminery practice");
+console.log("PASS: Unpublished Lesson 12 fold, Python, quiz, and publication guards");
+
 console.log("PASS: Course metadata, legacy progress API, and migration presence");
 console.log("NOTE: Source checks only. They do not verify Supabase migration execution, live quiz saves, or production browser behavior.");
