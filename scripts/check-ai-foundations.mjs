@@ -76,7 +76,7 @@ console.log("PASS: Lesson 11 quiz, navigation, graph and progress source contrac
 // Lesson 12 is intentionally unpublished until route, database and browser gates pass.
 const lesson12 = read("src/pages/schools/AIFoundationsLessonTwelve.jsx");
 assert.ok(!published.some((lesson) => lesson.path.endsWith("/lesson-12")), "Lesson 12 must remain unpublished");
-assert.ok(!app.includes('path="${AI_FOUNDATIONS_BASE}/module-1/lesson-12"'), "Lesson 12 route must not be enabled prematurely");
+assert.ok(!app.includes(`path="${AI_FOUNDATIONS_BASE}/module-1/lesson-12"`), "Lesson 12 route must not be enabled prematurely");
 assert.match(lesson12, /const folds = \[0, 1, 2, 3, 4\]/, "Lesson 12 has five validation folds");
 assert.match(lesson12, /aria-pressed=\{fold === i\}/, "Lesson 12 fold selector communicates selection");
 assert.match(lesson12, /onClick=\{\(\) => setFold\(i\)\}/, "Lesson 12 fold selection is interactive");
