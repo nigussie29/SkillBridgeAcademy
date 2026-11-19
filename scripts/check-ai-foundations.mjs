@@ -90,6 +90,24 @@ assert.match(lesson12, /setChecked\(false\)/, "Lesson 12 invalidates checked fee
 assert.match(lesson12, /This unpublished draft does not save account progress/, "Lesson 12 labels progress as unsaved");
 assert.doesNotMatch(lesson12, /saveAiLessonProgress/, "Lesson 12 must not imply account saving before migration verification");
 assert.match(lesson12, /CodingAndLumineryLab/, "Lesson 12 includes Python and Luminery practice");
+// Lesson 12 must preserve the complete four-question assessment contract.
+const lesson12QuizStart = lesson12.indexOf("const questions = [");
+const lesson12QuizEnd = lesson12.indexOf("];", lesson12QuizStart);
+assert.ok(lesson12QuizStart >= 0 && lesson12QuizEnd > lesson12QuizStart, "Lesson 12 quiz definitions exist");
+const lesson12Quiz = lesson12.slice(lesson12QuizStart, lesson12QuizEnd);
+const lesson12AnswerKeys = [...lesson12Quiz.matchAll(/correct: (\\d+)/g)].map((match) => Number(match[1]));
+assert.equal(lesson12AnswerKeys.length, 4, "Lesson 12 retains four assessment questions");
+assert.ok(new Set(lesson12AnswerKeys).size >= 2, "Lesson 12 answer keys use varied positions");
+assert.match(lesson12, /answers\\[i\\] === q\\.correct \\? "Correct\\. " : "Review\\. "/, "Lesson 12 per-question correctness feedback is preserved");
+assert.match(lesson12, /setAnswers\\(old => \\(\\{ \\.\\.\\.old, \\[i\\]: j \\}\\)\\); setChecked\\(false\\)/, "Lesson 12 changing an answer invalidates previous feedback");
+assert.match(lesson12, /setAnswers\\(\\{\\}\\); setChecked\\(false\\)/, "Lesson 12 retry clears answers and checked state");
+assert.match(lesson12, /train_test_split\\(/, "Lesson 12 Python reserves a held-out test partition");
+assert.match(lesson12, /test_size=0\\.2, random_state=42, stratify=y/, "Lesson 12 Python uses a reproducible stratified split");
+assert.match(lesson12, /cross_val_score\\(pipeline, X_train, y_train, cv=cv\\)/, "Lesson 12 selects k from training-only cross-validation");
+assert.match(lesson12, /model\\.fit\\(X_train, y_train\\)/, "Lesson 12 final model fits on training data");
+assert.match(lesson12, /model\\.score\\(X_test, y_test\\)/, "Lesson 12 evaluates the held-out test partition");
+console.log("PASS: Unpublished Lesson 12 quiz and train/test separation source contracts");
+
 console.log("PASS: Unpublished Lesson 12 fold, Python, quiz, and publication guards");
 
 console.log("PASS: Course metadata, legacy progress API, and migration presence");
