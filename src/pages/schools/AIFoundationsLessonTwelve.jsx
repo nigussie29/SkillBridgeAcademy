@@ -55,6 +55,12 @@ export default function AIFoundationsLessonTwelve() {
           <h2 className="text-2xl font-black">Why separate training, validation, and testing?</h2>
           <p className="leading-8">Training examples teach the model. Validation examples help compare choices such as the number of neighbors, k. The held-out test set provides a final estimate after those choices are fixed. If we repeatedly choose k based on test accuracy, the test set no longer measures genuinely unseen performance.</p>
           <p className="leading-8">In five-fold cross-validation, each training-derived fold takes one turn as validation data. The other four folds train the model. The separate final test partition never enters these folds.</p>
+          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-950">
+            <h3 className="text-lg font-black">Find the data leak</h3>
+            <p className="mt-2 leading-7"><strong>Leaky approach:</strong> calculate a feature's mean and standard deviation using every flower, including the validation fold, and then scale the data before cross-validation. Validation examples have influenced the preprocessing.</p>
+            <p className="mt-2 leading-7"><strong>Safer approach:</strong> place <code>StandardScaler</code> and the classifier in one scikit-learn <code>Pipeline</code>. For each fold, fit both steps only on that fold's training portion, then transform and predict its validation portion. Reserve the separate final test set until after choosing k.</p>
+            <p className="mt-2 text-sm font-semibold">Mathematics connection: standardization uses z = (x − μ) / σ. The mean μ and standard deviation σ must be estimated from the permitted training observations, not from the validation or test examples.</p>
+          </div>
         </section>
         <section className="academy-lesson-section space-y-5 p-7" aria-labelledby="fold-title">
           <h2 id="fold-title" className="text-2xl font-black">Interactive five-fold mathematics lab</h2>
