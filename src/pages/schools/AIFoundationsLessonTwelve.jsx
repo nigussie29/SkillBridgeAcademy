@@ -69,7 +69,7 @@ export default function AIFoundationsLessonTwelve() {
             {folds.map(i => <button key={i} type="button" aria-pressed={fold === i} onClick={() => setFold(i)}
               className={`rounded-xl border px-4 py-2 font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${fold === i ? "bg-indigo-800 text-white" : "bg-white text-indigo-900"}`}>Fold {i + 1}</button>)}
           </div>
-          <div className="grid grid-cols-5 gap-2" aria-label="Training and validation folds">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-5" aria-label="Training and validation folds">
             {folds.map(i => <div key={i} className={`rounded-xl p-3 text-center text-sm font-bold ${fold === i ? "bg-amber-200 text-amber-950" : "bg-emerald-100 text-emerald-950"}`}>
               <span className="block">Fold {i + 1}</span><span>{fold === i ? "Validation" : "Training"}</span>
             </div>)}
