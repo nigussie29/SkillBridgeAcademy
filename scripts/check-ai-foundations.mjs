@@ -79,6 +79,8 @@ assert.ok(!published.some((lesson) => lesson.path.endsWith("/lesson-12")), "Less
 assert.ok(!app.includes(`path="${AI_FOUNDATIONS_BASE}/module-1/lesson-12"`), "Lesson 12 route must not be enabled prematurely");
 assert.match(lesson12, /const folds = \[0, 1, 2, 3, 4\]/, "Lesson 12 has five validation folds");
 assert.match(lesson12, /aria-pressed=\{fold === i\}/, "Lesson 12 fold selector communicates selection");
+assert.match(lesson12, /grid grid-cols-1 gap-2 sm:grid-cols-5/, "Lesson 12 fold diagram stacks on phones and uses five columns on wider screens");
+assert.match(lesson12, /role="status" aria-live="polite"/, "Lesson 12 announces fold changes to assistive technology");
 assert.match(lesson12, /onClick=\{\(\) => setFold\(i\)\}/, "Lesson 12 fold selection is interactive");
 assert.match(lesson12, /Separate final test partition/, "Lesson 12 distinguishes the held-out test set");
 assert.match(lesson12, /These five scores are an arithmetic teaching example/, "Lesson 12 does not misrepresent illustrative scores");
