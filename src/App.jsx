@@ -44,6 +44,7 @@ import CourseDetail from "./pages/CourseDetail.jsx";
 import Resources from "./pages/Resources.jsx";
 import Blog from "./pages/Blog.jsx";
 import Contact from "./pages/Contact.jsx";
+import RequestTutoring from "./pages/RequestTutoring.jsx";
 import Auth from "./pages/Auth.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Admin from "./pages/Admin.jsx";
@@ -112,6 +113,7 @@ export default function App() {
           <Route path="/resources" element={<Resources />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/request-tutoring" element={<RequestTutoring />} />
           <Route path="/login" element={<Auth />} />
           <Route path="/auth" element={<Navigate to="/login" replace />} />
           <Route path="/projects" element={<Projects />} />
